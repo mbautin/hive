@@ -547,7 +547,11 @@ public class RCFile {
       }
       if (codec != null) {
         IOUtils.closeStream(decompressBuffer);
-        CodecPool.returnDecompressor(valDecompressor);
+        if (valDecompressor != null) {
+          // Make sure we only return valDecompressor once.
+          CodecPool.returnDecompressor(valDecompressor);
+          valDecompressor = null;
+        }
       }
     }
 
@@ -1755,7 +1759,11 @@ public class RCFile {
       currentValue.close();
       if (decompress) {
         IOUtils.closeStream(keyDecompressedData);
-        CodecPool.returnDecompressor(keyDecompressor);
+        if (keyDecompressor != null) {
+          // Make sure we only return keyDecompressor once.
+          CodecPool.returnDecompressor(keyDecompressor);
+          keyDecompressor = null;
+        }
       }
     }
 
