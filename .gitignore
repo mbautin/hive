@@ -8,3 +8,11 @@ build-eclipse
 *.launch
 *~
 metastore_db
+
+/contrib/TempStatsStore/
+/contrib/derby.log
+/ql/TempStatsStore/
+/ql/TestSerDe.jar
+/ql/derby.log
+/ql/hive-builtins-0.9.0*.jar
+
