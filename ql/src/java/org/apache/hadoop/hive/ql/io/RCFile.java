@@ -580,6 +580,11 @@ public class RCFile {
     return result;
   }
 
+  /** Callback allowing the user to get notified after records get flushed to HDFS */
+  public interface FlushCallback {
+    public void recordsFlushed(RCFile.Writer writer, int bufferedRecords, int columnBufferSize);
+  }
+
   /**
    * Write KeyBuffer/ValueBuffer pairs to a RCFile. RCFile's format is
    * compatible with SequenceFile's.
@@ -630,6 +635,8 @@ public class RCFile {
     private final int[] comprTotalColumnLength;
 
     boolean useNewMagic = true;
+
+    private FlushCallback flushCallback = null;
 
     /*
      * used for buffering appends before flush them out
@@ -910,7 +917,10 @@ public class RCFile {
       }
     }
 
-    private void flushRecords() throws IOException {
+    public void flushRecords() throws IOException {
+      if (bufferedRecords == 0) {
+        return;
+      }
 
       key.numberRows = bufferedRecords;
 
@@ -977,6 +987,10 @@ public class RCFile {
             columnBuffers[columnIndex].columnValBuffer;
           out.write(buf.getData(), 0, buf.getLength());
         }
+      }
+
+      if (flushCallback != null) {
+        flushCallback.recordsFlushed(this, bufferedRecords, columnBufferSize);
       }
 
       // clear the columnBuffers
@@ -1049,6 +1063,10 @@ public class RCFile {
           + plainTotalColumnLength[i]
           + ",  Compr Total Column Value Length: " + comprTotalColumnLength[i]);
       }
+    }
+
+    public void setFlushCallback(FlushCallback flushCallback) {
+      this.flushCallback = flushCallback;
     }
   }
 
