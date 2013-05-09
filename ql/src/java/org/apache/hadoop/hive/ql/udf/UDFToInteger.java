@@ -183,7 +183,7 @@ public class UDFToInteger extends UDF {
     if (i == null) {
       return null;
     } else {
-      intWritable.set(i.getSeconds());
+      intWritable.set((int) i.getSeconds());
       return intWritable;
     }
   }
