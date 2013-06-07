@@ -596,7 +596,6 @@ public class SemanticAnalyzer extends BaseSemanticAnalyzer {
 
   private boolean isJoinToken(ASTNode node) {
     if ((node.getToken().getType() == HiveParser.TOK_JOIN)
-        || (node.getToken().getType() == HiveParser.TOK_CROSSJOIN)
         || (node.getToken().getType() == HiveParser.TOK_LEFTOUTERJOIN)
         || (node.getToken().getType() == HiveParser.TOK_RIGHTOUTERJOIN)
         || (node.getToken().getType() == HiveParser.TOK_FULLOUTERJOIN)
