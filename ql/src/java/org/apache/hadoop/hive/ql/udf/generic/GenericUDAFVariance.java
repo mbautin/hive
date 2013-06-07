@@ -71,7 +71,6 @@ public class GenericUDAFVariance extends AbstractGenericUDAFResolver {
     case FLOAT:
     case DOUBLE:
     case STRING:
-    case DATE:
     case TIMESTAMP:
       return new GenericUDAFVarianceEvaluator();
     case BOOLEAN:

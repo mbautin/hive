@@ -70,7 +70,6 @@ public class GenericUDAFAverage extends AbstractGenericUDAFResolver {
     case FLOAT:
     case DOUBLE:
     case STRING:
-    case DATE:
     case TIMESTAMP:
       return new GenericUDAFAverageEvaluator();
     case BOOLEAN:

@@ -132,7 +132,6 @@ public class GenericUDAFContextNGrams implements GenericUDAFResolver {
     case SHORT:
     case INT:
     case LONG:
-    case DATE:
     case TIMESTAMP:
       break;
 
@@ -153,7 +152,6 @@ public class GenericUDAFContextNGrams implements GenericUDAFResolver {
       case SHORT:
       case INT:
       case LONG:
-      case DATE:
       case TIMESTAMP:
         break;
 

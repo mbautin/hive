@@ -24,7 +24,6 @@ import java.util.Date;
 
 import org.apache.hadoop.hive.ql.exec.Description;
 import org.apache.hadoop.hive.ql.exec.UDF;
-import org.apache.hadoop.hive.serde2.io.DateWritable;
 import org.apache.hadoop.hive.serde2.io.TimestampWritable;
 import org.apache.hadoop.io.Text;
 
@@ -66,15 +65,6 @@ public class UDFDate extends UDF {
     } catch (ParseException e) {
       return null;
     }
-  }
-
-  public Text evaluate(DateWritable d) {
-    if (d == null) {
-      return null;
-    }
-
-    t.set(formatter.format(d.get()));
-    return t;
   }
 
   public Text evaluate(TimestampWritable i) {

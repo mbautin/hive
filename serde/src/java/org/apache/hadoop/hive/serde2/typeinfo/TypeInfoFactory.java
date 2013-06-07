@@ -62,7 +62,6 @@ public final class TypeInfoFactory {
   public static final TypeInfo doubleTypeInfo = getPrimitiveTypeInfo(Constants.DOUBLE_TYPE_NAME);
   public static final TypeInfo byteTypeInfo = getPrimitiveTypeInfo(Constants.TINYINT_TYPE_NAME);
   public static final TypeInfo shortTypeInfo = getPrimitiveTypeInfo(Constants.SMALLINT_TYPE_NAME);
-  public static final TypeInfo dateTypeInfo = getPrimitiveTypeInfo(Constants.DATE_TYPE_NAME);
   public static final TypeInfo timestampTypeInfo = getPrimitiveTypeInfo(Constants.TIMESTAMP_TYPE_NAME);
   public static final TypeInfo binaryTypeInfo = getPrimitiveTypeInfo(Constants.BINARY_TYPE_NAME);
 

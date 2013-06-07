@@ -36,7 +36,6 @@ import org.apache.hadoop.hive.serde2.objectinspector.primitive.WritableIntObject
 import org.apache.hadoop.hive.serde2.objectinspector.primitive.WritableLongObjectInspector;
 import org.apache.hadoop.hive.serde2.objectinspector.primitive.WritableShortObjectInspector;
 import org.apache.hadoop.hive.serde2.objectinspector.primitive.WritableStringObjectInspector;
-import org.apache.hadoop.hive.serde2.objectinspector.primitive.WritableDateObjectInspector;
 import org.apache.hadoop.hive.serde2.objectinspector.primitive.WritableTimestampObjectInspector;
 import org.apache.hadoop.hive.serde2.objectinspector.primitive.WritableVoidObjectInspector;
 import org.apache.hadoop.hive.serde2.typeinfo.TypeInfo;
@@ -72,8 +71,6 @@ public final class LazyBinaryFactory {
       return new LazyBinaryString((WritableStringObjectInspector) oi);
     case VOID: // for NULL
       return new LazyBinaryVoid((WritableVoidObjectInspector) oi);
-    case DATE:
-      return new LazyBinaryDate((WritableDateObjectInspector) oi);
     case TIMESTAMP:
       return new LazyBinaryTimestamp((WritableTimestampObjectInspector) oi);
     case BINARY:
