@@ -55,6 +55,7 @@ import org.apache.hadoop.io.WritableUtils;
  */
 public class TimestampWritable implements WritableComparable<TimestampWritable> {
   static final private Log LOG = LogFactory.getLog(TimestampWritable.class);
+  static final private int MAX_BYTES = 9;
 
   static final public byte[] nullBytes = {0x0, 0x0, 0x0, 0x0};
 
@@ -80,10 +81,7 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
   private boolean timestampEmpty;
 
   /* Allow use of external byte[] for efficiency */
-  private byte[] currentBytes;
-  private final byte[] internalBytes = new byte[9];
-  private byte[] externalBytes;
-  private int offset;
+  private final byte[] internalBytes = new byte[MAX_BYTES];
 
   /* Reused to read VInts */
   static private final VInt vInt = new VInt();
@@ -92,9 +90,6 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
   public TimestampWritable() {
     Arrays.fill(internalBytes, (byte) 0x0);
     bytesEmpty = false;
-    currentBytes = internalBytes;
-    offset = 0;
-
     clearTimestamp();
   }
 
@@ -111,23 +106,20 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
   }
 
   public void set(byte[] bytes, int offset) {
-    externalBytes = bytes;
-    this.offset = offset;
+    System.arraycopy(bytes, 0, internalBytes, offset, Math.min(MAX_BYTES, bytes.length - offset));
     bytesEmpty = false;
-    currentBytes = externalBytes;
-
     clearTimestamp();
   }
 
-  public void set(Timestamp t) {
-    if (t == null) {
+  public void set(Timestamp ts) {
+    if (ts == null) {
       timestamp.setTime(0);
       timestamp.setNanos(0);
       return;
     }
-    this.timestamp = t;
     bytesEmpty = true;
     timestampEmpty = false;
+    timestamp = ts;
   }
 
   public void set(TimestampWritable t) {
@@ -135,11 +127,7 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
       set(t.getTimestamp());
       return;
     }
-    if (t.currentBytes == t.externalBytes) {
-      set(t.currentBytes, t.offset);
-    } else {
-      set(t.currentBytes, 0);
-    }
+    set(t.internalBytes, 0);
   }
 
   private void clearTimestamp() {
@@ -148,7 +136,7 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
 
   public void writeToByteStream(Output byteStream) {
     checkBytes();
-    byteStream.write(currentBytes, offset, getTotalLength());
+    byteStream.write(internalBytes, 0, getTotalLength());
   }
 
   /**
@@ -159,7 +147,7 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
     if (bytesEmpty) {
       return (int) (timestamp.getTime() / 1000);
     }
-    return TimestampWritable.getSeconds(currentBytes, offset);
+    return TimestampWritable.getSeconds(internalBytes, 0);
   }
 
   /**
@@ -171,7 +159,7 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
       return timestamp.getNanos();
     }
 
-    return hasDecimal() ? TimestampWritable.getNanos(currentBytes, offset+4) : 0;
+    return hasDecimal() ? TimestampWritable.getNanos(internalBytes, 4) : 0;
   }
 
   /**
@@ -188,14 +176,14 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
    */
   private int getDecimalLength() {
     checkBytes();
-    return hasDecimal() ? WritableUtils.decodeVIntSize(currentBytes[offset+4]) : 0;
+    return hasDecimal() ? WritableUtils.decodeVIntSize(internalBytes[4]) : 0;
   }
 
   public Timestamp getTimestamp() {
     if (timestampEmpty) {
       populateTimestamp();
     }
-    return timestamp;
+    return (Timestamp)timestamp.clone();
   }
 
   /**
@@ -208,7 +196,7 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
     int len = getTotalLength();
     byte[] b = new byte[len];
 
-    System.arraycopy(currentBytes, offset, b, 0, len);
+    System.arraycopy(internalBytes, 0, b, 0, len);
     return b;
   }
 
@@ -241,8 +229,6 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
     }
     intToBytes(seconds, internalBytes, 0);
     setNanosBytes(nanos, internalBytes, 4);
-    currentBytes = internalBytes;
-    this.offset = 0;
   }
 
   /**
@@ -254,8 +240,6 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
     if (bytesEmpty) {
       // Populate byte[] from Timestamp
       convertTimestampToBytes(timestamp, internalBytes, 0);
-      offset = 0;
-      currentBytes = internalBytes;
       bytesEmpty = false;
     }
   }
@@ -285,13 +269,11 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
       int len = (byte) WritableUtils.decodeVIntSize(internalBytes[4]);
       in.readFully(internalBytes, 5, len-1);
     }
-    currentBytes = internalBytes;
-    this.offset = 0;
   }
 
   public void write(OutputStream out) throws IOException {
     checkBytes();
-    out.write(currentBytes, offset, getTotalLength());
+    out.write(internalBytes, 0, getTotalLength());
   }
 
   public void write(DataOutput out) throws IOException {
@@ -379,8 +361,8 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
     }
     val = tmp;
 
-    if (len < 9) {
-      val *= Math.pow(10, 9 - len);
+    if (len < MAX_BYTES) {
+      val *= Math.pow(10, MAX_BYTES - len);
     }
     return val;
   }
@@ -392,7 +374,7 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
    */
   public static void convertTimestampToBytes(Timestamp t, byte[] b,
       int offset) {
-    if (b.length < 9) {
+    if (b.length < MAX_BYTES) {
       LOG.error("byte array too short");
     }
     long millis = t.getTime();
@@ -501,7 +483,7 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
   }
 
   public boolean hasDecimal() {
-    return hasDecimal(currentBytes[offset]);
+    return hasDecimal(internalBytes[0]);
   }
 
   /**
