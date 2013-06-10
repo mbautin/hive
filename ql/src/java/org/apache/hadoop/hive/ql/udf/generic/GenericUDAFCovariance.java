@@ -92,7 +92,6 @@ public class GenericUDAFCovariance extends AbstractGenericUDAFResolver {
     case LONG:
     case FLOAT:
     case DOUBLE:
-    case DATE:
     case TIMESTAMP:
       switch (((PrimitiveTypeInfo) parameters[1]).getPrimitiveCategory()) {
       case BYTE:
@@ -101,7 +100,6 @@ public class GenericUDAFCovariance extends AbstractGenericUDAFResolver {
       case LONG:
       case FLOAT:
       case DOUBLE:
-      case DATE:
       case TIMESTAMP:
         return new GenericUDAFCovarianceEvaluator();
       case STRING:

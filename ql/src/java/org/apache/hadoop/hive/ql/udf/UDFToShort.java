@@ -22,7 +22,6 @@ import org.apache.hadoop.hive.ql.exec.UDF;
 import org.apache.hadoop.hive.serde2.io.ByteWritable;
 import org.apache.hadoop.hive.serde2.io.DoubleWritable;
 import org.apache.hadoop.hive.serde2.io.ShortWritable;
-import org.apache.hadoop.hive.serde2.io.DateWritable;
 import org.apache.hadoop.hive.serde2.io.TimestampWritable;
 import org.apache.hadoop.hive.serde2.lazy.LazyShort;
 import org.apache.hadoop.io.BooleanWritable;
@@ -170,15 +169,6 @@ public class UDFToShort extends UDF {
         // But we decided to return NULL instead, which is more conservative.
         return null;
       }
-    }
-  }
-
-  public ShortWritable evaluate(DateWritable d) {
-    if (d == null) {
-      return null;
-    } else {
-      shortWritable.set((short) d.getTimeInSeconds());
-      return shortWritable;
     }
   }
 

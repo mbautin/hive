@@ -86,7 +86,6 @@ public class GenericUDAFHistogramNumeric extends AbstractGenericUDAFResolver {
     case LONG:
     case FLOAT:
     case DOUBLE:
-    case DATE:
     case TIMESTAMP:
       break;
     case STRING:

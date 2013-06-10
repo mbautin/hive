@@ -22,7 +22,6 @@ import org.apache.hadoop.hive.ql.exec.UDF;
 import org.apache.hadoop.hive.serde2.io.ByteWritable;
 import org.apache.hadoop.hive.serde2.io.DoubleWritable;
 import org.apache.hadoop.hive.serde2.io.ShortWritable;
-import org.apache.hadoop.hive.serde2.io.DateWritable;
 import org.apache.hadoop.hive.serde2.io.TimestampWritable;
 import org.apache.hadoop.hive.serde2.lazy.LazyInteger;
 import org.apache.hadoop.io.BooleanWritable;
@@ -170,22 +169,6 @@ public class UDFToInteger extends UDF {
         // But we decided to return NULL instead, which is more conservative.
         return null;
       }
-    }
-  }
-
-  /**
-   * Convert from Date to an integer. This is called for CAST(... AS INT)
-   *
-   * @param d
-   *          The Date value to convert
-   * @return IntWritable
-   */
-  public IntWritable evaluate(DateWritable d) {
-    if (d == null) {
-      return null;
-    } else {
-      intWritable.set((int)d.getTimeInSeconds());
-      return intWritable;
     }
   }
 
