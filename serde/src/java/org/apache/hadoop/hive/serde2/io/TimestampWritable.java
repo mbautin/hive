@@ -106,7 +106,7 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
   }
 
   public void set(byte[] bytes, int offset) {
-    System.arraycopy(bytes, 0, internalBytes, offset, Math.min(MAX_BYTES, bytes.length - offset));
+    System.arraycopy(bytes, offset, internalBytes, 0, Math.min(MAX_BYTES, bytes.length - offset));
     bytesEmpty = false;
     clearTimestamp();
   }
@@ -119,7 +119,7 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
     }
     bytesEmpty = true;
     timestampEmpty = false;
-    timestamp = ts;
+    timestamp.setTime(ts.getTime());
   }
 
   public void set(TimestampWritable t) {
