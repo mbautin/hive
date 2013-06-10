@@ -183,7 +183,7 @@ public class TimestampWritable implements WritableComparable<TimestampWritable> 
     if (timestampEmpty) {
       populateTimestamp();
     }
-    return (Timestamp)timestamp.clone();
+    return timestamp;
   }
 
   /**
