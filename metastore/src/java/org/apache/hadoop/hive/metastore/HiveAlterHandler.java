@@ -28,6 +28,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.fs.ProxyLocalFileSystem;
 import org.apache.hadoop.hive.metastore.api.AlreadyExistsException;
 import org.apache.hadoop.hive.metastore.api.Constants;
 import org.apache.hadoop.hive.metastore.api.FieldSchema;
@@ -307,7 +308,9 @@ public class HiveAlterHandler implements AlterHandler {
         srcFs = wh.getFs(srcPath);
         destFs = wh.getFs(destPath);
         // check that src and dest are on the same file system
-        if (srcFs != destFs) {
+        if (srcFs != destFs &&
+            !(srcFs instanceof ProxyLocalFileSystem &&
+              destFs instanceof ProxyLocalFileSystem)) {
           throw new InvalidOperationException("table new location " + destPath
               + " is on a different file system than the old location "
               + srcPath + ". This operation is not supported");
