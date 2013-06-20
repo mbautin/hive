@@ -16,3 +16,5 @@ metastore_db
 /ql/derby.log
 /ql/hive-builtins-0.9.0*.jar
 
+hbase-handler/junit*.properties
+hbase-handler/TempStatsStore/
