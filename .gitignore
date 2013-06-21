@@ -18,3 +18,10 @@ metastore_db
 
 hbase-handler/junit*.properties
 hbase-handler/TempStatsStore/
+
+/hbase-handler/build/
+.broken.rcfile.crc
+broken.rcfile
+/ql/build/
+/serde/build/
+
