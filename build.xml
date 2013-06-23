@@ -380,10 +380,23 @@
         <fileset dir="." includes="*/build.xml" excludes="ant/*,odbc/*,shims/*"/>
       </path>
       <sequential>
-        <ant antfile="@{file}" target="test" inheritAll="false" inheritRefs="true">
-          <property name="build.dir.hive" location="${build.dir.hive}"/>
-          <property name="is-offline" value="${is-offline}"/>
-        </ant>
+        <echo/>
+        <echo>-------------------------------------------------------------------------------</echo>
+        <echo>Running tests in @{file}</echo>
+        <echo>-------------------------------------------------------------------------------</echo>
+        <echo/>
+        <trycatch>
+          <try>
+            <ant antfile="@{file}" target="test" inheritAll="false" inheritRefs="true">
+              <property name="build.dir.hive" location="${build.dir.hive}"/>
+              <property name="is-offline" value="${is-offline}"/>
+            </ant>
+          </try>
+          <catch>
+            <echo>Some tests failed when building @{file}</echo>
+            <fail>Some tests failed when building @{file}</fail>
+          </catch>
+        </trycatch>
       </sequential>
     </for>
   </target>
