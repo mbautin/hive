@@ -26,6 +26,7 @@
   <property name="ql.test.template.dir" location="${basedir}/../ql/src/test/templates"/>
   <property name="ql.hbase.test.template.dir" location="${basedir}/src/test/templates"/>
   <property name="hbase-handler.test.results.dir" location="${basedir}/src/test/results"/>
+  <property name="extra.jvm.args" value="-XX:MaxPermSize=256m"/>
 
   <import file="../build-common.xml"/>
 
