@@ -24,3 +24,4 @@ broken.rcfile
 /ql/build/
 /serde/build/
 
+hive_version.env
