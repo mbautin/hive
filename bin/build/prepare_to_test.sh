@@ -6,12 +6,15 @@ set -e -u -o pipefail
 cd $(dirname $0)/../..
 
 echo "Building Hive on $HOSTNAME" >&2
-if [ -n "${hive_version:-}" ]; then
-  echo "Using Hive version ${hive_version}"
-else
-  echo "Error: hive_version is not set" >&2
-  exit 1
+if [ -z "${hive_version:-}" ]; then
+  hive_version=$( awk -F= '/^version=/ {print $NF}' <build.properties )
+  if [ -z "${hive_version}" ]; then
+    echo "Unable to detect Hive version from build.properties" >&2
+    exit 1
+  fi
 fi
+echo "Using Hive version: ${hive_version}"
+
 echo
 echo "Most recent Hive commits:"
 git log -n 10
