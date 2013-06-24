@@ -7,13 +7,24 @@ cd $(dirname $0)/../..
 
 echo "Building Hive on $HOSTNAME" >&2
 if [ -z "${hive_version:-}" ]; then
-  hive_version=$( awk -F= '/^version=/ {print $NF}' <build.properties )
-  if [ -z "${hive_version}" ]; then
-    echo "Unable to detect Hive version from build.properties" >&2
+
+  hive_version_base=$( awk -F= '/^version=/ {print $NF}' <build.properties )
+  if [ -z "${hive_version_base}" ]; then
+    echo "Failed to determine Hive version configured in build.properties" >&2
     exit 1
   fi
+
+  hive_version_extension=$( c=$(git rev-parse HEAD); echo ${c:0:10} )
+  if [ -z "${hive_version_extension}" ]; then
+    echo "Failed to get a git sha1 prefix of HEAD in $PWD" >&2
+    exit 1
+  fi
+  hive_version="${hive_version_base}_${hive_version_extension}"
+  echo "Using Hive version: ${hive_version} (autodetected)"
+else
+  echo "Using Hive version: ${hive_version} (already defined)"
 fi
-echo "Using Hive version: ${hive_version}"
+echo "hive_version=${hive_version}" >hive_version.env
 
 echo
 echo "Most recent Hive commits:"
