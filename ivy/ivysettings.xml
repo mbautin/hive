@@ -45,13 +45,9 @@
       <artifact pattern="${hadoop.mirror}/hadoop/core/[artifact]-[revision]/[artifact]-[revision].[ext]" />
     </url>
 
-    <url name="hadoop-source2">
-      <artifact pattern="${hadoop.mirror2}/hadoop/core/[artifact]-[revision]/[artifact]-[revision].[ext]" />
-    </url>
-
     <ibiblio name="maven2" root="${repo.maven.org}" pattern="${maven2.pattern.ext}" m2compatible="true"/>
     <ibiblio name="apache-snapshot" root="${snapshot.apache.org}" m2compatible="true"
-             checkmodified="${ivy.checkmodified}" 
+             checkmodified="${ivy.checkmodified}"
              changingPattern="${ivy.changingPattern}"/>
 
     <url name="datanucleus-repo" m2compatible="true">
@@ -63,15 +59,17 @@
        <ivy pattern="${repo.dir}/org/apache/hadoop/[module]/[revision]/[module]-[revision].pom"/>
     </filesystem>
 
-    <chain name="default" dual="true" returnFirst="true" 
-           checkmodified="true" 
+    <ibiblio name="nexus" m2compatible="true" root="${nexus.url}"/>
+
+    <chain name="default" dual="true" returnFirst="true"
+           checkmodified="true"
            changingPattern="${ivy.changingPattern}">
       <resolver ref="local" />
+      <resolver ref="nexus"/>
       <resolver ref="apache-snapshot"/>
       <resolver ref="maven2"/>
       <resolver ref="datanucleus-repo"/>
       <resolver ref="hadoop-source"/>
-      <resolver ref="hadoop-source2"/>
     </chain>
 
     <chain name="internal" dual="true">
@@ -94,7 +92,7 @@
     <module organisation="org.apache.hive" name=".*" resolver="${resolvers}"/>
   </modules>
 
-  <caches default="${ivy.cache.name}" 
+  <caches default="${ivy.cache.name}"
           resolutionCacheDir="${build.ivy.dir}/resolution-cache">
     <cache name="online"/>
     <!--

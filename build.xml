@@ -370,6 +370,18 @@
     </if>
   </target>
 
+  <target name="echo-running-tests-in">
+    <tstamp>
+      <format property="current.time" pattern="yyyy-MM-dd HH:mm:ss,SSS" />
+    </tstamp>
+
+    <echo/>
+    <echo>-------------------------------------------------------------------------------</echo>
+    <echo>[${current.time}] Running tests in ${file}</echo>
+    <echo>-------------------------------------------------------------------------------</echo>
+    <echo/>
+  </target>
+
   <target name="test" depends="clean-test,jar-test" description="Run tests">
     <echo message="Project: ${ant.project.name}"/>
     <antcall target="test-shims">
@@ -380,10 +392,21 @@
         <fileset dir="." includes="*/build.xml" excludes="ant/*,odbc/*,shims/*"/>
       </path>
       <sequential>
-        <ant antfile="@{file}" target="test" inheritAll="false" inheritRefs="true">
-          <property name="build.dir.hive" location="${build.dir.hive}"/>
-          <property name="is-offline" value="${is-offline}"/>
-        </ant>
+        <antcall target="echo-running-tests-in">
+          <param name="file" value="@{file}"/>
+        </antcall>
+        <trycatch>
+          <try>
+            <ant antfile="@{file}" target="test" inheritAll="false" inheritRefs="true">
+              <property name="build.dir.hive" location="${build.dir.hive}"/>
+              <property name="is-offline" value="${is-offline}"/>
+            </ant>
+          </try>
+          <catch>
+            <echo>Some tests failed when building @{file}</echo>
+            <fail>Some tests failed when building @{file}</fail>
+          </catch>
+        </trycatch>
       </sequential>
     </for>
   </target>

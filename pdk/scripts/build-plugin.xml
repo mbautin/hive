@@ -134,25 +134,31 @@
        <fileset dir="${build.ivy.lib.dir}/test" includes="*.jar" excludes="hive*.jar"/>
     </path>
     <property name="hive.hadoop.mock.classpath" refid="hive.hadoop.mock.classpath"/>
-    <junit fork="true" printsummary="on" haltonfailure="true"
-           dir="${build.dir}">
-      <classpath refid="plugin.test.classpath"/>
-      <sysproperty key="hadoop.bin.path" value="${test.hadoop.bin.path}"/>
-      <sysproperty key="hive.plugin.root.dir" value="${plugin.dir}"/>
-      <sysproperty key="hive.plugin.class.list" value="${class.list}"/>
-      <sysproperty key="hive.metastore.warehouse.dir" value="${build.dir}/warehouse"/>
-      <env key="HIVE_HADOOP_TEST_CLASSPATH" value="${hive.hadoop.mock.classpath}"/>
-      <env key="HADOOP_HOME" value="${hadoop.home}"/>
-      <env key="HIVE_CONF_DIR" value="${install.dir}/conf"/>
-      <env key="HIVE_HOME" value="${install.dir}"/>
-      <env key="HIVE_PLUGIN_ROOT_DIR" value="${plugin.dir}"/>
-      <formatter type="plain"/>
-      <test name="org.apache.hive.pdk.PluginTest" todir="${build.dir}/"/>
-      <assertions>
-        <enable />
-      </assertions>
-      <jvmarg line="${jvm.args}"/>
-    </junit>
+    <echo message="skip.plugin.test=${skip.plugin.test}"/>
+    <if>
+      <isfalse value="${skip.plugin.test}"/>
+      <then>
+        <junit fork="true" printsummary="on" haltonfailure="true"
+               dir="${build.dir}">
+          <classpath refid="plugin.test.classpath"/>
+          <sysproperty key="hadoop.bin.path" value="${test.hadoop.bin.path}"/>
+          <sysproperty key="hive.plugin.root.dir" value="${plugin.dir}"/>
+          <sysproperty key="hive.plugin.class.list" value="${class.list}"/>
+          <sysproperty key="hive.metastore.warehouse.dir" value="${build.dir}/warehouse"/>
+          <env key="HIVE_HADOOP_TEST_CLASSPATH" value="${hive.hadoop.mock.classpath}"/>
+          <env key="HADOOP_HOME" value="${hadoop.home}"/>
+          <env key="HIVE_CONF_DIR" value="${install.dir}/conf"/>
+          <env key="HIVE_HOME" value="${install.dir}"/>
+          <env key="HIVE_PLUGIN_ROOT_DIR" value="${plugin.dir}"/>
+          <formatter type="plain"/>
+          <test name="org.apache.hive.pdk.PluginTest" todir="${build.dir}/"/>
+          <assertions>
+            <enable />
+          </assertions>
+          <jvmarg line="${jvm.args}"/>
+        </junit>
+      </then>
+    </if>
   </target>
 
 </project>

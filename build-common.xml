@@ -448,14 +448,14 @@
       <sysproperty key="derby.version" value="${derby.version}"/>
       <sysproperty key="hive.version" value="${version}"/>
       <sysproperty key="hadoop.bin.path" value="${test.hadoop.bin.path}"/>
-      <jvmarg line="${jvm.args}"/>
+      <jvmarg line="${jvm.args} ${extra.jvm.args}"/>
 
       <classpath refid="test.local.classpath"/>
       <formatter type="${test.junit.output.format}" usefile="${test.junit.output.usefile}" />
       <batchtest todir="${test.build.dir}" unless="testcase">
         <fileset dir="${test.build.classes}"
-                 includes="**/${test.include}.class"
-                 excludes="**/TestSerDe.class,**/TestHiveMetaStore.class,**/*$*.class" />
+                 includes="**/${test.include}.class,${test.include.pattern}"
+                 excludes="**/TestSerDe.class,**/TestHiveMetaStore.class,**/*$*.class,${test.exclude.pattern}" />
       </batchtest>
       <batchtest todir="${test.build.dir}" if="testcase">
         <fileset dir="${test.build.classes}" includes="**/${testcase}.class"/>

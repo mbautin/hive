@@ -16,15 +16,13 @@ STAGE PLANS:
       limit: 10
 
 
-PREHOOK: query: SELECT x.* FROM SRCPART x WHERE ds = '2008-04-08' LIMIT 10
+PREHOOK: query: SELECT x.* FROM SRCPART x WHERE ds = '2008-04-08' AND hr = '11' LIMIT 10
 PREHOOK: type: QUERY
 PREHOOK: Input: default@srcpart@ds=2008-04-08/hr=11
-PREHOOK: Input: default@srcpart@ds=2008-04-08/hr=12
 #### A masked pattern was here ####
-POSTHOOK: query: SELECT x.* FROM SRCPART x WHERE ds = '2008-04-08' LIMIT 10
+POSTHOOK: query: SELECT x.* FROM SRCPART x WHERE ds = '2008-04-08' AND hr = '11' LIMIT 10
 POSTHOOK: type: QUERY
 POSTHOOK: Input: default@srcpart@ds=2008-04-08/hr=11
-POSTHOOK: Input: default@srcpart@ds=2008-04-08/hr=12
 #### A masked pattern was here ####
 238	val_238	2008-04-08	11
 86	val_86	2008-04-08	11

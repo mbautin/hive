@@ -24,7 +24,7 @@
   </info>
   <configurations>
     <include file="${ivy.conf.dir}/common-configurations.xml"/>
-  </configurations>  
+  </configurations>
   <dependencies>
     <dependency org="org.apache.hive" name="hive-exec" rev="${version}"
                 conf="compile->default" />
@@ -35,7 +35,7 @@
     <dependency org="log4j" name="log4j" rev="${log4j.version}"
                 transitive="false"/>
     <dependency org="org.apache.hbase" name="hbase" rev="${hbase.version}"
-                transitive="false">
+                transitive="true">
       <artifact name="hbase" type="jar"/>
       <artifact name="hbase" type="test-jar" ext="jar"
                 m:classifier="tests"/>
