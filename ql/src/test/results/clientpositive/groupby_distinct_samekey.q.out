@@ -74,7 +74,7 @@ STAGE PLANS:
   Stage: Stage-2
     Map Reduce
       Alias -> Map Operator Tree:
-        file:/tmp/navis/hive_2011-12-06_22-42-54_678_6880816387144416561/-mr-10002 
+#### A masked pattern was here ####
             Reduce Output Operator
               key expressions:
                     expr: _col0
@@ -192,19 +192,19 @@ STAGE PLANS:
 PREHOOK: query: select Q1.int1, sum(distinct Q1.int1) from (select * from t1 order by int1) Q1 group by Q1.int1
 PREHOOK: type: QUERY
 PREHOOK: Input: default@t1
-PREHOOK: Output: file:/tmp/navis/hive_2011-12-06_22-42-55_007_7670241209892952007/-mr-10000
+#### A masked pattern was here ####
 POSTHOOK: query: select Q1.int1, sum(distinct Q1.int1) from (select * from t1 order by int1) Q1 group by Q1.int1
 POSTHOOK: type: QUERY
 POSTHOOK: Input: default@t1
-POSTHOOK: Output: file:/tmp/navis/hive_2011-12-06_22-42-55_007_7670241209892952007/-mr-10000
+#### A masked pattern was here ####
 PREHOOK: query: select int1, sum(distinct int1) from t1 group by int1
 PREHOOK: type: QUERY
 PREHOOK: Input: default@t1
-PREHOOK: Output: file:/tmp/navis/hive_2011-12-06_22-43-00_371_1806093835357284158/-mr-10000
+#### A masked pattern was here ####
 POSTHOOK: query: select int1, sum(distinct int1) from t1 group by int1
 POSTHOOK: type: QUERY
 POSTHOOK: Input: default@t1
-POSTHOOK: Output: file:/tmp/navis/hive_2011-12-06_22-43-00_371_1806093835357284158/-mr-10000
+#### A masked pattern was here ####
 PREHOOK: query: drop table t1
 PREHOOK: type: DROPTABLE
 PREHOOK: Input: default@t1
