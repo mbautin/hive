@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -54,6 +55,7 @@ import org.apache.hadoop.mapred.InputSplit;
 import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.RecordReader;
 import org.apache.hadoop.mapred.Reporter;
+import org.apache.hadoop.mapred.FileSplit;
 import org.apache.hadoop.util.ReflectionUtils;
 
 /**
@@ -254,6 +256,33 @@ public class FetchOperator implements Serializable {
     }
   }
 
+  /**
+   * Allows sorting input splits for deterministic output order.
+   */
+  private static Comparator<FileSplit> FILE_SPLIT_COMPARATOR = new Comparator<FileSplit>() {
+    @Override
+    public int compare(FileSplit s1, FileSplit s2) {
+      return s1.getPath().compareTo(s2.getPath());
+    }
+  };
+
+  /**
+   * Input splits may not always be sorted by file name, resulting in an invalid order of output
+   * rows. This is fixed by applying stable sorting on file name.
+   */
+  @SuppressWarnings("unchecked")
+  private static void sortInputSplits(InputSplit inputSplits[]) {
+    for (InputSplit inputSplit : inputSplits) {
+      if (!(inputSplit instanceof FileSplit)) {
+        return;
+      }
+    }
+    // We know that the array only contains FileSplits, so we just cast the comparator.
+    // Note that we only sort by file name and rely on the sorting algorithm stability to avoid
+    // reordering splits belonging to the same file.
+    Arrays.sort(inputSplits, (Comparator<InputSplit>) ((Comparator) FILE_SPLIT_COMPARATOR));
+  }
+
   private RecordReader<WritableComparable, Writable> getRecordReader() throws Exception {
     if (currPath == null) {
       getNextPath();
@@ -279,6 +308,7 @@ public class FetchOperator implements Serializable {
       inputFormat = getInputFormatFromCache(tmp.getInputFileFormatClass(), job);
       Utilities.copyTableJobPropertiesToConf(tmp.getTableDesc(), job);
       inputSplits = inputFormat.getSplits(job, 1);
+      sortInputSplits(inputSplits);
       splitNum = 0;
       serde = tmp.getDeserializerClass().newInstance();
       serde.initialize(job, tmp.getProperties());
