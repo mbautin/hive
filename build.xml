@@ -1304,6 +1304,52 @@
         </artifact:deploy>
       </then>
       <elseif>
+        <equals arg1="${mvn.publish.repo}" arg2="csd_release" />
+        <then>
+          <artifact:deploy
+              file="${mvn.jar.dir}/hive-${hive.project}-${version}.jar">
+            <pom refid="hive.project.pom" />
+            <remoteRepository
+                id="${mvn.csd.repo.id}" url="${mvn.csd_releases.repo.url}"/>
+            <attach file="${mvn.jar.dir}/hive-${hive.project}-${version}.jar.asc"
+                    type="jar.asc"/>
+            <attach file="${mvn.pom.dir}/hive-${hive.project}-${version}.pom.asc"
+                    type="pom.asc"/>
+            <attach file="${mvn.jar.dir}/hive-${hive.project}-${version}-sources.jar"
+                    type="jar" classifier="sources"/>
+            <attach file="${mvn.jar.dir}/hive-${hive.project}-${version}-sources.jar.asc"
+                    type="jar.asc" classifier="sources"/>
+            <attach file="${mvn.jar.dir}/hive-${hive.project}-${version}-javadoc.jar"
+                    type="jar" classifier="javadoc"/>
+            <attach file="${mvn.jar.dir}/hive-${hive.project}-${version}-javadoc.jar.asc"
+                    type="jar.asc" classifier="javadoc"/>
+          </artifact:deploy>
+        </then>
+      </elseif>
+      <elseif>
+        <equals arg1="${mvn.publish.repo}" arg2="csd_snapshot" />
+        <then>
+          <artifact:deploy
+              file="${mvn.jar.dir}/hive-${hive.project}-${version}.jar">
+            <pom refid="hive.project.pom" />
+            <remoteRepository
+                id="${mvn.csd.repo.id}" url="${mvn.csd_snapshots.repo.url}"/>
+            <attach file="${mvn.jar.dir}/hive-${hive.project}-${version}.jar.asc"
+                    type="jar.asc"/>
+            <attach file="${mvn.pom.dir}/hive-${hive.project}-${version}.pom.asc"
+                    type="pom.asc"/>
+            <attach file="${mvn.jar.dir}/hive-${hive.project}-${version}-sources.jar"
+                    type="jar" classifier="sources"/>
+            <attach file="${mvn.jar.dir}/hive-${hive.project}-${version}-sources.jar.asc"
+                    type="jar.asc" classifier="sources"/>
+            <attach file="${mvn.jar.dir}/hive-${hive.project}-${version}-javadoc.jar"
+                    type="jar" classifier="javadoc"/>
+            <attach file="${mvn.jar.dir}/hive-${hive.project}-${version}-javadoc.jar.asc"
+                    type="jar.asc" classifier="javadoc"/>
+          </artifact:deploy>
+        </then>
+      </elseif>
+      <elseif>
         <equals arg1="${mvn.publish.repo}" arg2="local"/>
         <then>
           <artifact:install 
