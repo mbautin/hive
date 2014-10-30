@@ -553,6 +553,11 @@
     <replace file="${build.dir}/pom.xml">
       <replacetoken>&lt;dependencies&gt;</replacetoken>
       <replacevalue>
+        &lt;parent&gt;
+        &lt;groupId&gt;com.clearstorydata&lt;/groupId&gt;
+        &lt;artifactId&gt;clearstorydata-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.0.7&lt;/version&gt;
+        &lt;/parent&gt;
         &lt;name&gt;Apache Hive 0.12&lt;/name&gt;
         &lt;description&gt;Hive is a data warehouse infrastructure built on top of Hadoop see
         http://wiki.apache.org/hadoop/Hive &lt;/description&gt;
