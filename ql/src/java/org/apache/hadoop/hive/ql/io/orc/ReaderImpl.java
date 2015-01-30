@@ -35,7 +35,7 @@ import org.apache.hadoop.hive.ql.io.sarg.SearchArgument;
 import org.apache.hadoop.hive.serde2.objectinspector.ObjectInspector;
 import org.apache.hadoop.io.Text;
 
-import com.google.protobuf_spark.CodedInputStream;
+import org.spark_project.protobuf.CodedInputStream;
 
 final class ReaderImpl implements Reader {
 

@@ -28,8 +28,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 
-import com.google.protobuf_spark.ByteString;
-import com.google.protobuf_spark.CodedOutputStream;
+import org.spark_project.protobuf.ByteString;
+import org.spark_project.protobuf.CodedOutputStream;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.conf.Configuration;
