@@ -24,7 +24,7 @@
     <parent>
         <groupId>org.spark-project.hive.hcatalog</groupId>
         <artifactId>hcatalog</artifactId>
-        <version>0.12.0-csd-2</version>
+        <version>0.12.0-csd-3</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
