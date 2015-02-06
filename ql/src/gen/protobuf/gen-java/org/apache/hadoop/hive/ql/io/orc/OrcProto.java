@@ -8,49 +8,22 @@ public final class OrcProto {
   public static void registerAllExtensions(
       org.spark_project.protobuf.ExtensionRegistry registry) {
   }
-  /**
-   * Protobuf enum {@code org.apache.hadoop.hive.ql.io.orc.CompressionKind}
-   */
   public enum CompressionKind
       implements org.spark_project.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>NONE = 0;</code>
-     */
     NONE(0, 0),
-    /**
-     * <code>ZLIB = 1;</code>
-     */
     ZLIB(1, 1),
-    /**
-     * <code>SNAPPY = 2;</code>
-     */
     SNAPPY(2, 2),
-    /**
-     * <code>LZO = 3;</code>
-     */
     LZO(3, 3),
     ;
-
-    /**
-     * <code>NONE = 0;</code>
-     */
+    
     public static final int NONE_VALUE = 0;
-    /**
-     * <code>ZLIB = 1;</code>
-     */
     public static final int ZLIB_VALUE = 1;
-    /**
-     * <code>SNAPPY = 2;</code>
-     */
     public static final int SNAPPY_VALUE = 2;
-    /**
-     * <code>LZO = 3;</code>
-     */
     public static final int LZO_VALUE = 3;
-
-
+    
+    
     public final int getNumber() { return value; }
-
+    
     public static CompressionKind valueOf(int value) {
       switch (value) {
         case 0: return NONE;
@@ -60,7 +33,7 @@ public final class OrcProto {
         default: return null;
       }
     }
-
+    
     public static org.spark_project.protobuf.Internal.EnumLiteMap<CompressionKind>
         internalGetValueMap() {
       return internalValueMap;
@@ -72,7 +45,7 @@ public final class OrcProto {
               return CompressionKind.valueOf(number);
             }
           };
-
+    
     public final org.spark_project.protobuf.Descriptors.EnumValueDescriptor
         getValueDescriptor() {
       return getDescriptor().getValues().get(index);
@@ -85,9 +58,11 @@ public final class OrcProto {
         getDescriptor() {
       return org.apache.hadoop.hive.ql.io.orc.OrcProto.getDescriptor().getEnumTypes().get(0);
     }
-
-    private static final CompressionKind[] VALUES = values();
-
+    
+    private static final CompressionKind[] VALUES = {
+      NONE, ZLIB, SNAPPY, LZO, 
+    };
+    
     public static CompressionKind valueOf(
         org.spark_project.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
@@ -96,205 +71,92 @@ public final class OrcProto {
       }
       return VALUES[desc.getIndex()];
     }
-
+    
     private final int index;
     private final int value;
-
+    
     private CompressionKind(int index, int value) {
       this.index = index;
       this.value = value;
     }
-
+    
     // @@protoc_insertion_point(enum_scope:org.apache.hadoop.hive.ql.io.orc.CompressionKind)
   }
-
+  
   public interface IntegerStatisticsOrBuilder
       extends org.spark_project.protobuf.MessageOrBuilder {
-
+    
     // optional sint64 minimum = 1;
-    /**
-     * <code>optional sint64 minimum = 1;</code>
-     */
     boolean hasMinimum();
-    /**
-     * <code>optional sint64 minimum = 1;</code>
-     */
     long getMinimum();
-
+    
     // optional sint64 maximum = 2;
-    /**
-     * <code>optional sint64 maximum = 2;</code>
-     */
     boolean hasMaximum();
-    /**
-     * <code>optional sint64 maximum = 2;</code>
-     */
     long getMaximum();
-
+    
     // optional sint64 sum = 3;
-    /**
-     * <code>optional sint64 sum = 3;</code>
-     */
     boolean hasSum();
-    /**
-     * <code>optional sint64 sum = 3;</code>
-     */
     long getSum();
   }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.IntegerStatistics}
-   */
   public static final class IntegerStatistics extends
       org.spark_project.protobuf.GeneratedMessage
       implements IntegerStatisticsOrBuilder {
     // Use IntegerStatistics.newBuilder() to construct.
-    private IntegerStatistics(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
+    private IntegerStatistics(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private IntegerStatistics(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private IntegerStatistics(boolean noInit) {}
+    
     private static final IntegerStatistics defaultInstance;
     public static IntegerStatistics getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public IntegerStatistics getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private IntegerStatistics(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              minimum_ = input.readSInt64();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              maximum_ = input.readSInt64();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              sum_ = input.readSInt64();
-              break;
-            }
-          }
-        }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final org.spark_project.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_IntegerStatistics_descriptor;
     }
-
+    
     protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_IntegerStatistics_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.Builder.class);
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_IntegerStatistics_fieldAccessorTable;
     }
-
-    public static org.spark_project.protobuf.Parser<IntegerStatistics> PARSER =
-        new org.spark_project.protobuf.AbstractParser<IntegerStatistics>() {
-      public IntegerStatistics parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new IntegerStatistics(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<IntegerStatistics> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional sint64 minimum = 1;
     public static final int MINIMUM_FIELD_NUMBER = 1;
     private long minimum_;
-    /**
-     * <code>optional sint64 minimum = 1;</code>
-     */
     public boolean hasMinimum() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional sint64 minimum = 1;</code>
-     */
     public long getMinimum() {
       return minimum_;
     }
-
+    
     // optional sint64 maximum = 2;
     public static final int MAXIMUM_FIELD_NUMBER = 2;
     private long maximum_;
-    /**
-     * <code>optional sint64 maximum = 2;</code>
-     */
     public boolean hasMaximum() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional sint64 maximum = 2;</code>
-     */
     public long getMaximum() {
       return maximum_;
     }
-
+    
     // optional sint64 sum = 3;
     public static final int SUM_FIELD_NUMBER = 3;
     private long sum_;
-    /**
-     * <code>optional sint64 sum = 3;</code>
-     */
     public boolean hasSum() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional sint64 sum = 3;</code>
-     */
     public long getSum() {
       return sum_;
     }
-
+    
     private void initFields() {
       minimum_ = 0L;
       maximum_ = 0L;
@@ -304,11 +166,11 @@ public final class OrcProto {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -323,12 +185,12 @@ public final class OrcProto {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += org.spark_project.protobuf.CodedOutputStream
@@ -346,83 +208,94 @@ public final class OrcProto {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics parseFrom(
         org.spark_project.protobuf.ByteString data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics parseFrom(
         org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics parseFrom(byte[] data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics parseFrom(
         byte[] data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics parseFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics parseDelimitedFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics parseFrom(
         org.spark_project.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics parseFrom(
         org.spark_project.protobuf.CodedInputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.IntegerStatistics}
-     */
     public static final class Builder extends
         org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
        implements org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatisticsOrBuilder {
@@ -430,21 +303,18 @@ public final class OrcProto {
           getDescriptor() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_IntegerStatistics_descriptor;
       }
-
+      
       protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_IntegerStatistics_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.Builder.class);
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_IntegerStatistics_fieldAccessorTable;
       }
-
+      
       // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -455,7 +325,7 @@ public final class OrcProto {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         minimum_ = 0L;
@@ -466,20 +336,20 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public org.spark_project.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_IntegerStatistics_descriptor;
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.getDescriptor();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics getDefaultInstanceForType() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.getDefaultInstance();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics build() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics result = buildPartial();
         if (!result.isInitialized()) {
@@ -487,7 +357,17 @@ public final class OrcProto {
         }
         return result;
       }
-
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics buildPartial() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics(this);
         int from_bitField0_ = bitField0_;
@@ -508,7 +388,7 @@ public final class OrcProto {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(org.spark_project.protobuf.Message other) {
         if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics) {
           return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics)other);
@@ -517,7 +397,7 @@ public final class OrcProto {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics other) {
         if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.getDefaultInstance()) return this;
         if (other.hasMinimum()) {
@@ -532,327 +412,203 @@ public final class OrcProto {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           org.spark_project.protobuf.CodedInputStream input,
           org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              minimum_ = input.readSInt64();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              maximum_ = input.readSInt64();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              sum_ = input.readSInt64();
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional sint64 minimum = 1;
       private long minimum_ ;
-      /**
-       * <code>optional sint64 minimum = 1;</code>
-       */
       public boolean hasMinimum() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional sint64 minimum = 1;</code>
-       */
       public long getMinimum() {
         return minimum_;
       }
-      /**
-       * <code>optional sint64 minimum = 1;</code>
-       */
       public Builder setMinimum(long value) {
         bitField0_ |= 0x00000001;
         minimum_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional sint64 minimum = 1;</code>
-       */
       public Builder clearMinimum() {
         bitField0_ = (bitField0_ & ~0x00000001);
         minimum_ = 0L;
         onChanged();
         return this;
       }
-
+      
       // optional sint64 maximum = 2;
       private long maximum_ ;
-      /**
-       * <code>optional sint64 maximum = 2;</code>
-       */
       public boolean hasMaximum() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional sint64 maximum = 2;</code>
-       */
       public long getMaximum() {
         return maximum_;
       }
-      /**
-       * <code>optional sint64 maximum = 2;</code>
-       */
       public Builder setMaximum(long value) {
         bitField0_ |= 0x00000002;
         maximum_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional sint64 maximum = 2;</code>
-       */
       public Builder clearMaximum() {
         bitField0_ = (bitField0_ & ~0x00000002);
         maximum_ = 0L;
         onChanged();
         return this;
       }
-
+      
       // optional sint64 sum = 3;
       private long sum_ ;
-      /**
-       * <code>optional sint64 sum = 3;</code>
-       */
       public boolean hasSum() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional sint64 sum = 3;</code>
-       */
       public long getSum() {
         return sum_;
       }
-      /**
-       * <code>optional sint64 sum = 3;</code>
-       */
       public Builder setSum(long value) {
         bitField0_ |= 0x00000004;
         sum_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional sint64 sum = 3;</code>
-       */
       public Builder clearSum() {
         bitField0_ = (bitField0_ & ~0x00000004);
         sum_ = 0L;
         onChanged();
         return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.IntegerStatistics)
     }
-
+    
     static {
       defaultInstance = new IntegerStatistics(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.IntegerStatistics)
   }
-
+  
   public interface DoubleStatisticsOrBuilder
       extends org.spark_project.protobuf.MessageOrBuilder {
-
+    
     // optional double minimum = 1;
-    /**
-     * <code>optional double minimum = 1;</code>
-     */
     boolean hasMinimum();
-    /**
-     * <code>optional double minimum = 1;</code>
-     */
     double getMinimum();
-
+    
     // optional double maximum = 2;
-    /**
-     * <code>optional double maximum = 2;</code>
-     */
     boolean hasMaximum();
-    /**
-     * <code>optional double maximum = 2;</code>
-     */
     double getMaximum();
-
+    
     // optional double sum = 3;
-    /**
-     * <code>optional double sum = 3;</code>
-     */
     boolean hasSum();
-    /**
-     * <code>optional double sum = 3;</code>
-     */
     double getSum();
   }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.DoubleStatistics}
-   */
   public static final class DoubleStatistics extends
       org.spark_project.protobuf.GeneratedMessage
       implements DoubleStatisticsOrBuilder {
     // Use DoubleStatistics.newBuilder() to construct.
-    private DoubleStatistics(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
+    private DoubleStatistics(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private DoubleStatistics(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private DoubleStatistics(boolean noInit) {}
+    
     private static final DoubleStatistics defaultInstance;
     public static DoubleStatistics getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public DoubleStatistics getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private DoubleStatistics(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 9: {
-              bitField0_ |= 0x00000001;
-              minimum_ = input.readDouble();
-              break;
-            }
-            case 17: {
-              bitField0_ |= 0x00000002;
-              maximum_ = input.readDouble();
-              break;
-            }
-            case 25: {
-              bitField0_ |= 0x00000004;
-              sum_ = input.readDouble();
-              break;
-            }
-          }
-        }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final org.spark_project.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DoubleStatistics_descriptor;
     }
-
+    
     protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DoubleStatistics_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.Builder.class);
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DoubleStatistics_fieldAccessorTable;
     }
-
-    public static org.spark_project.protobuf.Parser<DoubleStatistics> PARSER =
-        new org.spark_project.protobuf.AbstractParser<DoubleStatistics>() {
-      public DoubleStatistics parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new DoubleStatistics(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<DoubleStatistics> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional double minimum = 1;
     public static final int MINIMUM_FIELD_NUMBER = 1;
     private double minimum_;
-    /**
-     * <code>optional double minimum = 1;</code>
-     */
     public boolean hasMinimum() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional double minimum = 1;</code>
-     */
     public double getMinimum() {
       return minimum_;
     }
-
+    
     // optional double maximum = 2;
     public static final int MAXIMUM_FIELD_NUMBER = 2;
     private double maximum_;
-    /**
-     * <code>optional double maximum = 2;</code>
-     */
     public boolean hasMaximum() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional double maximum = 2;</code>
-     */
     public double getMaximum() {
       return maximum_;
     }
-
+    
     // optional double sum = 3;
     public static final int SUM_FIELD_NUMBER = 3;
     private double sum_;
-    /**
-     * <code>optional double sum = 3;</code>
-     */
     public boolean hasSum() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional double sum = 3;</code>
-     */
     public double getSum() {
       return sum_;
     }
-
+    
     private void initFields() {
       minimum_ = 0D;
       maximum_ = 0D;
@@ -862,11 +618,11 @@ public final class OrcProto {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -881,12 +637,12 @@ public final class OrcProto {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += org.spark_project.protobuf.CodedOutputStream
@@ -904,83 +660,94 @@ public final class OrcProto {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics parseFrom(
         org.spark_project.protobuf.ByteString data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics parseFrom(
         org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics parseFrom(byte[] data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics parseFrom(
         byte[] data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics parseFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics parseDelimitedFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics parseFrom(
         org.spark_project.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics parseFrom(
         org.spark_project.protobuf.CodedInputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.DoubleStatistics}
-     */
     public static final class Builder extends
         org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
        implements org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatisticsOrBuilder {
@@ -988,21 +755,18 @@ public final class OrcProto {
           getDescriptor() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DoubleStatistics_descriptor;
       }
-
+      
       protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DoubleStatistics_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.Builder.class);
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DoubleStatistics_fieldAccessorTable;
       }
-
+      
       // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1013,7 +777,7 @@ public final class OrcProto {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         minimum_ = 0D;
@@ -1024,20 +788,20 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public org.spark_project.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DoubleStatistics_descriptor;
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.getDescriptor();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics getDefaultInstanceForType() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.getDefaultInstance();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics build() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics result = buildPartial();
         if (!result.isInitialized()) {
@@ -1045,7 +809,17 @@ public final class OrcProto {
         }
         return result;
       }
-
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics buildPartial() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics(this);
         int from_bitField0_ = bitField0_;
@@ -1066,7 +840,7 @@ public final class OrcProto {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(org.spark_project.protobuf.Message other) {
         if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics) {
           return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics)other);
@@ -1075,7 +849,7 @@ public final class OrcProto {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics other) {
         if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.getDefaultInstance()) return this;
         if (other.hasMinimum()) {
@@ -1090,360 +864,233 @@ public final class OrcProto {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           org.spark_project.protobuf.CodedInputStream input,
           org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 9: {
+              bitField0_ |= 0x00000001;
+              minimum_ = input.readDouble();
+              break;
+            }
+            case 17: {
+              bitField0_ |= 0x00000002;
+              maximum_ = input.readDouble();
+              break;
+            }
+            case 25: {
+              bitField0_ |= 0x00000004;
+              sum_ = input.readDouble();
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional double minimum = 1;
       private double minimum_ ;
-      /**
-       * <code>optional double minimum = 1;</code>
-       */
       public boolean hasMinimum() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional double minimum = 1;</code>
-       */
       public double getMinimum() {
         return minimum_;
       }
-      /**
-       * <code>optional double minimum = 1;</code>
-       */
       public Builder setMinimum(double value) {
         bitField0_ |= 0x00000001;
         minimum_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional double minimum = 1;</code>
-       */
       public Builder clearMinimum() {
         bitField0_ = (bitField0_ & ~0x00000001);
         minimum_ = 0D;
         onChanged();
         return this;
       }
-
+      
       // optional double maximum = 2;
       private double maximum_ ;
-      /**
-       * <code>optional double maximum = 2;</code>
-       */
       public boolean hasMaximum() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional double maximum = 2;</code>
-       */
       public double getMaximum() {
         return maximum_;
       }
-      /**
-       * <code>optional double maximum = 2;</code>
-       */
       public Builder setMaximum(double value) {
         bitField0_ |= 0x00000002;
         maximum_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional double maximum = 2;</code>
-       */
       public Builder clearMaximum() {
         bitField0_ = (bitField0_ & ~0x00000002);
         maximum_ = 0D;
         onChanged();
         return this;
       }
-
+      
       // optional double sum = 3;
       private double sum_ ;
-      /**
-       * <code>optional double sum = 3;</code>
-       */
       public boolean hasSum() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional double sum = 3;</code>
-       */
       public double getSum() {
         return sum_;
       }
-      /**
-       * <code>optional double sum = 3;</code>
-       */
       public Builder setSum(double value) {
         bitField0_ |= 0x00000004;
         sum_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional double sum = 3;</code>
-       */
       public Builder clearSum() {
         bitField0_ = (bitField0_ & ~0x00000004);
         sum_ = 0D;
         onChanged();
         return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.DoubleStatistics)
     }
-
+    
     static {
       defaultInstance = new DoubleStatistics(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.DoubleStatistics)
   }
-
+  
   public interface StringStatisticsOrBuilder
       extends org.spark_project.protobuf.MessageOrBuilder {
-
+    
     // optional string minimum = 1;
-    /**
-     * <code>optional string minimum = 1;</code>
-     */
     boolean hasMinimum();
-    /**
-     * <code>optional string minimum = 1;</code>
-     */
-    java.lang.String getMinimum();
-    /**
-     * <code>optional string minimum = 1;</code>
-     */
-    org.spark_project.protobuf.ByteString
-        getMinimumBytes();
-
+    String getMinimum();
+    
     // optional string maximum = 2;
-    /**
-     * <code>optional string maximum = 2;</code>
-     */
     boolean hasMaximum();
-    /**
-     * <code>optional string maximum = 2;</code>
-     */
-    java.lang.String getMaximum();
-    /**
-     * <code>optional string maximum = 2;</code>
-     */
-    org.spark_project.protobuf.ByteString
-        getMaximumBytes();
+    String getMaximum();
   }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.StringStatistics}
-   */
   public static final class StringStatistics extends
       org.spark_project.protobuf.GeneratedMessage
       implements StringStatisticsOrBuilder {
     // Use StringStatistics.newBuilder() to construct.
-    private StringStatistics(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
+    private StringStatistics(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private StringStatistics(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private StringStatistics(boolean noInit) {}
+    
     private static final StringStatistics defaultInstance;
     public static StringStatistics getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public StringStatistics getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private StringStatistics(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              minimum_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              maximum_ = input.readBytes();
-              break;
-            }
-          }
-        }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final org.spark_project.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StringStatistics_descriptor;
     }
-
+    
     protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StringStatistics_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.Builder.class);
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StringStatistics_fieldAccessorTable;
     }
-
-    public static org.spark_project.protobuf.Parser<StringStatistics> PARSER =
-        new org.spark_project.protobuf.AbstractParser<StringStatistics>() {
-      public StringStatistics parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new StringStatistics(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<StringStatistics> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional string minimum = 1;
     public static final int MINIMUM_FIELD_NUMBER = 1;
     private java.lang.Object minimum_;
-    /**
-     * <code>optional string minimum = 1;</code>
-     */
     public boolean hasMinimum() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional string minimum = 1;</code>
-     */
-    public java.lang.String getMinimum() {
+    public String getMinimum() {
       java.lang.Object ref = minimum_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         org.spark_project.protobuf.ByteString bs = 
             (org.spark_project.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
+        String s = bs.toStringUtf8();
+        if (org.spark_project.protobuf.Internal.isValidUtf8(bs)) {
           minimum_ = s;
         }
         return s;
       }
     }
-    /**
-     * <code>optional string minimum = 1;</code>
-     */
-    public org.spark_project.protobuf.ByteString
-        getMinimumBytes() {
+    private org.spark_project.protobuf.ByteString getMinimumBytes() {
       java.lang.Object ref = minimum_;
-      if (ref instanceof java.lang.String) {
+      if (ref instanceof String) {
         org.spark_project.protobuf.ByteString b = 
-            org.spark_project.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+            org.spark_project.protobuf.ByteString.copyFromUtf8((String) ref);
         minimum_ = b;
         return b;
       } else {
         return (org.spark_project.protobuf.ByteString) ref;
       }
     }
-
+    
     // optional string maximum = 2;
     public static final int MAXIMUM_FIELD_NUMBER = 2;
     private java.lang.Object maximum_;
-    /**
-     * <code>optional string maximum = 2;</code>
-     */
     public boolean hasMaximum() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional string maximum = 2;</code>
-     */
-    public java.lang.String getMaximum() {
+    public String getMaximum() {
       java.lang.Object ref = maximum_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         org.spark_project.protobuf.ByteString bs = 
             (org.spark_project.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
+        String s = bs.toStringUtf8();
+        if (org.spark_project.protobuf.Internal.isValidUtf8(bs)) {
           maximum_ = s;
         }
         return s;
       }
     }
-    /**
-     * <code>optional string maximum = 2;</code>
-     */
-    public org.spark_project.protobuf.ByteString
-        getMaximumBytes() {
+    private org.spark_project.protobuf.ByteString getMaximumBytes() {
       java.lang.Object ref = maximum_;
-      if (ref instanceof java.lang.String) {
+      if (ref instanceof String) {
         org.spark_project.protobuf.ByteString b = 
-            org.spark_project.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+            org.spark_project.protobuf.ByteString.copyFromUtf8((String) ref);
         maximum_ = b;
         return b;
       } else {
         return (org.spark_project.protobuf.ByteString) ref;
       }
     }
-
+    
     private void initFields() {
       minimum_ = "";
       maximum_ = "";
@@ -1452,11 +1099,11 @@ public final class OrcProto {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -1468,12 +1115,12 @@ public final class OrcProto {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += org.spark_project.protobuf.CodedOutputStream
@@ -1487,83 +1134,94 @@ public final class OrcProto {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics parseFrom(
         org.spark_project.protobuf.ByteString data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics parseFrom(
         org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics parseFrom(byte[] data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics parseFrom(
         byte[] data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics parseFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics parseDelimitedFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics parseFrom(
         org.spark_project.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics parseFrom(
         org.spark_project.protobuf.CodedInputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.StringStatistics}
-     */
     public static final class Builder extends
         org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
        implements org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatisticsOrBuilder {
@@ -1571,21 +1229,18 @@ public final class OrcProto {
           getDescriptor() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StringStatistics_descriptor;
       }
-
+      
       protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StringStatistics_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.Builder.class);
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StringStatistics_fieldAccessorTable;
       }
-
+      
       // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1596,7 +1251,7 @@ public final class OrcProto {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         minimum_ = "";
@@ -1605,20 +1260,20 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public org.spark_project.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StringStatistics_descriptor;
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.getDescriptor();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics getDefaultInstanceForType() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.getDefaultInstance();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics build() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics result = buildPartial();
         if (!result.isInitialized()) {
@@ -1626,7 +1281,17 @@ public final class OrcProto {
         }
         return result;
       }
-
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics buildPartial() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics(this);
         int from_bitField0_ = bitField0_;
@@ -1643,7 +1308,7 @@ public final class OrcProto {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(org.spark_project.protobuf.Message other) {
         if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics) {
           return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics)other);
@@ -1652,89 +1317,78 @@ public final class OrcProto {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics other) {
         if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.getDefaultInstance()) return this;
         if (other.hasMinimum()) {
-          bitField0_ |= 0x00000001;
-          minimum_ = other.minimum_;
-          onChanged();
+          setMinimum(other.getMinimum());
         }
         if (other.hasMaximum()) {
-          bitField0_ |= 0x00000002;
-          maximum_ = other.maximum_;
-          onChanged();
+          setMaximum(other.getMaximum());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           org.spark_project.protobuf.CodedInputStream input,
           org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              minimum_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              maximum_ = input.readBytes();
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional string minimum = 1;
       private java.lang.Object minimum_ = "";
-      /**
-       * <code>optional string minimum = 1;</code>
-       */
       public boolean hasMinimum() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional string minimum = 1;</code>
-       */
-      public java.lang.String getMinimum() {
+      public String getMinimum() {
         java.lang.Object ref = minimum_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((org.spark_project.protobuf.ByteString) ref)
-              .toStringUtf8();
+        if (!(ref instanceof String)) {
+          String s = ((org.spark_project.protobuf.ByteString) ref).toStringUtf8();
           minimum_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
-      /**
-       * <code>optional string minimum = 1;</code>
-       */
-      public org.spark_project.protobuf.ByteString
-          getMinimumBytes() {
-        java.lang.Object ref = minimum_;
-        if (ref instanceof String) {
-          org.spark_project.protobuf.ByteString b = 
-              org.spark_project.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          minimum_ = b;
-          return b;
-        } else {
-          return (org.spark_project.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string minimum = 1;</code>
-       */
-      public Builder setMinimum(
-          java.lang.String value) {
+      public Builder setMinimum(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1743,72 +1397,34 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string minimum = 1;</code>
-       */
       public Builder clearMinimum() {
         bitField0_ = (bitField0_ & ~0x00000001);
         minimum_ = getDefaultInstance().getMinimum();
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string minimum = 1;</code>
-       */
-      public Builder setMinimumBytes(
-          org.spark_project.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+      void setMinimum(org.spark_project.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
         minimum_ = value;
         onChanged();
-        return this;
       }
-
+      
       // optional string maximum = 2;
       private java.lang.Object maximum_ = "";
-      /**
-       * <code>optional string maximum = 2;</code>
-       */
       public boolean hasMaximum() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional string maximum = 2;</code>
-       */
-      public java.lang.String getMaximum() {
+      public String getMaximum() {
         java.lang.Object ref = maximum_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((org.spark_project.protobuf.ByteString) ref)
-              .toStringUtf8();
+        if (!(ref instanceof String)) {
+          String s = ((org.spark_project.protobuf.ByteString) ref).toStringUtf8();
           maximum_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
-      /**
-       * <code>optional string maximum = 2;</code>
-       */
-      public org.spark_project.protobuf.ByteString
-          getMaximumBytes() {
-        java.lang.Object ref = maximum_;
-        if (ref instanceof String) {
-          org.spark_project.protobuf.ByteString b = 
-              org.spark_project.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          maximum_ = b;
-          return b;
-        } else {
-          return (org.spark_project.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string maximum = 2;</code>
-       */
-      public Builder setMaximum(
-          java.lang.String value) {
+      public Builder setMaximum(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1817,207 +1433,92 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string maximum = 2;</code>
-       */
       public Builder clearMaximum() {
         bitField0_ = (bitField0_ & ~0x00000002);
         maximum_ = getDefaultInstance().getMaximum();
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string maximum = 2;</code>
-       */
-      public Builder setMaximumBytes(
-          org.spark_project.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+      void setMaximum(org.spark_project.protobuf.ByteString value) {
+        bitField0_ |= 0x00000002;
         maximum_ = value;
         onChanged();
-        return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.StringStatistics)
     }
-
+    
     static {
       defaultInstance = new StringStatistics(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.StringStatistics)
   }
-
+  
   public interface BucketStatisticsOrBuilder
       extends org.spark_project.protobuf.MessageOrBuilder {
-
+    
     // repeated uint64 count = 1 [packed = true];
-    /**
-     * <code>repeated uint64 count = 1 [packed = true];</code>
-     */
     java.util.List<java.lang.Long> getCountList();
-    /**
-     * <code>repeated uint64 count = 1 [packed = true];</code>
-     */
     int getCountCount();
-    /**
-     * <code>repeated uint64 count = 1 [packed = true];</code>
-     */
     long getCount(int index);
   }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.BucketStatistics}
-   */
   public static final class BucketStatistics extends
       org.spark_project.protobuf.GeneratedMessage
       implements BucketStatisticsOrBuilder {
     // Use BucketStatistics.newBuilder() to construct.
-    private BucketStatistics(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
+    private BucketStatistics(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private BucketStatistics(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private BucketStatistics(boolean noInit) {}
+    
     private static final BucketStatistics defaultInstance;
     public static BucketStatistics getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public BucketStatistics getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private BucketStatistics(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                count_ = new java.util.ArrayList<java.lang.Long>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              count_.add(input.readUInt64());
-              break;
-            }
-            case 10: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001) && input.getBytesUntilLimit() > 0) {
-                count_ = new java.util.ArrayList<java.lang.Long>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              while (input.getBytesUntilLimit() > 0) {
-                count_.add(input.readUInt64());
-              }
-              input.popLimit(limit);
-              break;
-            }
-          }
-        }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          count_ = java.util.Collections.unmodifiableList(count_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final org.spark_project.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_BucketStatistics_descriptor;
     }
-
+    
     protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_BucketStatistics_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.Builder.class);
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_BucketStatistics_fieldAccessorTable;
     }
-
-    public static org.spark_project.protobuf.Parser<BucketStatistics> PARSER =
-        new org.spark_project.protobuf.AbstractParser<BucketStatistics>() {
-      public BucketStatistics parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new BucketStatistics(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<BucketStatistics> getParserForType() {
-      return PARSER;
-    }
-
+    
     // repeated uint64 count = 1 [packed = true];
     public static final int COUNT_FIELD_NUMBER = 1;
     private java.util.List<java.lang.Long> count_;
-    /**
-     * <code>repeated uint64 count = 1 [packed = true];</code>
-     */
     public java.util.List<java.lang.Long>
         getCountList() {
       return count_;
     }
-    /**
-     * <code>repeated uint64 count = 1 [packed = true];</code>
-     */
     public int getCountCount() {
       return count_.size();
     }
-    /**
-     * <code>repeated uint64 count = 1 [packed = true];</code>
-     */
     public long getCount(int index) {
       return count_.get(index);
     }
     private int countMemoizedSerializedSize = -1;
-
+    
     private void initFields() {
-      count_ = java.util.Collections.emptyList();
+      count_ = java.util.Collections.emptyList();;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -2030,12 +1531,12 @@ public final class OrcProto {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       {
         int dataSize = 0;
@@ -2055,83 +1556,94 @@ public final class OrcProto {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics parseFrom(
         org.spark_project.protobuf.ByteString data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics parseFrom(
         org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics parseFrom(byte[] data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics parseFrom(
         byte[] data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics parseFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics parseDelimitedFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics parseFrom(
         org.spark_project.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics parseFrom(
         org.spark_project.protobuf.CodedInputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.BucketStatistics}
-     */
     public static final class Builder extends
         org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
        implements org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatisticsOrBuilder {
@@ -2139,21 +1651,18 @@ public final class OrcProto {
           getDescriptor() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_BucketStatistics_descriptor;
       }
-
+      
       protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_BucketStatistics_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.Builder.class);
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_BucketStatistics_fieldAccessorTable;
       }
-
+      
       // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -2164,27 +1673,27 @@ public final class OrcProto {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
-        count_ = java.util.Collections.emptyList();
+        count_ = java.util.Collections.emptyList();;
         bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public org.spark_project.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_BucketStatistics_descriptor;
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.getDescriptor();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics getDefaultInstanceForType() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.getDefaultInstance();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics build() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics result = buildPartial();
         if (!result.isInitialized()) {
@@ -2192,7 +1701,17 @@ public final class OrcProto {
         }
         return result;
       }
-
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics buildPartial() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics(this);
         int from_bitField0_ = bitField0_;
@@ -2204,7 +1723,7 @@ public final class OrcProto {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(org.spark_project.protobuf.Message other) {
         if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics) {
           return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics)other);
@@ -2213,7 +1732,7 @@ public final class OrcProto {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics other) {
         if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.getDefaultInstance()) return this;
         if (!other.count_.isEmpty()) {
@@ -2229,60 +1748,72 @@ public final class OrcProto {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           org.spark_project.protobuf.CodedInputStream input,
           org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              ensureCountIsMutable();
+              count_.add(input.readUInt64());
+              break;
+            }
+            case 10: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              while (input.getBytesUntilLimit() > 0) {
+                addCount(input.readUInt64());
+              }
+              input.popLimit(limit);
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // repeated uint64 count = 1 [packed = true];
-      private java.util.List<java.lang.Long> count_ = java.util.Collections.emptyList();
+      private java.util.List<java.lang.Long> count_ = java.util.Collections.emptyList();;
       private void ensureCountIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
           count_ = new java.util.ArrayList<java.lang.Long>(count_);
           bitField0_ |= 0x00000001;
          }
       }
-      /**
-       * <code>repeated uint64 count = 1 [packed = true];</code>
-       */
       public java.util.List<java.lang.Long>
           getCountList() {
         return java.util.Collections.unmodifiableList(count_);
       }
-      /**
-       * <code>repeated uint64 count = 1 [packed = true];</code>
-       */
       public int getCountCount() {
         return count_.size();
       }
-      /**
-       * <code>repeated uint64 count = 1 [packed = true];</code>
-       */
       public long getCount(int index) {
         return count_.get(index);
       }
-      /**
-       * <code>repeated uint64 count = 1 [packed = true];</code>
-       */
       public Builder setCount(
           int index, long value) {
         ensureCountIsMutable();
@@ -2290,18 +1821,12 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>repeated uint64 count = 1 [packed = true];</code>
-       */
       public Builder addCount(long value) {
         ensureCountIsMutable();
         count_.add(value);
         onChanged();
         return this;
       }
-      /**
-       * <code>repeated uint64 count = 1 [packed = true];</code>
-       */
       public Builder addAllCount(
           java.lang.Iterable<? extends java.lang.Long> values) {
         ensureCountIsMutable();
@@ -2309,310 +1834,164 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>repeated uint64 count = 1 [packed = true];</code>
-       */
       public Builder clearCount() {
-        count_ = java.util.Collections.emptyList();
+        count_ = java.util.Collections.emptyList();;
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.BucketStatistics)
     }
-
+    
     static {
       defaultInstance = new BucketStatistics(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.BucketStatistics)
   }
-
+  
   public interface DecimalStatisticsOrBuilder
       extends org.spark_project.protobuf.MessageOrBuilder {
-
+    
     // optional string minimum = 1;
-    /**
-     * <code>optional string minimum = 1;</code>
-     */
     boolean hasMinimum();
-    /**
-     * <code>optional string minimum = 1;</code>
-     */
-    java.lang.String getMinimum();
-    /**
-     * <code>optional string minimum = 1;</code>
-     */
-    org.spark_project.protobuf.ByteString
-        getMinimumBytes();
-
+    String getMinimum();
+    
     // optional string maximum = 2;
-    /**
-     * <code>optional string maximum = 2;</code>
-     */
     boolean hasMaximum();
-    /**
-     * <code>optional string maximum = 2;</code>
-     */
-    java.lang.String getMaximum();
-    /**
-     * <code>optional string maximum = 2;</code>
-     */
-    org.spark_project.protobuf.ByteString
-        getMaximumBytes();
-
+    String getMaximum();
+    
     // optional string sum = 3;
-    /**
-     * <code>optional string sum = 3;</code>
-     */
     boolean hasSum();
-    /**
-     * <code>optional string sum = 3;</code>
-     */
-    java.lang.String getSum();
-    /**
-     * <code>optional string sum = 3;</code>
-     */
-    org.spark_project.protobuf.ByteString
-        getSumBytes();
+    String getSum();
   }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.DecimalStatistics}
-   */
   public static final class DecimalStatistics extends
       org.spark_project.protobuf.GeneratedMessage
       implements DecimalStatisticsOrBuilder {
     // Use DecimalStatistics.newBuilder() to construct.
-    private DecimalStatistics(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
+    private DecimalStatistics(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private DecimalStatistics(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private DecimalStatistics(boolean noInit) {}
+    
     private static final DecimalStatistics defaultInstance;
     public static DecimalStatistics getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public DecimalStatistics getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private DecimalStatistics(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              minimum_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              maximum_ = input.readBytes();
-              break;
-            }
-            case 26: {
-              bitField0_ |= 0x00000004;
-              sum_ = input.readBytes();
-              break;
-            }
-          }
-        }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final org.spark_project.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DecimalStatistics_descriptor;
     }
-
+    
     protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DecimalStatistics_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.Builder.class);
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DecimalStatistics_fieldAccessorTable;
     }
-
-    public static org.spark_project.protobuf.Parser<DecimalStatistics> PARSER =
-        new org.spark_project.protobuf.AbstractParser<DecimalStatistics>() {
-      public DecimalStatistics parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new DecimalStatistics(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<DecimalStatistics> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional string minimum = 1;
     public static final int MINIMUM_FIELD_NUMBER = 1;
     private java.lang.Object minimum_;
-    /**
-     * <code>optional string minimum = 1;</code>
-     */
     public boolean hasMinimum() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional string minimum = 1;</code>
-     */
-    public java.lang.String getMinimum() {
+    public String getMinimum() {
       java.lang.Object ref = minimum_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         org.spark_project.protobuf.ByteString bs = 
             (org.spark_project.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
+        String s = bs.toStringUtf8();
+        if (org.spark_project.protobuf.Internal.isValidUtf8(bs)) {
           minimum_ = s;
         }
         return s;
       }
     }
-    /**
-     * <code>optional string minimum = 1;</code>
-     */
-    public org.spark_project.protobuf.ByteString
-        getMinimumBytes() {
+    private org.spark_project.protobuf.ByteString getMinimumBytes() {
       java.lang.Object ref = minimum_;
-      if (ref instanceof java.lang.String) {
+      if (ref instanceof String) {
         org.spark_project.protobuf.ByteString b = 
-            org.spark_project.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+            org.spark_project.protobuf.ByteString.copyFromUtf8((String) ref);
         minimum_ = b;
         return b;
       } else {
         return (org.spark_project.protobuf.ByteString) ref;
       }
     }
-
+    
     // optional string maximum = 2;
     public static final int MAXIMUM_FIELD_NUMBER = 2;
     private java.lang.Object maximum_;
-    /**
-     * <code>optional string maximum = 2;</code>
-     */
     public boolean hasMaximum() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional string maximum = 2;</code>
-     */
-    public java.lang.String getMaximum() {
+    public String getMaximum() {
       java.lang.Object ref = maximum_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         org.spark_project.protobuf.ByteString bs = 
             (org.spark_project.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
+        String s = bs.toStringUtf8();
+        if (org.spark_project.protobuf.Internal.isValidUtf8(bs)) {
           maximum_ = s;
         }
         return s;
       }
     }
-    /**
-     * <code>optional string maximum = 2;</code>
-     */
-    public org.spark_project.protobuf.ByteString
-        getMaximumBytes() {
+    private org.spark_project.protobuf.ByteString getMaximumBytes() {
       java.lang.Object ref = maximum_;
-      if (ref instanceof java.lang.String) {
+      if (ref instanceof String) {
         org.spark_project.protobuf.ByteString b = 
-            org.spark_project.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+            org.spark_project.protobuf.ByteString.copyFromUtf8((String) ref);
         maximum_ = b;
         return b;
       } else {
         return (org.spark_project.protobuf.ByteString) ref;
       }
     }
-
+    
     // optional string sum = 3;
     public static final int SUM_FIELD_NUMBER = 3;
     private java.lang.Object sum_;
-    /**
-     * <code>optional string sum = 3;</code>
-     */
     public boolean hasSum() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional string sum = 3;</code>
-     */
-    public java.lang.String getSum() {
+    public String getSum() {
       java.lang.Object ref = sum_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         org.spark_project.protobuf.ByteString bs = 
             (org.spark_project.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
+        String s = bs.toStringUtf8();
+        if (org.spark_project.protobuf.Internal.isValidUtf8(bs)) {
           sum_ = s;
         }
         return s;
       }
     }
-    /**
-     * <code>optional string sum = 3;</code>
-     */
-    public org.spark_project.protobuf.ByteString
-        getSumBytes() {
+    private org.spark_project.protobuf.ByteString getSumBytes() {
       java.lang.Object ref = sum_;
-      if (ref instanceof java.lang.String) {
+      if (ref instanceof String) {
         org.spark_project.protobuf.ByteString b = 
-            org.spark_project.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+            org.spark_project.protobuf.ByteString.copyFromUtf8((String) ref);
         sum_ = b;
         return b;
       } else {
         return (org.spark_project.protobuf.ByteString) ref;
       }
     }
-
+    
     private void initFields() {
       minimum_ = "";
       maximum_ = "";
@@ -2622,11 +2001,11 @@ public final class OrcProto {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -2641,12 +2020,12 @@ public final class OrcProto {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += org.spark_project.protobuf.CodedOutputStream
@@ -2664,83 +2043,94 @@ public final class OrcProto {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics parseFrom(
         org.spark_project.protobuf.ByteString data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics parseFrom(
         org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics parseFrom(byte[] data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics parseFrom(
         byte[] data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics parseFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics parseDelimitedFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics parseFrom(
         org.spark_project.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics parseFrom(
         org.spark_project.protobuf.CodedInputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.DecimalStatistics}
-     */
     public static final class Builder extends
         org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
        implements org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatisticsOrBuilder {
@@ -2748,21 +2138,18 @@ public final class OrcProto {
           getDescriptor() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DecimalStatistics_descriptor;
       }
-
+      
       protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DecimalStatistics_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.Builder.class);
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DecimalStatistics_fieldAccessorTable;
       }
-
+      
       // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -2773,7 +2160,7 @@ public final class OrcProto {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         minimum_ = "";
@@ -2784,20 +2171,20 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public org.spark_project.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DecimalStatistics_descriptor;
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.getDescriptor();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics getDefaultInstanceForType() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.getDefaultInstance();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics build() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics result = buildPartial();
         if (!result.isInitialized()) {
@@ -2805,7 +2192,17 @@ public final class OrcProto {
         }
         return result;
       }
-
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics buildPartial() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics(this);
         int from_bitField0_ = bitField0_;
@@ -2826,7 +2223,7 @@ public final class OrcProto {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(org.spark_project.protobuf.Message other) {
         if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics) {
           return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics)other);
@@ -2835,94 +2232,86 @@ public final class OrcProto {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics other) {
         if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.getDefaultInstance()) return this;
         if (other.hasMinimum()) {
-          bitField0_ |= 0x00000001;
-          minimum_ = other.minimum_;
-          onChanged();
+          setMinimum(other.getMinimum());
         }
         if (other.hasMaximum()) {
-          bitField0_ |= 0x00000002;
-          maximum_ = other.maximum_;
-          onChanged();
+          setMaximum(other.getMaximum());
         }
         if (other.hasSum()) {
-          bitField0_ |= 0x00000004;
-          sum_ = other.sum_;
-          onChanged();
+          setSum(other.getSum());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           org.spark_project.protobuf.CodedInputStream input,
           org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              minimum_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              maximum_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              sum_ = input.readBytes();
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional string minimum = 1;
       private java.lang.Object minimum_ = "";
-      /**
-       * <code>optional string minimum = 1;</code>
-       */
       public boolean hasMinimum() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional string minimum = 1;</code>
-       */
-      public java.lang.String getMinimum() {
+      public String getMinimum() {
         java.lang.Object ref = minimum_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((org.spark_project.protobuf.ByteString) ref)
-              .toStringUtf8();
+        if (!(ref instanceof String)) {
+          String s = ((org.spark_project.protobuf.ByteString) ref).toStringUtf8();
           minimum_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
-      /**
-       * <code>optional string minimum = 1;</code>
-       */
-      public org.spark_project.protobuf.ByteString
-          getMinimumBytes() {
-        java.lang.Object ref = minimum_;
-        if (ref instanceof String) {
-          org.spark_project.protobuf.ByteString b = 
-              org.spark_project.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          minimum_ = b;
-          return b;
-        } else {
-          return (org.spark_project.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string minimum = 1;</code>
-       */
-      public Builder setMinimum(
-          java.lang.String value) {
+      public Builder setMinimum(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2931,72 +2320,34 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string minimum = 1;</code>
-       */
       public Builder clearMinimum() {
         bitField0_ = (bitField0_ & ~0x00000001);
         minimum_ = getDefaultInstance().getMinimum();
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string minimum = 1;</code>
-       */
-      public Builder setMinimumBytes(
-          org.spark_project.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+      void setMinimum(org.spark_project.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
         minimum_ = value;
         onChanged();
-        return this;
       }
-
+      
       // optional string maximum = 2;
       private java.lang.Object maximum_ = "";
-      /**
-       * <code>optional string maximum = 2;</code>
-       */
       public boolean hasMaximum() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional string maximum = 2;</code>
-       */
-      public java.lang.String getMaximum() {
+      public String getMaximum() {
         java.lang.Object ref = maximum_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((org.spark_project.protobuf.ByteString) ref)
-              .toStringUtf8();
+        if (!(ref instanceof String)) {
+          String s = ((org.spark_project.protobuf.ByteString) ref).toStringUtf8();
           maximum_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
-      /**
-       * <code>optional string maximum = 2;</code>
-       */
-      public org.spark_project.protobuf.ByteString
-          getMaximumBytes() {
-        java.lang.Object ref = maximum_;
-        if (ref instanceof String) {
-          org.spark_project.protobuf.ByteString b = 
-              org.spark_project.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          maximum_ = b;
-          return b;
-        } else {
-          return (org.spark_project.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string maximum = 2;</code>
-       */
-      public Builder setMaximum(
-          java.lang.String value) {
+      public Builder setMaximum(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -3005,72 +2356,34 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string maximum = 2;</code>
-       */
       public Builder clearMaximum() {
         bitField0_ = (bitField0_ & ~0x00000002);
         maximum_ = getDefaultInstance().getMaximum();
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string maximum = 2;</code>
-       */
-      public Builder setMaximumBytes(
-          org.spark_project.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
+      void setMaximum(org.spark_project.protobuf.ByteString value) {
+        bitField0_ |= 0x00000002;
         maximum_ = value;
         onChanged();
-        return this;
       }
-
+      
       // optional string sum = 3;
       private java.lang.Object sum_ = "";
-      /**
-       * <code>optional string sum = 3;</code>
-       */
       public boolean hasSum() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional string sum = 3;</code>
-       */
-      public java.lang.String getSum() {
+      public String getSum() {
         java.lang.Object ref = sum_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((org.spark_project.protobuf.ByteString) ref)
-              .toStringUtf8();
+        if (!(ref instanceof String)) {
+          String s = ((org.spark_project.protobuf.ByteString) ref).toStringUtf8();
           sum_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
-      /**
-       * <code>optional string sum = 3;</code>
-       */
-      public org.spark_project.protobuf.ByteString
-          getSumBytes() {
-        java.lang.Object ref = sum_;
-        if (ref instanceof String) {
-          org.spark_project.protobuf.ByteString b = 
-              org.spark_project.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          sum_ = b;
-          return b;
-        } else {
-          return (org.spark_project.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string sum = 3;</code>
-       */
-      public Builder setSum(
-          java.lang.String value) {
+      public Builder setSum(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -3079,212 +2392,89 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string sum = 3;</code>
-       */
       public Builder clearSum() {
         bitField0_ = (bitField0_ & ~0x00000004);
         sum_ = getDefaultInstance().getSum();
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string sum = 3;</code>
-       */
-      public Builder setSumBytes(
-          org.spark_project.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000004;
+      void setSum(org.spark_project.protobuf.ByteString value) {
+        bitField0_ |= 0x00000004;
         sum_ = value;
         onChanged();
-        return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.DecimalStatistics)
     }
-
+    
     static {
       defaultInstance = new DecimalStatistics(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.DecimalStatistics)
   }
-
+  
   public interface DateStatisticsOrBuilder
       extends org.spark_project.protobuf.MessageOrBuilder {
-
+    
     // optional sint32 minimum = 1;
-    /**
-     * <code>optional sint32 minimum = 1;</code>
-     *
-     * <pre>
-     * min,max values saved as days since epoch
-     * </pre>
-     */
     boolean hasMinimum();
-    /**
-     * <code>optional sint32 minimum = 1;</code>
-     *
-     * <pre>
-     * min,max values saved as days since epoch
-     * </pre>
-     */
     int getMinimum();
-
+    
     // optional sint32 maximum = 2;
-    /**
-     * <code>optional sint32 maximum = 2;</code>
-     */
     boolean hasMaximum();
-    /**
-     * <code>optional sint32 maximum = 2;</code>
-     */
     int getMaximum();
   }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.DateStatistics}
-   */
   public static final class DateStatistics extends
       org.spark_project.protobuf.GeneratedMessage
       implements DateStatisticsOrBuilder {
     // Use DateStatistics.newBuilder() to construct.
-    private DateStatistics(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
+    private DateStatistics(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private DateStatistics(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private DateStatistics(boolean noInit) {}
+    
     private static final DateStatistics defaultInstance;
     public static DateStatistics getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public DateStatistics getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private DateStatistics(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              minimum_ = input.readSInt32();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              maximum_ = input.readSInt32();
-              break;
-            }
-          }
-        }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final org.spark_project.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DateStatistics_descriptor;
     }
-
+    
     protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DateStatistics_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.Builder.class);
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DateStatistics_fieldAccessorTable;
     }
-
-    public static org.spark_project.protobuf.Parser<DateStatistics> PARSER =
-        new org.spark_project.protobuf.AbstractParser<DateStatistics>() {
-      public DateStatistics parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new DateStatistics(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<DateStatistics> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional sint32 minimum = 1;
     public static final int MINIMUM_FIELD_NUMBER = 1;
     private int minimum_;
-    /**
-     * <code>optional sint32 minimum = 1;</code>
-     *
-     * <pre>
-     * min,max values saved as days since epoch
-     * </pre>
-     */
     public boolean hasMinimum() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional sint32 minimum = 1;</code>
-     *
-     * <pre>
-     * min,max values saved as days since epoch
-     * </pre>
-     */
     public int getMinimum() {
       return minimum_;
     }
-
+    
     // optional sint32 maximum = 2;
     public static final int MAXIMUM_FIELD_NUMBER = 2;
     private int maximum_;
-    /**
-     * <code>optional sint32 maximum = 2;</code>
-     */
     public boolean hasMaximum() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional sint32 maximum = 2;</code>
-     */
     public int getMaximum() {
       return maximum_;
     }
-
+    
     private void initFields() {
       minimum_ = 0;
       maximum_ = 0;
@@ -3293,11 +2483,11 @@ public final class OrcProto {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -3309,12 +2499,12 @@ public final class OrcProto {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += org.spark_project.protobuf.CodedOutputStream
@@ -3328,83 +2518,94 @@ public final class OrcProto {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics parseFrom(
         org.spark_project.protobuf.ByteString data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics parseFrom(
         org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics parseFrom(byte[] data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics parseFrom(
         byte[] data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics parseFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics parseDelimitedFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics parseFrom(
         org.spark_project.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics parseFrom(
         org.spark_project.protobuf.CodedInputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.DateStatistics}
-     */
     public static final class Builder extends
         org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
        implements org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatisticsOrBuilder {
@@ -3412,21 +2613,18 @@ public final class OrcProto {
           getDescriptor() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DateStatistics_descriptor;
       }
-
+      
       protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DateStatistics_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.Builder.class);
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DateStatistics_fieldAccessorTable;
       }
-
+      
       // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -3437,7 +2635,7 @@ public final class OrcProto {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         minimum_ = 0;
@@ -3446,20 +2644,20 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public org.spark_project.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_DateStatistics_descriptor;
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.getDescriptor();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics getDefaultInstanceForType() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.getDefaultInstance();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics build() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics result = buildPartial();
         if (!result.isInitialized()) {
@@ -3467,7 +2665,17 @@ public final class OrcProto {
         }
         return result;
       }
-
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics buildPartial() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics(this);
         int from_bitField0_ = bitField0_;
@@ -3484,7 +2692,7 @@ public final class OrcProto {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(org.spark_project.protobuf.Message other) {
         if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics) {
           return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics)other);
@@ -3493,7 +2701,7 @@ public final class OrcProto {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics other) {
         if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.getDefaultInstance()) return this;
         if (other.hasMinimum()) {
@@ -3505,542 +2713,257 @@ public final class OrcProto {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           org.spark_project.protobuf.CodedInputStream input,
           org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              minimum_ = input.readSInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              maximum_ = input.readSInt32();
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional sint32 minimum = 1;
       private int minimum_ ;
-      /**
-       * <code>optional sint32 minimum = 1;</code>
-       *
-       * <pre>
-       * min,max values saved as days since epoch
-       * </pre>
-       */
       public boolean hasMinimum() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional sint32 minimum = 1;</code>
-       *
-       * <pre>
-       * min,max values saved as days since epoch
-       * </pre>
-       */
       public int getMinimum() {
         return minimum_;
       }
-      /**
-       * <code>optional sint32 minimum = 1;</code>
-       *
-       * <pre>
-       * min,max values saved as days since epoch
-       * </pre>
-       */
       public Builder setMinimum(int value) {
         bitField0_ |= 0x00000001;
         minimum_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional sint32 minimum = 1;</code>
-       *
-       * <pre>
-       * min,max values saved as days since epoch
-       * </pre>
-       */
       public Builder clearMinimum() {
         bitField0_ = (bitField0_ & ~0x00000001);
         minimum_ = 0;
         onChanged();
         return this;
       }
-
+      
       // optional sint32 maximum = 2;
       private int maximum_ ;
-      /**
-       * <code>optional sint32 maximum = 2;</code>
-       */
       public boolean hasMaximum() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional sint32 maximum = 2;</code>
-       */
       public int getMaximum() {
         return maximum_;
       }
-      /**
-       * <code>optional sint32 maximum = 2;</code>
-       */
       public Builder setMaximum(int value) {
         bitField0_ |= 0x00000002;
         maximum_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional sint32 maximum = 2;</code>
-       */
       public Builder clearMaximum() {
         bitField0_ = (bitField0_ & ~0x00000002);
         maximum_ = 0;
         onChanged();
         return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.DateStatistics)
     }
-
+    
     static {
       defaultInstance = new DateStatistics(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.DateStatistics)
   }
-
+  
   public interface ColumnStatisticsOrBuilder
       extends org.spark_project.protobuf.MessageOrBuilder {
-
+    
     // optional uint64 numberOfValues = 1;
-    /**
-     * <code>optional uint64 numberOfValues = 1;</code>
-     */
     boolean hasNumberOfValues();
-    /**
-     * <code>optional uint64 numberOfValues = 1;</code>
-     */
     long getNumberOfValues();
-
+    
     // optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;</code>
-     */
     boolean hasIntStatistics();
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics getIntStatistics();
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatisticsOrBuilder getIntStatisticsOrBuilder();
-
+    
     // optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;</code>
-     */
     boolean hasDoubleStatistics();
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics getDoubleStatistics();
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatisticsOrBuilder getDoubleStatisticsOrBuilder();
-
+    
     // optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;</code>
-     */
     boolean hasStringStatistics();
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics getStringStatistics();
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatisticsOrBuilder getStringStatisticsOrBuilder();
-
+    
     // optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;</code>
-     */
     boolean hasBucketStatistics();
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics getBucketStatistics();
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatisticsOrBuilder getBucketStatisticsOrBuilder();
-
+    
     // optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;</code>
-     */
     boolean hasDecimalStatistics();
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics getDecimalStatistics();
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatisticsOrBuilder getDecimalStatisticsOrBuilder();
-
+    
     // optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;</code>
-     */
     boolean hasDateStatistics();
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics getDateStatistics();
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatisticsOrBuilder getDateStatisticsOrBuilder();
   }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.ColumnStatistics}
-   */
   public static final class ColumnStatistics extends
       org.spark_project.protobuf.GeneratedMessage
       implements ColumnStatisticsOrBuilder {
     // Use ColumnStatistics.newBuilder() to construct.
-    private ColumnStatistics(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
+    private ColumnStatistics(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private ColumnStatistics(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private ColumnStatistics(boolean noInit) {}
+    
     private static final ColumnStatistics defaultInstance;
     public static ColumnStatistics getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public ColumnStatistics getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ColumnStatistics(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              numberOfValues_ = input.readUInt64();
-              break;
-            }
-            case 18: {
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                subBuilder = intStatistics_.toBuilder();
-              }
-              intStatistics_ = input.readMessage(org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(intStatistics_);
-                intStatistics_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000002;
-              break;
-            }
-            case 26: {
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
-                subBuilder = doubleStatistics_.toBuilder();
-              }
-              doubleStatistics_ = input.readMessage(org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(doubleStatistics_);
-                doubleStatistics_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000004;
-              break;
-            }
-            case 34: {
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                subBuilder = stringStatistics_.toBuilder();
-              }
-              stringStatistics_ = input.readMessage(org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(stringStatistics_);
-                stringStatistics_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000008;
-              break;
-            }
-            case 42: {
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000010) == 0x00000010)) {
-                subBuilder = bucketStatistics_.toBuilder();
-              }
-              bucketStatistics_ = input.readMessage(org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(bucketStatistics_);
-                bucketStatistics_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000010;
-              break;
-            }
-            case 50: {
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000020) == 0x00000020)) {
-                subBuilder = decimalStatistics_.toBuilder();
-              }
-              decimalStatistics_ = input.readMessage(org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(decimalStatistics_);
-                decimalStatistics_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000020;
-              break;
-            }
-            case 58: {
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000040) == 0x00000040)) {
-                subBuilder = dateStatistics_.toBuilder();
-              }
-              dateStatistics_ = input.readMessage(org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(dateStatistics_);
-                dateStatistics_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000040;
-              break;
-            }
-          }
-        }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final org.spark_project.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnStatistics_descriptor;
     }
-
+    
     protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnStatistics_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder.class);
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnStatistics_fieldAccessorTable;
     }
-
-    public static org.spark_project.protobuf.Parser<ColumnStatistics> PARSER =
-        new org.spark_project.protobuf.AbstractParser<ColumnStatistics>() {
-      public ColumnStatistics parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new ColumnStatistics(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<ColumnStatistics> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional uint64 numberOfValues = 1;
     public static final int NUMBEROFVALUES_FIELD_NUMBER = 1;
     private long numberOfValues_;
-    /**
-     * <code>optional uint64 numberOfValues = 1;</code>
-     */
     public boolean hasNumberOfValues() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional uint64 numberOfValues = 1;</code>
-     */
     public long getNumberOfValues() {
       return numberOfValues_;
     }
-
+    
     // optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;
     public static final int INTSTATISTICS_FIELD_NUMBER = 2;
     private org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics intStatistics_;
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;</code>
-     */
     public boolean hasIntStatistics() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics getIntStatistics() {
       return intStatistics_;
     }
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatisticsOrBuilder getIntStatisticsOrBuilder() {
       return intStatistics_;
     }
-
+    
     // optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;
     public static final int DOUBLESTATISTICS_FIELD_NUMBER = 3;
     private org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics doubleStatistics_;
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;</code>
-     */
     public boolean hasDoubleStatistics() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics getDoubleStatistics() {
       return doubleStatistics_;
     }
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatisticsOrBuilder getDoubleStatisticsOrBuilder() {
       return doubleStatistics_;
     }
-
+    
     // optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;
     public static final int STRINGSTATISTICS_FIELD_NUMBER = 4;
     private org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics stringStatistics_;
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;</code>
-     */
     public boolean hasStringStatistics() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics getStringStatistics() {
       return stringStatistics_;
     }
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatisticsOrBuilder getStringStatisticsOrBuilder() {
       return stringStatistics_;
     }
-
+    
     // optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;
     public static final int BUCKETSTATISTICS_FIELD_NUMBER = 5;
     private org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics bucketStatistics_;
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;</code>
-     */
     public boolean hasBucketStatistics() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics getBucketStatistics() {
       return bucketStatistics_;
     }
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatisticsOrBuilder getBucketStatisticsOrBuilder() {
       return bucketStatistics_;
     }
-
+    
     // optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;
     public static final int DECIMALSTATISTICS_FIELD_NUMBER = 6;
     private org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics decimalStatistics_;
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;</code>
-     */
     public boolean hasDecimalStatistics() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics getDecimalStatistics() {
       return decimalStatistics_;
     }
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatisticsOrBuilder getDecimalStatisticsOrBuilder() {
       return decimalStatistics_;
     }
-
+    
     // optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;
     public static final int DATESTATISTICS_FIELD_NUMBER = 7;
     private org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics dateStatistics_;
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;</code>
-     */
     public boolean hasDateStatistics() {
       return ((bitField0_ & 0x00000040) == 0x00000040);
     }
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics getDateStatistics() {
       return dateStatistics_;
     }
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatisticsOrBuilder getDateStatisticsOrBuilder() {
       return dateStatistics_;
     }
-
+    
     private void initFields() {
       numberOfValues_ = 0L;
       intStatistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.getDefaultInstance();
@@ -4054,11 +2977,11 @@ public final class OrcProto {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -4085,12 +3008,12 @@ public final class OrcProto {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += org.spark_project.protobuf.CodedOutputStream
@@ -4124,83 +3047,94 @@ public final class OrcProto {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics parseFrom(
         org.spark_project.protobuf.ByteString data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics parseFrom(
         org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics parseFrom(byte[] data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics parseFrom(
         byte[] data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics parseFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics parseDelimitedFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics parseFrom(
         org.spark_project.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics parseFrom(
         org.spark_project.protobuf.CodedInputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.ColumnStatistics}
-     */
     public static final class Builder extends
         org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
        implements org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatisticsOrBuilder {
@@ -4208,21 +3142,18 @@ public final class OrcProto {
           getDescriptor() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnStatistics_descriptor;
       }
-
+      
       protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnStatistics_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder.class);
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnStatistics_fieldAccessorTable;
       }
-
+      
       // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -4239,7 +3170,7 @@ public final class OrcProto {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         numberOfValues_ = 0L;
@@ -4282,20 +3213,20 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public org.spark_project.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnStatistics_descriptor;
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.getDescriptor();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics getDefaultInstanceForType() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.getDefaultInstance();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics build() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics result = buildPartial();
         if (!result.isInitialized()) {
@@ -4303,7 +3234,17 @@ public final class OrcProto {
         }
         return result;
       }
-
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics buildPartial() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics(this);
         int from_bitField0_ = bitField0_;
@@ -4364,7 +3305,7 @@ public final class OrcProto {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(org.spark_project.protobuf.Message other) {
         if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics) {
           return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics)other);
@@ -4373,7 +3314,7 @@ public final class OrcProto {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics other) {
         if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.getDefaultInstance()) return this;
         if (other.hasNumberOfValues()) {
@@ -4400,76 +3341,127 @@ public final class OrcProto {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           org.spark_project.protobuf.CodedInputStream input,
           org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              numberOfValues_ = input.readUInt64();
+              break;
+            }
+            case 18: {
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.Builder subBuilder = org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.newBuilder();
+              if (hasIntStatistics()) {
+                subBuilder.mergeFrom(getIntStatistics());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setIntStatistics(subBuilder.buildPartial());
+              break;
+            }
+            case 26: {
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.Builder subBuilder = org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.newBuilder();
+              if (hasDoubleStatistics()) {
+                subBuilder.mergeFrom(getDoubleStatistics());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setDoubleStatistics(subBuilder.buildPartial());
+              break;
+            }
+            case 34: {
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.Builder subBuilder = org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.newBuilder();
+              if (hasStringStatistics()) {
+                subBuilder.mergeFrom(getStringStatistics());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setStringStatistics(subBuilder.buildPartial());
+              break;
+            }
+            case 42: {
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.Builder subBuilder = org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.newBuilder();
+              if (hasBucketStatistics()) {
+                subBuilder.mergeFrom(getBucketStatistics());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setBucketStatistics(subBuilder.buildPartial());
+              break;
+            }
+            case 50: {
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.Builder subBuilder = org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.newBuilder();
+              if (hasDecimalStatistics()) {
+                subBuilder.mergeFrom(getDecimalStatistics());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setDecimalStatistics(subBuilder.buildPartial());
+              break;
+            }
+            case 58: {
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.Builder subBuilder = org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.newBuilder();
+              if (hasDateStatistics()) {
+                subBuilder.mergeFrom(getDateStatistics());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setDateStatistics(subBuilder.buildPartial());
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional uint64 numberOfValues = 1;
       private long numberOfValues_ ;
-      /**
-       * <code>optional uint64 numberOfValues = 1;</code>
-       */
       public boolean hasNumberOfValues() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional uint64 numberOfValues = 1;</code>
-       */
       public long getNumberOfValues() {
         return numberOfValues_;
       }
-      /**
-       * <code>optional uint64 numberOfValues = 1;</code>
-       */
       public Builder setNumberOfValues(long value) {
         bitField0_ |= 0x00000001;
         numberOfValues_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional uint64 numberOfValues = 1;</code>
-       */
       public Builder clearNumberOfValues() {
         bitField0_ = (bitField0_ & ~0x00000001);
         numberOfValues_ = 0L;
         onChanged();
         return this;
       }
-
+      
       // optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;
       private org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics intStatistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.getDefaultInstance();
       private org.spark_project.protobuf.SingleFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics, org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatisticsOrBuilder> intStatisticsBuilder_;
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;</code>
-       */
       public boolean hasIntStatistics() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics getIntStatistics() {
         if (intStatisticsBuilder_ == null) {
           return intStatistics_;
@@ -4477,9 +3469,6 @@ public final class OrcProto {
           return intStatisticsBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;</code>
-       */
       public Builder setIntStatistics(org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics value) {
         if (intStatisticsBuilder_ == null) {
           if (value == null) {
@@ -4493,9 +3482,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;</code>
-       */
       public Builder setIntStatistics(
           org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.Builder builderForValue) {
         if (intStatisticsBuilder_ == null) {
@@ -4507,9 +3493,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;</code>
-       */
       public Builder mergeIntStatistics(org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics value) {
         if (intStatisticsBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
@@ -4526,9 +3509,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;</code>
-       */
       public Builder clearIntStatistics() {
         if (intStatisticsBuilder_ == null) {
           intStatistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.getDefaultInstance();
@@ -4539,17 +3519,11 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.Builder getIntStatisticsBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
         return getIntStatisticsFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatisticsOrBuilder getIntStatisticsOrBuilder() {
         if (intStatisticsBuilder_ != null) {
           return intStatisticsBuilder_.getMessageOrBuilder();
@@ -4557,9 +3531,6 @@ public final class OrcProto {
           return intStatistics_;
         }
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.IntegerStatistics intStatistics = 2;</code>
-       */
       private org.spark_project.protobuf.SingleFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics, org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatisticsOrBuilder> 
           getIntStatisticsFieldBuilder() {
@@ -4573,20 +3544,14 @@ public final class OrcProto {
         }
         return intStatisticsBuilder_;
       }
-
+      
       // optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;
       private org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics doubleStatistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.getDefaultInstance();
       private org.spark_project.protobuf.SingleFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics, org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatisticsOrBuilder> doubleStatisticsBuilder_;
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;</code>
-       */
       public boolean hasDoubleStatistics() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics getDoubleStatistics() {
         if (doubleStatisticsBuilder_ == null) {
           return doubleStatistics_;
@@ -4594,9 +3559,6 @@ public final class OrcProto {
           return doubleStatisticsBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;</code>
-       */
       public Builder setDoubleStatistics(org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics value) {
         if (doubleStatisticsBuilder_ == null) {
           if (value == null) {
@@ -4610,9 +3572,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000004;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;</code>
-       */
       public Builder setDoubleStatistics(
           org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.Builder builderForValue) {
         if (doubleStatisticsBuilder_ == null) {
@@ -4624,9 +3583,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000004;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;</code>
-       */
       public Builder mergeDoubleStatistics(org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics value) {
         if (doubleStatisticsBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004) &&
@@ -4643,9 +3599,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000004;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;</code>
-       */
       public Builder clearDoubleStatistics() {
         if (doubleStatisticsBuilder_ == null) {
           doubleStatistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.getDefaultInstance();
@@ -4656,17 +3609,11 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.Builder getDoubleStatisticsBuilder() {
         bitField0_ |= 0x00000004;
         onChanged();
         return getDoubleStatisticsFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatisticsOrBuilder getDoubleStatisticsOrBuilder() {
         if (doubleStatisticsBuilder_ != null) {
           return doubleStatisticsBuilder_.getMessageOrBuilder();
@@ -4674,9 +3621,6 @@ public final class OrcProto {
           return doubleStatistics_;
         }
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DoubleStatistics doubleStatistics = 3;</code>
-       */
       private org.spark_project.protobuf.SingleFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics, org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatisticsOrBuilder> 
           getDoubleStatisticsFieldBuilder() {
@@ -4690,20 +3634,14 @@ public final class OrcProto {
         }
         return doubleStatisticsBuilder_;
       }
-
+      
       // optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;
       private org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics stringStatistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.getDefaultInstance();
       private org.spark_project.protobuf.SingleFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics, org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatisticsOrBuilder> stringStatisticsBuilder_;
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;</code>
-       */
       public boolean hasStringStatistics() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics getStringStatistics() {
         if (stringStatisticsBuilder_ == null) {
           return stringStatistics_;
@@ -4711,9 +3649,6 @@ public final class OrcProto {
           return stringStatisticsBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;</code>
-       */
       public Builder setStringStatistics(org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics value) {
         if (stringStatisticsBuilder_ == null) {
           if (value == null) {
@@ -4727,9 +3662,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000008;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;</code>
-       */
       public Builder setStringStatistics(
           org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.Builder builderForValue) {
         if (stringStatisticsBuilder_ == null) {
@@ -4741,9 +3673,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000008;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;</code>
-       */
       public Builder mergeStringStatistics(org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics value) {
         if (stringStatisticsBuilder_ == null) {
           if (((bitField0_ & 0x00000008) == 0x00000008) &&
@@ -4760,9 +3689,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000008;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;</code>
-       */
       public Builder clearStringStatistics() {
         if (stringStatisticsBuilder_ == null) {
           stringStatistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.getDefaultInstance();
@@ -4773,17 +3699,11 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.Builder getStringStatisticsBuilder() {
         bitField0_ |= 0x00000008;
         onChanged();
         return getStringStatisticsFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatisticsOrBuilder getStringStatisticsOrBuilder() {
         if (stringStatisticsBuilder_ != null) {
           return stringStatisticsBuilder_.getMessageOrBuilder();
@@ -4791,9 +3711,6 @@ public final class OrcProto {
           return stringStatistics_;
         }
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.StringStatistics stringStatistics = 4;</code>
-       */
       private org.spark_project.protobuf.SingleFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics, org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatisticsOrBuilder> 
           getStringStatisticsFieldBuilder() {
@@ -4807,20 +3724,14 @@ public final class OrcProto {
         }
         return stringStatisticsBuilder_;
       }
-
+      
       // optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;
       private org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics bucketStatistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.getDefaultInstance();
       private org.spark_project.protobuf.SingleFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics, org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatisticsOrBuilder> bucketStatisticsBuilder_;
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;</code>
-       */
       public boolean hasBucketStatistics() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics getBucketStatistics() {
         if (bucketStatisticsBuilder_ == null) {
           return bucketStatistics_;
@@ -4828,9 +3739,6 @@ public final class OrcProto {
           return bucketStatisticsBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;</code>
-       */
       public Builder setBucketStatistics(org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics value) {
         if (bucketStatisticsBuilder_ == null) {
           if (value == null) {
@@ -4844,9 +3752,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000010;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;</code>
-       */
       public Builder setBucketStatistics(
           org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.Builder builderForValue) {
         if (bucketStatisticsBuilder_ == null) {
@@ -4858,9 +3763,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000010;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;</code>
-       */
       public Builder mergeBucketStatistics(org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics value) {
         if (bucketStatisticsBuilder_ == null) {
           if (((bitField0_ & 0x00000010) == 0x00000010) &&
@@ -4877,9 +3779,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000010;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;</code>
-       */
       public Builder clearBucketStatistics() {
         if (bucketStatisticsBuilder_ == null) {
           bucketStatistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.getDefaultInstance();
@@ -4890,17 +3789,11 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.Builder getBucketStatisticsBuilder() {
         bitField0_ |= 0x00000010;
         onChanged();
         return getBucketStatisticsFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatisticsOrBuilder getBucketStatisticsOrBuilder() {
         if (bucketStatisticsBuilder_ != null) {
           return bucketStatisticsBuilder_.getMessageOrBuilder();
@@ -4908,9 +3801,6 @@ public final class OrcProto {
           return bucketStatistics_;
         }
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.BucketStatistics bucketStatistics = 5;</code>
-       */
       private org.spark_project.protobuf.SingleFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics, org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatisticsOrBuilder> 
           getBucketStatisticsFieldBuilder() {
@@ -4924,20 +3814,14 @@ public final class OrcProto {
         }
         return bucketStatisticsBuilder_;
       }
-
+      
       // optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;
       private org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics decimalStatistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.getDefaultInstance();
       private org.spark_project.protobuf.SingleFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics, org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatisticsOrBuilder> decimalStatisticsBuilder_;
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;</code>
-       */
       public boolean hasDecimalStatistics() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics getDecimalStatistics() {
         if (decimalStatisticsBuilder_ == null) {
           return decimalStatistics_;
@@ -4945,9 +3829,6 @@ public final class OrcProto {
           return decimalStatisticsBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;</code>
-       */
       public Builder setDecimalStatistics(org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics value) {
         if (decimalStatisticsBuilder_ == null) {
           if (value == null) {
@@ -4961,9 +3842,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000020;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;</code>
-       */
       public Builder setDecimalStatistics(
           org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.Builder builderForValue) {
         if (decimalStatisticsBuilder_ == null) {
@@ -4975,9 +3853,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000020;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;</code>
-       */
       public Builder mergeDecimalStatistics(org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics value) {
         if (decimalStatisticsBuilder_ == null) {
           if (((bitField0_ & 0x00000020) == 0x00000020) &&
@@ -4994,9 +3869,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000020;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;</code>
-       */
       public Builder clearDecimalStatistics() {
         if (decimalStatisticsBuilder_ == null) {
           decimalStatistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.getDefaultInstance();
@@ -5007,17 +3879,11 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.Builder getDecimalStatisticsBuilder() {
         bitField0_ |= 0x00000020;
         onChanged();
         return getDecimalStatisticsFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatisticsOrBuilder getDecimalStatisticsOrBuilder() {
         if (decimalStatisticsBuilder_ != null) {
           return decimalStatisticsBuilder_.getMessageOrBuilder();
@@ -5025,9 +3891,6 @@ public final class OrcProto {
           return decimalStatistics_;
         }
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DecimalStatistics decimalStatistics = 6;</code>
-       */
       private org.spark_project.protobuf.SingleFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics, org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatisticsOrBuilder> 
           getDecimalStatisticsFieldBuilder() {
@@ -5041,20 +3904,14 @@ public final class OrcProto {
         }
         return decimalStatisticsBuilder_;
       }
-
+      
       // optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;
       private org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics dateStatistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.getDefaultInstance();
       private org.spark_project.protobuf.SingleFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics, org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatisticsOrBuilder> dateStatisticsBuilder_;
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;</code>
-       */
       public boolean hasDateStatistics() {
         return ((bitField0_ & 0x00000040) == 0x00000040);
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics getDateStatistics() {
         if (dateStatisticsBuilder_ == null) {
           return dateStatistics_;
@@ -5062,9 +3919,6 @@ public final class OrcProto {
           return dateStatisticsBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;</code>
-       */
       public Builder setDateStatistics(org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics value) {
         if (dateStatisticsBuilder_ == null) {
           if (value == null) {
@@ -5078,9 +3932,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000040;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;</code>
-       */
       public Builder setDateStatistics(
           org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.Builder builderForValue) {
         if (dateStatisticsBuilder_ == null) {
@@ -5092,9 +3943,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000040;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;</code>
-       */
       public Builder mergeDateStatistics(org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics value) {
         if (dateStatisticsBuilder_ == null) {
           if (((bitField0_ & 0x00000040) == 0x00000040) &&
@@ -5111,9 +3959,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000040;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;</code>
-       */
       public Builder clearDateStatistics() {
         if (dateStatisticsBuilder_ == null) {
           dateStatistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.getDefaultInstance();
@@ -5124,17 +3969,11 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.Builder getDateStatisticsBuilder() {
         bitField0_ |= 0x00000040;
         onChanged();
         return getDateStatisticsFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatisticsOrBuilder getDateStatisticsOrBuilder() {
         if (dateStatisticsBuilder_ != null) {
           return dateStatisticsBuilder_.getMessageOrBuilder();
@@ -5142,9 +3981,6 @@ public final class OrcProto {
           return dateStatistics_;
         }
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.DateStatistics dateStatistics = 7;</code>
-       */
       private org.spark_project.protobuf.SingleFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics, org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatisticsOrBuilder> 
           getDateStatisticsFieldBuilder() {
@@ -5158,236 +3994,101 @@ public final class OrcProto {
         }
         return dateStatisticsBuilder_;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.ColumnStatistics)
     }
-
+    
     static {
       defaultInstance = new ColumnStatistics(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.ColumnStatistics)
   }
-
+  
   public interface RowIndexEntryOrBuilder
       extends org.spark_project.protobuf.MessageOrBuilder {
-
+    
     // repeated uint64 positions = 1 [packed = true];
-    /**
-     * <code>repeated uint64 positions = 1 [packed = true];</code>
-     */
     java.util.List<java.lang.Long> getPositionsList();
-    /**
-     * <code>repeated uint64 positions = 1 [packed = true];</code>
-     */
     int getPositionsCount();
-    /**
-     * <code>repeated uint64 positions = 1 [packed = true];</code>
-     */
     long getPositions(int index);
-
+    
     // optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;</code>
-     */
     boolean hasStatistics();
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics getStatistics();
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatisticsOrBuilder getStatisticsOrBuilder();
   }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.RowIndexEntry}
-   */
   public static final class RowIndexEntry extends
       org.spark_project.protobuf.GeneratedMessage
       implements RowIndexEntryOrBuilder {
     // Use RowIndexEntry.newBuilder() to construct.
-    private RowIndexEntry(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
+    private RowIndexEntry(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private RowIndexEntry(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private RowIndexEntry(boolean noInit) {}
+    
     private static final RowIndexEntry defaultInstance;
     public static RowIndexEntry getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public RowIndexEntry getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private RowIndexEntry(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                positions_ = new java.util.ArrayList<java.lang.Long>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              positions_.add(input.readUInt64());
-              break;
-            }
-            case 10: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001) && input.getBytesUntilLimit() > 0) {
-                positions_ = new java.util.ArrayList<java.lang.Long>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              while (input.getBytesUntilLimit() > 0) {
-                positions_.add(input.readUInt64());
-              }
-              input.popLimit(limit);
-              break;
-            }
-            case 18: {
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000001) == 0x00000001)) {
-                subBuilder = statistics_.toBuilder();
-              }
-              statistics_ = input.readMessage(org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(statistics_);
-                statistics_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000001;
-              break;
-            }
-          }
-        }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          positions_ = java.util.Collections.unmodifiableList(positions_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final org.spark_project.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndexEntry_descriptor;
     }
-
+    
     protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndexEntry_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.Builder.class);
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndexEntry_fieldAccessorTable;
     }
-
-    public static org.spark_project.protobuf.Parser<RowIndexEntry> PARSER =
-        new org.spark_project.protobuf.AbstractParser<RowIndexEntry>() {
-      public RowIndexEntry parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new RowIndexEntry(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<RowIndexEntry> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // repeated uint64 positions = 1 [packed = true];
     public static final int POSITIONS_FIELD_NUMBER = 1;
     private java.util.List<java.lang.Long> positions_;
-    /**
-     * <code>repeated uint64 positions = 1 [packed = true];</code>
-     */
     public java.util.List<java.lang.Long>
         getPositionsList() {
       return positions_;
     }
-    /**
-     * <code>repeated uint64 positions = 1 [packed = true];</code>
-     */
     public int getPositionsCount() {
       return positions_.size();
     }
-    /**
-     * <code>repeated uint64 positions = 1 [packed = true];</code>
-     */
     public long getPositions(int index) {
       return positions_.get(index);
     }
     private int positionsMemoizedSerializedSize = -1;
-
+    
     // optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;
     public static final int STATISTICS_FIELD_NUMBER = 2;
     private org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics statistics_;
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;</code>
-     */
     public boolean hasStatistics() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics getStatistics() {
       return statistics_;
     }
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatisticsOrBuilder getStatisticsOrBuilder() {
       return statistics_;
     }
-
+    
     private void initFields() {
-      positions_ = java.util.Collections.emptyList();
+      positions_ = java.util.Collections.emptyList();;
       statistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -5403,12 +4104,12 @@ public final class OrcProto {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       {
         int dataSize = 0;
@@ -5432,83 +4133,94 @@ public final class OrcProto {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry parseFrom(
         org.spark_project.protobuf.ByteString data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry parseFrom(
         org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry parseFrom(byte[] data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry parseFrom(
         byte[] data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry parseFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry parseDelimitedFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry parseFrom(
         org.spark_project.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry parseFrom(
         org.spark_project.protobuf.CodedInputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.RowIndexEntry}
-     */
     public static final class Builder extends
         org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
        implements org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntryOrBuilder {
@@ -5516,21 +4228,18 @@ public final class OrcProto {
           getDescriptor() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndexEntry_descriptor;
       }
-
+      
       protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndexEntry_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.Builder.class);
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndexEntry_fieldAccessorTable;
       }
-
+      
       // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -5542,10 +4251,10 @@ public final class OrcProto {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
-        positions_ = java.util.Collections.emptyList();
+        positions_ = java.util.Collections.emptyList();;
         bitField0_ = (bitField0_ & ~0x00000001);
         if (statisticsBuilder_ == null) {
           statistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.getDefaultInstance();
@@ -5555,20 +4264,20 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public org.spark_project.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndexEntry_descriptor;
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.getDescriptor();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry getDefaultInstanceForType() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.getDefaultInstance();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry build() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry result = buildPartial();
         if (!result.isInitialized()) {
@@ -5576,7 +4285,17 @@ public final class OrcProto {
         }
         return result;
       }
-
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry buildPartial() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry(this);
         int from_bitField0_ = bitField0_;
@@ -5598,7 +4317,7 @@ public final class OrcProto {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(org.spark_project.protobuf.Message other) {
         if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry) {
           return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry)other);
@@ -5607,7 +4326,7 @@ public final class OrcProto {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry other) {
         if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.getDefaultInstance()) return this;
         if (!other.positions_.isEmpty()) {
@@ -5626,60 +4345,81 @@ public final class OrcProto {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           org.spark_project.protobuf.CodedInputStream input,
           org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              ensurePositionsIsMutable();
+              positions_.add(input.readUInt64());
+              break;
+            }
+            case 10: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              while (input.getBytesUntilLimit() > 0) {
+                addPositions(input.readUInt64());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 18: {
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder subBuilder = org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.newBuilder();
+              if (hasStatistics()) {
+                subBuilder.mergeFrom(getStatistics());
+              }
+              input.readMessage(subBuilder, extensionRegistry);
+              setStatistics(subBuilder.buildPartial());
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // repeated uint64 positions = 1 [packed = true];
-      private java.util.List<java.lang.Long> positions_ = java.util.Collections.emptyList();
+      private java.util.List<java.lang.Long> positions_ = java.util.Collections.emptyList();;
       private void ensurePositionsIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
           positions_ = new java.util.ArrayList<java.lang.Long>(positions_);
           bitField0_ |= 0x00000001;
          }
       }
-      /**
-       * <code>repeated uint64 positions = 1 [packed = true];</code>
-       */
       public java.util.List<java.lang.Long>
           getPositionsList() {
         return java.util.Collections.unmodifiableList(positions_);
       }
-      /**
-       * <code>repeated uint64 positions = 1 [packed = true];</code>
-       */
       public int getPositionsCount() {
         return positions_.size();
       }
-      /**
-       * <code>repeated uint64 positions = 1 [packed = true];</code>
-       */
       public long getPositions(int index) {
         return positions_.get(index);
       }
-      /**
-       * <code>repeated uint64 positions = 1 [packed = true];</code>
-       */
       public Builder setPositions(
           int index, long value) {
         ensurePositionsIsMutable();
@@ -5687,18 +4427,12 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>repeated uint64 positions = 1 [packed = true];</code>
-       */
       public Builder addPositions(long value) {
         ensurePositionsIsMutable();
         positions_.add(value);
         onChanged();
         return this;
       }
-      /**
-       * <code>repeated uint64 positions = 1 [packed = true];</code>
-       */
       public Builder addAllPositions(
           java.lang.Iterable<? extends java.lang.Long> values) {
         ensurePositionsIsMutable();
@@ -5706,29 +4440,20 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>repeated uint64 positions = 1 [packed = true];</code>
-       */
       public Builder clearPositions() {
-        positions_ = java.util.Collections.emptyList();
+        positions_ = java.util.Collections.emptyList();;
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
-
+      
       // optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;
       private org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics statistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.getDefaultInstance();
       private org.spark_project.protobuf.SingleFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatisticsOrBuilder> statisticsBuilder_;
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;</code>
-       */
       public boolean hasStatistics() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics getStatistics() {
         if (statisticsBuilder_ == null) {
           return statistics_;
@@ -5736,9 +4461,6 @@ public final class OrcProto {
           return statisticsBuilder_.getMessage();
         }
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;</code>
-       */
       public Builder setStatistics(org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics value) {
         if (statisticsBuilder_ == null) {
           if (value == null) {
@@ -5752,9 +4474,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;</code>
-       */
       public Builder setStatistics(
           org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder builderForValue) {
         if (statisticsBuilder_ == null) {
@@ -5766,9 +4485,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;</code>
-       */
       public Builder mergeStatistics(org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics value) {
         if (statisticsBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
@@ -5785,9 +4501,6 @@ public final class OrcProto {
         bitField0_ |= 0x00000002;
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;</code>
-       */
       public Builder clearStatistics() {
         if (statisticsBuilder_ == null) {
           statistics_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.getDefaultInstance();
@@ -5798,17 +4511,11 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder getStatisticsBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
         return getStatisticsFieldBuilder().getBuilder();
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatisticsOrBuilder getStatisticsOrBuilder() {
         if (statisticsBuilder_ != null) {
           return statisticsBuilder_.getMessageOrBuilder();
@@ -5816,9 +4523,6 @@ public final class OrcProto {
           return statistics_;
         }
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 2;</code>
-       */
       private org.spark_project.protobuf.SingleFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatisticsOrBuilder> 
           getStatisticsFieldBuilder() {
@@ -5832,183 +4536,80 @@ public final class OrcProto {
         }
         return statisticsBuilder_;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.RowIndexEntry)
     }
-
+    
     static {
       defaultInstance = new RowIndexEntry(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.RowIndexEntry)
   }
-
+  
   public interface RowIndexOrBuilder
       extends org.spark_project.protobuf.MessageOrBuilder {
-
+    
     // repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-     */
     java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry> 
         getEntryList();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry getEntry(int index);
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-     */
     int getEntryCount();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-     */
     java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntryOrBuilder> 
         getEntryOrBuilderList();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntryOrBuilder getEntryOrBuilder(
         int index);
   }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.RowIndex}
-   */
   public static final class RowIndex extends
       org.spark_project.protobuf.GeneratedMessage
       implements RowIndexOrBuilder {
     // Use RowIndex.newBuilder() to construct.
-    private RowIndex(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
+    private RowIndex(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private RowIndex(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private RowIndex(boolean noInit) {}
+    
     private static final RowIndex defaultInstance;
     public static RowIndex getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public RowIndex getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private RowIndex(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                entry_ = new java.util.ArrayList<org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              entry_.add(input.readMessage(org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.PARSER, extensionRegistry));
-              break;
-            }
-          }
-        }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          entry_ = java.util.Collections.unmodifiableList(entry_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final org.spark_project.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndex_descriptor;
     }
-
+    
     protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndex_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex.Builder.class);
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndex_fieldAccessorTable;
     }
-
-    public static org.spark_project.protobuf.Parser<RowIndex> PARSER =
-        new org.spark_project.protobuf.AbstractParser<RowIndex>() {
-      public RowIndex parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new RowIndex(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<RowIndex> getParserForType() {
-      return PARSER;
-    }
-
+    
     // repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;
     public static final int ENTRY_FIELD_NUMBER = 1;
     private java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry> entry_;
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-     */
     public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry> getEntryList() {
       return entry_;
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-     */
     public java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntryOrBuilder> 
         getEntryOrBuilderList() {
       return entry_;
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-     */
     public int getEntryCount() {
       return entry_.size();
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry getEntry(int index) {
       return entry_.get(index);
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntryOrBuilder getEntryOrBuilder(
         int index) {
       return entry_.get(index);
     }
-
+    
     private void initFields() {
       entry_ = java.util.Collections.emptyList();
     }
@@ -6016,11 +4617,11 @@ public final class OrcProto {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -6029,12 +4630,12 @@ public final class OrcProto {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       for (int i = 0; i < entry_.size(); i++) {
         size += org.spark_project.protobuf.CodedOutputStream
@@ -6044,83 +4645,94 @@ public final class OrcProto {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex parseFrom(
         org.spark_project.protobuf.ByteString data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex parseFrom(
         org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex parseFrom(byte[] data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex parseFrom(
         byte[] data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex parseFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex parseDelimitedFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex parseFrom(
         org.spark_project.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex parseFrom(
         org.spark_project.protobuf.CodedInputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.RowIndex}
-     */
     public static final class Builder extends
         org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
        implements org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexOrBuilder {
@@ -6128,21 +4740,18 @@ public final class OrcProto {
           getDescriptor() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndex_descriptor;
       }
-
+      
       protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndex_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex.Builder.class);
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndex_fieldAccessorTable;
       }
-
+      
       // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -6154,7 +4763,7 @@ public final class OrcProto {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         if (entryBuilder_ == null) {
@@ -6165,20 +4774,20 @@ public final class OrcProto {
         }
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public org.spark_project.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndex_descriptor;
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex.getDescriptor();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex getDefaultInstanceForType() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex.getDefaultInstance();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex build() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex result = buildPartial();
         if (!result.isInitialized()) {
@@ -6186,7 +4795,17 @@ public final class OrcProto {
         }
         return result;
       }
-
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex buildPartial() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex(this);
         int from_bitField0_ = bitField0_;
@@ -6202,7 +4821,7 @@ public final class OrcProto {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(org.spark_project.protobuf.Message other) {
         if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex) {
           return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex)other);
@@ -6211,7 +4830,7 @@ public final class OrcProto {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex other) {
         if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex.getDefaultInstance()) return this;
         if (entryBuilder_ == null) {
@@ -6243,30 +4862,46 @@ public final class OrcProto {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           org.spark_project.protobuf.CodedInputStream input,
           org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.Builder subBuilder = org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addEntry(subBuilder.buildPartial());
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;
       private java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry> entry_ =
         java.util.Collections.emptyList();
@@ -6276,13 +4911,10 @@ public final class OrcProto {
           bitField0_ |= 0x00000001;
          }
       }
-
+      
       private org.spark_project.protobuf.RepeatedFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry, org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntryOrBuilder> entryBuilder_;
-
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
+      
       public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry> getEntryList() {
         if (entryBuilder_ == null) {
           return java.util.Collections.unmodifiableList(entry_);
@@ -6290,9 +4922,6 @@ public final class OrcProto {
           return entryBuilder_.getMessageList();
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public int getEntryCount() {
         if (entryBuilder_ == null) {
           return entry_.size();
@@ -6300,9 +4929,6 @@ public final class OrcProto {
           return entryBuilder_.getCount();
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry getEntry(int index) {
         if (entryBuilder_ == null) {
           return entry_.get(index);
@@ -6310,9 +4936,6 @@ public final class OrcProto {
           return entryBuilder_.getMessage(index);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public Builder setEntry(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry value) {
         if (entryBuilder_ == null) {
@@ -6327,9 +4950,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public Builder setEntry(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.Builder builderForValue) {
         if (entryBuilder_ == null) {
@@ -6341,9 +4961,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public Builder addEntry(org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry value) {
         if (entryBuilder_ == null) {
           if (value == null) {
@@ -6357,9 +4974,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public Builder addEntry(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry value) {
         if (entryBuilder_ == null) {
@@ -6374,9 +4988,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public Builder addEntry(
           org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.Builder builderForValue) {
         if (entryBuilder_ == null) {
@@ -6388,9 +4999,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public Builder addEntry(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.Builder builderForValue) {
         if (entryBuilder_ == null) {
@@ -6402,9 +5010,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public Builder addAllEntry(
           java.lang.Iterable<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry> values) {
         if (entryBuilder_ == null) {
@@ -6416,9 +5021,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public Builder clearEntry() {
         if (entryBuilder_ == null) {
           entry_ = java.util.Collections.emptyList();
@@ -6429,9 +5031,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public Builder removeEntry(int index) {
         if (entryBuilder_ == null) {
           ensureEntryIsMutable();
@@ -6442,16 +5041,10 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.Builder getEntryBuilder(
           int index) {
         return getEntryFieldBuilder().getBuilder(index);
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntryOrBuilder getEntryOrBuilder(
           int index) {
         if (entryBuilder_ == null) {
@@ -6459,9 +5052,6 @@ public final class OrcProto {
           return entryBuilder_.getMessageOrBuilder(index);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntryOrBuilder> 
            getEntryOrBuilderList() {
         if (entryBuilder_ != null) {
@@ -6470,24 +5060,15 @@ public final class OrcProto {
           return java.util.Collections.unmodifiableList(entry_);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.Builder addEntryBuilder() {
         return getEntryFieldBuilder().addBuilder(
             org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.getDefaultInstance());
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.Builder addEntryBuilder(
           int index) {
         return getEntryFieldBuilder().addBuilder(
             index, org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.getDefaultInstance());
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.RowIndexEntry entry = 1;</code>
-       */
       public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.Builder> 
            getEntryBuilderList() {
         return getEntryFieldBuilder().getBuilderList();
@@ -6506,99 +5087,464 @@ public final class OrcProto {
         }
         return entryBuilder_;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.RowIndex)
     }
-
+    
     static {
       defaultInstance = new RowIndex(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.RowIndex)
   }
-
+  
   public interface StreamOrBuilder
       extends org.spark_project.protobuf.MessageOrBuilder {
-
+    
     // required .org.apache.hadoop.hive.ql.io.orc.Stream.Kind kind = 1;
-    /**
-     * <code>required .org.apache.hadoop.hive.ql.io.orc.Stream.Kind kind = 1;</code>
-     */
     boolean hasKind();
-    /**
-     * <code>required .org.apache.hadoop.hive.ql.io.orc.Stream.Kind kind = 1;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind getKind();
-
+    
     // optional uint32 column = 2;
-    /**
-     * <code>optional uint32 column = 2;</code>
-     */
     boolean hasColumn();
-    /**
-     * <code>optional uint32 column = 2;</code>
-     */
     int getColumn();
-
+    
     // optional uint64 length = 3;
-    /**
-     * <code>optional uint64 length = 3;</code>
-     */
     boolean hasLength();
-    /**
-     * <code>optional uint64 length = 3;</code>
-     */
     long getLength();
   }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.Stream}
-   */
   public static final class Stream extends
       org.spark_project.protobuf.GeneratedMessage
       implements StreamOrBuilder {
     // Use Stream.newBuilder() to construct.
-    private Stream(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Stream(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Stream(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private Stream(boolean noInit) {}
+    
     private static final Stream defaultInstance;
     public static Stream getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public Stream getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    
+    public static final org.spark_project.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Stream_descriptor;
     }
-    private Stream(
-        org.spark_project.protobuf.CodedInputStream input,
+    
+    protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Stream_fieldAccessorTable;
+    }
+    
+    public enum Kind
+        implements org.spark_project.protobuf.ProtocolMessageEnum {
+      PRESENT(0, 0),
+      DATA(1, 1),
+      LENGTH(2, 2),
+      DICTIONARY_DATA(3, 3),
+      DICTIONARY_COUNT(4, 4),
+      SECONDARY(5, 5),
+      ROW_INDEX(6, 6),
+      ;
+      
+      public static final int PRESENT_VALUE = 0;
+      public static final int DATA_VALUE = 1;
+      public static final int LENGTH_VALUE = 2;
+      public static final int DICTIONARY_DATA_VALUE = 3;
+      public static final int DICTIONARY_COUNT_VALUE = 4;
+      public static final int SECONDARY_VALUE = 5;
+      public static final int ROW_INDEX_VALUE = 6;
+      
+      
+      public final int getNumber() { return value; }
+      
+      public static Kind valueOf(int value) {
+        switch (value) {
+          case 0: return PRESENT;
+          case 1: return DATA;
+          case 2: return LENGTH;
+          case 3: return DICTIONARY_DATA;
+          case 4: return DICTIONARY_COUNT;
+          case 5: return SECONDARY;
+          case 6: return ROW_INDEX;
+          default: return null;
+        }
+      }
+      
+      public static org.spark_project.protobuf.Internal.EnumLiteMap<Kind>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static org.spark_project.protobuf.Internal.EnumLiteMap<Kind>
+          internalValueMap =
+            new org.spark_project.protobuf.Internal.EnumLiteMap<Kind>() {
+              public Kind findValueByNumber(int number) {
+                return Kind.valueOf(number);
+              }
+            };
+      
+      public final org.spark_project.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final org.spark_project.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final org.spark_project.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.getDescriptor().getEnumTypes().get(0);
+      }
+      
+      private static final Kind[] VALUES = {
+        PRESENT, DATA, LENGTH, DICTIONARY_DATA, DICTIONARY_COUNT, SECONDARY, ROW_INDEX, 
+      };
+      
+      public static Kind valueOf(
+          org.spark_project.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+      
+      private final int index;
+      private final int value;
+      
+      private Kind(int index, int value) {
+        this.index = index;
+        this.value = value;
+      }
+      
+      // @@protoc_insertion_point(enum_scope:org.apache.hadoop.hive.ql.io.orc.Stream.Kind)
+    }
+    
+    private int bitField0_;
+    // required .org.apache.hadoop.hive.ql.io.orc.Stream.Kind kind = 1;
+    public static final int KIND_FIELD_NUMBER = 1;
+    private org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind kind_;
+    public boolean hasKind() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind getKind() {
+      return kind_;
+    }
+    
+    // optional uint32 column = 2;
+    public static final int COLUMN_FIELD_NUMBER = 2;
+    private int column_;
+    public boolean hasColumn() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public int getColumn() {
+      return column_;
+    }
+    
+    // optional uint64 length = 3;
+    public static final int LENGTH_FIELD_NUMBER = 3;
+    private long length_;
+    public boolean hasLength() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public long getLength() {
+      return length_;
+    }
+    
+    private void initFields() {
+      kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind.PRESENT;
+      column_ = 0;
+      length_ = 0L;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasKind()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeEnum(1, kind_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(2, column_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeUInt64(3, length_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += org.spark_project.protobuf.CodedOutputStream
+          .computeEnumSize(1, kind_.getNumber());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += org.spark_project.protobuf.CodedOutputStream
+          .computeUInt32Size(2, column_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += org.spark_project.protobuf.CodedOutputStream
+          .computeUInt64Size(3, length_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseFrom(
+        org.spark_project.protobuf.ByteString data)
+        throws org.spark_project.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseFrom(
+        org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseFrom(byte[] data)
+        throws org.spark_project.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseFrom(
+        byte[] data,
+        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws org.spark_project.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseFrom(
+        java.io.InputStream input,
+        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseDelimitedFrom(
+        java.io.InputStream input,
+        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseFrom(
+        org.spark_project.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseFrom(
+        org.spark_project.protobuf.CodedInputStream input,
+        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.apache.hadoop.hive.ql.io.orc.OrcProto.StreamOrBuilder {
+      public static final org.spark_project.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Stream_descriptor;
+      }
+      
+      protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Stream_fieldAccessorTable;
+      }
+      
+      // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (org.spark_project.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind.PRESENT;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        column_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        length_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public org.spark_project.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.getDescriptor();
+      }
+      
+      public org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream getDefaultInstanceForType() {
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.getDefaultInstance();
+      }
+      
+      public org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream build() {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream buildPartial() {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.kind_ = kind_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.column_ = column_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.length_ = length_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(org.spark_project.protobuf.Message other) {
+        if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream) {
+          return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream other) {
+        if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.getDefaultInstance()) return this;
+        if (other.hasKind()) {
+          setKind(other.getKind());
+        }
+        if (other.hasColumn()) {
+          setColumn(other.getColumn());
+        }
+        if (other.hasLength()) {
+          setLength(other.getLength());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasKind()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          org.spark_project.protobuf.CodedInputStream input,
+          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              done = true;
-              break;
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                done = true;
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
               }
               break;
             }
@@ -6625,128 +5571,152 @@ public final class OrcProto {
             }
           }
         }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
       }
+      
+      private int bitField0_;
+      
+      // required .org.apache.hadoop.hive.ql.io.orc.Stream.Kind kind = 1;
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind.PRESENT;
+      public boolean hasKind() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind getKind() {
+        return kind_;
+      }
+      public Builder setKind(org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        kind_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearKind() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind.PRESENT;
+        onChanged();
+        return this;
+      }
+      
+      // optional uint32 column = 2;
+      private int column_ ;
+      public boolean hasColumn() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public int getColumn() {
+        return column_;
+      }
+      public Builder setColumn(int value) {
+        bitField0_ |= 0x00000002;
+        column_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearColumn() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        column_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // optional uint64 length = 3;
+      private long length_ ;
+      public boolean hasLength() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      public long getLength() {
+        return length_;
+      }
+      public Builder setLength(long value) {
+        bitField0_ |= 0x00000004;
+        length_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearLength() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        length_ = 0L;
+        onChanged();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.Stream)
     }
+    
+    static {
+      defaultInstance = new Stream(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.Stream)
+  }
+  
+  public interface ColumnEncodingOrBuilder
+      extends org.spark_project.protobuf.MessageOrBuilder {
+    
+    // required .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding.Kind kind = 1;
+    boolean hasKind();
+    org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Kind getKind();
+    
+    // optional uint32 dictionarySize = 2;
+    boolean hasDictionarySize();
+    int getDictionarySize();
+  }
+  public static final class ColumnEncoding extends
+      org.spark_project.protobuf.GeneratedMessage
+      implements ColumnEncodingOrBuilder {
+    // Use ColumnEncoding.newBuilder() to construct.
+    private ColumnEncoding(Builder builder) {
+      super(builder);
+    }
+    private ColumnEncoding(boolean noInit) {}
+    
+    private static final ColumnEncoding defaultInstance;
+    public static ColumnEncoding getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public ColumnEncoding getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
     public static final org.spark_project.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Stream_descriptor;
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnEncoding_descriptor;
     }
-
+    
     protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Stream_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Builder.class);
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnEncoding_fieldAccessorTable;
     }
-
-    public static org.spark_project.protobuf.Parser<Stream> PARSER =
-        new org.spark_project.protobuf.AbstractParser<Stream>() {
-      public Stream parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new Stream(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<Stream> getParserForType() {
-      return PARSER;
-    }
-
-    /**
-     * Protobuf enum {@code org.apache.hadoop.hive.ql.io.orc.Stream.Kind}
-     *
-     * <pre>
-     * if you add new index stream kinds, you need to make sure to update
-     * StreamName to ensure it is added to the stripe in the right area
-     * </pre>
-     */
+    
     public enum Kind
         implements org.spark_project.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>PRESENT = 0;</code>
-       */
-      PRESENT(0, 0),
-      /**
-       * <code>DATA = 1;</code>
-       */
-      DATA(1, 1),
-      /**
-       * <code>LENGTH = 2;</code>
-       */
-      LENGTH(2, 2),
-      /**
-       * <code>DICTIONARY_DATA = 3;</code>
-       */
-      DICTIONARY_DATA(3, 3),
-      /**
-       * <code>DICTIONARY_COUNT = 4;</code>
-       */
-      DICTIONARY_COUNT(4, 4),
-      /**
-       * <code>SECONDARY = 5;</code>
-       */
-      SECONDARY(5, 5),
-      /**
-       * <code>ROW_INDEX = 6;</code>
-       */
-      ROW_INDEX(6, 6),
+      DIRECT(0, 0),
+      DICTIONARY(1, 1),
+      DIRECT_V2(2, 2),
+      DICTIONARY_V2(3, 3),
       ;
-
-      /**
-       * <code>PRESENT = 0;</code>
-       */
-      public static final int PRESENT_VALUE = 0;
-      /**
-       * <code>DATA = 1;</code>
-       */
-      public static final int DATA_VALUE = 1;
-      /**
-       * <code>LENGTH = 2;</code>
-       */
-      public static final int LENGTH_VALUE = 2;
-      /**
-       * <code>DICTIONARY_DATA = 3;</code>
-       */
-      public static final int DICTIONARY_DATA_VALUE = 3;
-      /**
-       * <code>DICTIONARY_COUNT = 4;</code>
-       */
-      public static final int DICTIONARY_COUNT_VALUE = 4;
-      /**
-       * <code>SECONDARY = 5;</code>
-       */
-      public static final int SECONDARY_VALUE = 5;
-      /**
-       * <code>ROW_INDEX = 6;</code>
-       */
-      public static final int ROW_INDEX_VALUE = 6;
-
-
+      
+      public static final int DIRECT_VALUE = 0;
+      public static final int DICTIONARY_VALUE = 1;
+      public static final int DIRECT_V2_VALUE = 2;
+      public static final int DICTIONARY_V2_VALUE = 3;
+      
+      
       public final int getNumber() { return value; }
-
+      
       public static Kind valueOf(int value) {
         switch (value) {
-          case 0: return PRESENT;
-          case 1: return DATA;
-          case 2: return LENGTH;
-          case 3: return DICTIONARY_DATA;
-          case 4: return DICTIONARY_COUNT;
-          case 5: return SECONDARY;
-          case 6: return ROW_INDEX;
+          case 0: return DIRECT;
+          case 1: return DICTIONARY;
+          case 2: return DIRECT_V2;
+          case 3: return DICTIONARY_V2;
           default: return null;
         }
       }
-
+      
       public static org.spark_project.protobuf.Internal.EnumLiteMap<Kind>
           internalGetValueMap() {
         return internalValueMap;
@@ -6758,7 +5728,7 @@ public final class OrcProto {
                 return Kind.valueOf(number);
               }
             };
-
+      
       public final org.spark_project.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
         return getDescriptor().getValues().get(index);
@@ -6769,11 +5739,13 @@ public final class OrcProto {
       }
       public static final org.spark_project.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.getDescriptor().getEnumTypes().get(0);
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.getDescriptor().getEnumTypes().get(0);
       }
-
-      private static final Kind[] VALUES = values();
-
+      
+      private static final Kind[] VALUES = {
+        DIRECT, DICTIONARY, DIRECT_V2, DICTIONARY_V2, 
+      };
+      
       public static Kind valueOf(
           org.spark_project.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
@@ -6782,77 +5754,48 @@ public final class OrcProto {
         }
         return VALUES[desc.getIndex()];
       }
-
+      
       private final int index;
       private final int value;
-
+      
       private Kind(int index, int value) {
         this.index = index;
         this.value = value;
       }
-
-      // @@protoc_insertion_point(enum_scope:org.apache.hadoop.hive.ql.io.orc.Stream.Kind)
+      
+      // @@protoc_insertion_point(enum_scope:org.apache.hadoop.hive.ql.io.orc.ColumnEncoding.Kind)
     }
-
+    
     private int bitField0_;
-    // required .org.apache.hadoop.hive.ql.io.orc.Stream.Kind kind = 1;
+    // required .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding.Kind kind = 1;
     public static final int KIND_FIELD_NUMBER = 1;
-    private org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind kind_;
-    /**
-     * <code>required .org.apache.hadoop.hive.ql.io.orc.Stream.Kind kind = 1;</code>
-     */
+    private org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Kind kind_;
     public boolean hasKind() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>required .org.apache.hadoop.hive.ql.io.orc.Stream.Kind kind = 1;</code>
-     */
-    public org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind getKind() {
+    public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Kind getKind() {
       return kind_;
     }
-
-    // optional uint32 column = 2;
-    public static final int COLUMN_FIELD_NUMBER = 2;
-    private int column_;
-    /**
-     * <code>optional uint32 column = 2;</code>
-     */
-    public boolean hasColumn() {
+    
+    // optional uint32 dictionarySize = 2;
+    public static final int DICTIONARYSIZE_FIELD_NUMBER = 2;
+    private int dictionarySize_;
+    public boolean hasDictionarySize() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional uint32 column = 2;</code>
-     */
-    public int getColumn() {
-      return column_;
+    public int getDictionarySize() {
+      return dictionarySize_;
     }
-
-    // optional uint64 length = 3;
-    public static final int LENGTH_FIELD_NUMBER = 3;
-    private long length_;
-    /**
-     * <code>optional uint64 length = 3;</code>
-     */
-    public boolean hasLength() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional uint64 length = 3;</code>
-     */
-    public long getLength() {
-      return length_;
-    }
-
+    
     private void initFields() {
-      kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind.PRESENT;
-      column_ = 0;
-      length_ = 0L;
+      kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Kind.DIRECT;
+      dictionarySize_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       if (!hasKind()) {
         memoizedIsInitialized = 0;
         return false;
@@ -6860,7 +5803,7 @@ public final class OrcProto {
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -6868,19 +5811,16 @@ public final class OrcProto {
         output.writeEnum(1, kind_.getNumber());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt32(2, column_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt64(3, length_);
+        output.writeUInt32(2, dictionarySize_);
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += org.spark_project.protobuf.CodedOutputStream
@@ -6888,115 +5828,119 @@ public final class OrcProto {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += org.spark_project.protobuf.CodedOutputStream
-          .computeUInt32Size(2, column_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += org.spark_project.protobuf.CodedOutputStream
-          .computeUInt64Size(3, length_);
+          .computeUInt32Size(2, dictionarySize_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseFrom(
+    
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseFrom(
         org.spark_project.protobuf.ByteString data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseFrom(
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseFrom(
         org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseFrom(byte[] data)
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseFrom(byte[] data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseFrom(
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseFrom(
         byte[] data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseFrom(java.io.InputStream input)
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseFrom(
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseDelimitedFrom(java.io.InputStream input)
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseDelimitedFrom(
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseDelimitedFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseFrom(
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseFrom(
         org.spark_project.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parseFrom(
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseFrom(
         org.spark_project.protobuf.CodedInputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream prototype) {
+    public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.Stream}
-     */
     public static final class Builder extends
         org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.apache.hadoop.hive.ql.io.orc.OrcProto.StreamOrBuilder {
+       implements org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncodingOrBuilder {
       public static final org.spark_project.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Stream_descriptor;
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnEncoding_descriptor;
       }
-
+      
       protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Stream_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Builder.class);
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnEncoding_fieldAccessorTable;
       }
-
-      // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.newBuilder()
+      
+      // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -7007,41 +5951,49 @@ public final class OrcProto {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
-        kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind.PRESENT;
+        kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Kind.DIRECT;
         bitField0_ = (bitField0_ & ~0x00000001);
-        column_ = 0;
+        dictionarySize_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        length_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public org.spark_project.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Stream_descriptor;
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.getDescriptor();
       }
-
-      public org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream getDefaultInstanceForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.getDefaultInstance();
+      
+      public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding getDefaultInstanceForType() {
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.getDefaultInstance();
       }
-
-      public org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream build() {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream result = buildPartial();
+      
+      public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding build() {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
-
-      public org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream buildPartial() {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream(this);
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding buildPartial() {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -7051,40 +6003,33 @@ public final class OrcProto {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.column_ = column_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.length_ = length_;
+        result.dictionarySize_ = dictionarySize_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(org.spark_project.protobuf.Message other) {
-        if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream) {
-          return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream)other);
+        if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding) {
+          return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
-
-      public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream other) {
-        if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.getDefaultInstance()) return this;
+      
+      public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding other) {
+        if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.getDefaultInstance()) return this;
         if (other.hasKind()) {
           setKind(other.getKind());
         }
-        if (other.hasColumn()) {
-          setColumn(other.getColumn());
-        }
-        if (other.hasLength()) {
-          setLength(other.getLength());
+        if (other.hasDictionarySize()) {
+          setDictionarySize(other.getDictionarySize());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         if (!hasKind()) {
           
@@ -7092,210 +6037,27 @@ public final class OrcProto {
         }
         return true;
       }
-
+      
       public Builder mergeFrom(
           org.spark_project.protobuf.CodedInputStream input,
           org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // required .org.apache.hadoop.hive.ql.io.orc.Stream.Kind kind = 1;
-      private org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind.PRESENT;
-      /**
-       * <code>required .org.apache.hadoop.hive.ql.io.orc.Stream.Kind kind = 1;</code>
-       */
-      public boolean hasKind() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required .org.apache.hadoop.hive.ql.io.orc.Stream.Kind kind = 1;</code>
-       */
-      public org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind getKind() {
-        return kind_;
-      }
-      /**
-       * <code>required .org.apache.hadoop.hive.ql.io.orc.Stream.Kind kind = 1;</code>
-       */
-      public Builder setKind(org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00000001;
-        kind_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required .org.apache.hadoop.hive.ql.io.orc.Stream.Kind kind = 1;</code>
-       */
-      public Builder clearKind() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Kind.PRESENT;
-        onChanged();
-        return this;
-      }
-
-      // optional uint32 column = 2;
-      private int column_ ;
-      /**
-       * <code>optional uint32 column = 2;</code>
-       */
-      public boolean hasColumn() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>optional uint32 column = 2;</code>
-       */
-      public int getColumn() {
-        return column_;
-      }
-      /**
-       * <code>optional uint32 column = 2;</code>
-       */
-      public Builder setColumn(int value) {
-        bitField0_ |= 0x00000002;
-        column_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint32 column = 2;</code>
-       */
-      public Builder clearColumn() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        column_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // optional uint64 length = 3;
-      private long length_ ;
-      /**
-       * <code>optional uint64 length = 3;</code>
-       */
-      public boolean hasLength() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>optional uint64 length = 3;</code>
-       */
-      public long getLength() {
-        return length_;
-      }
-      /**
-       * <code>optional uint64 length = 3;</code>
-       */
-      public Builder setLength(long value) {
-        bitField0_ |= 0x00000004;
-        length_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint64 length = 3;</code>
-       */
-      public Builder clearLength() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        length_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.Stream)
-    }
-
-    static {
-      defaultInstance = new Stream(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.Stream)
-  }
-
-  public interface ColumnEncodingOrBuilder
-      extends org.spark_project.protobuf.MessageOrBuilder {
-
-    // required .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding.Kind kind = 1;
-    /**
-     * <code>required .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding.Kind kind = 1;</code>
-     */
-    boolean hasKind();
-    /**
-     * <code>required .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding.Kind kind = 1;</code>
-     */
-    org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Kind getKind();
-
-    // optional uint32 dictionarySize = 2;
-    /**
-     * <code>optional uint32 dictionarySize = 2;</code>
-     */
-    boolean hasDictionarySize();
-    /**
-     * <code>optional uint32 dictionarySize = 2;</code>
-     */
-    int getDictionarySize();
-  }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.ColumnEncoding}
-   */
-  public static final class ColumnEncoding extends
-      org.spark_project.protobuf.GeneratedMessage
-      implements ColumnEncodingOrBuilder {
-    // Use ColumnEncoding.newBuilder() to construct.
-    private ColumnEncoding(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private ColumnEncoding(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final ColumnEncoding defaultInstance;
-    public static ColumnEncoding getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public ColumnEncoding getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ColumnEncoding(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              done = true;
-              break;
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                done = true;
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
               }
               break;
             }
@@ -7317,445 +6079,18 @@ public final class OrcProto {
             }
           }
         }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
       }
-    }
-    public static final org.spark_project.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnEncoding_descriptor;
-    }
-
-    protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnEncoding_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Builder.class);
-    }
-
-    public static org.spark_project.protobuf.Parser<ColumnEncoding> PARSER =
-        new org.spark_project.protobuf.AbstractParser<ColumnEncoding>() {
-      public ColumnEncoding parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new ColumnEncoding(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<ColumnEncoding> getParserForType() {
-      return PARSER;
-    }
-
-    /**
-     * Protobuf enum {@code org.apache.hadoop.hive.ql.io.orc.ColumnEncoding.Kind}
-     */
-    public enum Kind
-        implements org.spark_project.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>DIRECT = 0;</code>
-       */
-      DIRECT(0, 0),
-      /**
-       * <code>DICTIONARY = 1;</code>
-       */
-      DICTIONARY(1, 1),
-      /**
-       * <code>DIRECT_V2 = 2;</code>
-       */
-      DIRECT_V2(2, 2),
-      /**
-       * <code>DICTIONARY_V2 = 3;</code>
-       */
-      DICTIONARY_V2(3, 3),
-      ;
-
-      /**
-       * <code>DIRECT = 0;</code>
-       */
-      public static final int DIRECT_VALUE = 0;
-      /**
-       * <code>DICTIONARY = 1;</code>
-       */
-      public static final int DICTIONARY_VALUE = 1;
-      /**
-       * <code>DIRECT_V2 = 2;</code>
-       */
-      public static final int DIRECT_V2_VALUE = 2;
-      /**
-       * <code>DICTIONARY_V2 = 3;</code>
-       */
-      public static final int DICTIONARY_V2_VALUE = 3;
-
-
-      public final int getNumber() { return value; }
-
-      public static Kind valueOf(int value) {
-        switch (value) {
-          case 0: return DIRECT;
-          case 1: return DICTIONARY;
-          case 2: return DIRECT_V2;
-          case 3: return DICTIONARY_V2;
-          default: return null;
-        }
-      }
-
-      public static org.spark_project.protobuf.Internal.EnumLiteMap<Kind>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static org.spark_project.protobuf.Internal.EnumLiteMap<Kind>
-          internalValueMap =
-            new org.spark_project.protobuf.Internal.EnumLiteMap<Kind>() {
-              public Kind findValueByNumber(int number) {
-                return Kind.valueOf(number);
-              }
-            };
-
-      public final org.spark_project.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
-      }
-      public final org.spark_project.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final org.spark_project.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.getDescriptor().getEnumTypes().get(0);
-      }
-
-      private static final Kind[] VALUES = values();
-
-      public static Kind valueOf(
-          org.spark_project.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        return VALUES[desc.getIndex()];
-      }
-
-      private final int index;
-      private final int value;
-
-      private Kind(int index, int value) {
-        this.index = index;
-        this.value = value;
-      }
-
-      // @@protoc_insertion_point(enum_scope:org.apache.hadoop.hive.ql.io.orc.ColumnEncoding.Kind)
-    }
-
-    private int bitField0_;
-    // required .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding.Kind kind = 1;
-    public static final int KIND_FIELD_NUMBER = 1;
-    private org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Kind kind_;
-    /**
-     * <code>required .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding.Kind kind = 1;</code>
-     */
-    public boolean hasKind() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding.Kind kind = 1;</code>
-     */
-    public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Kind getKind() {
-      return kind_;
-    }
-
-    // optional uint32 dictionarySize = 2;
-    public static final int DICTIONARYSIZE_FIELD_NUMBER = 2;
-    private int dictionarySize_;
-    /**
-     * <code>optional uint32 dictionarySize = 2;</code>
-     */
-    public boolean hasDictionarySize() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional uint32 dictionarySize = 2;</code>
-     */
-    public int getDictionarySize() {
-      return dictionarySize_;
-    }
-
-    private void initFields() {
-      kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Kind.DIRECT;
-      dictionarySize_ = 0;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (!hasKind()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(1, kind_.getNumber());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt32(2, dictionarySize_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += org.spark_project.protobuf.CodedOutputStream
-          .computeEnumSize(1, kind_.getNumber());
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += org.spark_project.protobuf.CodedOutputStream
-          .computeUInt32Size(2, dictionarySize_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseFrom(
-        org.spark_project.protobuf.ByteString data)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseFrom(
-        org.spark_project.protobuf.ByteString data,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseFrom(byte[] data)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseFrom(
-        byte[] data,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseFrom(
-        java.io.InputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseDelimitedFrom(
-        java.io.InputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseFrom(
-        org.spark_project.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parseFrom(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.ColumnEncoding}
-     */
-    public static final class Builder extends
-        org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncodingOrBuilder {
-      public static final org.spark_project.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnEncoding_descriptor;
-      }
-
-      protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnEncoding_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Builder.class);
-      }
-
-      // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (org.spark_project.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Kind.DIRECT;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        dictionarySize_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public org.spark_project.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnEncoding_descriptor;
-      }
-
-      public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding getDefaultInstanceForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.getDefaultInstance();
-      }
-
-      public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding build() {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding buildPartial() {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.kind_ = kind_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.dictionarySize_ = dictionarySize_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(org.spark_project.protobuf.Message other) {
-        if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding) {
-          return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding other) {
-        if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.getDefaultInstance()) return this;
-        if (other.hasKind()) {
-          setKind(other.getKind());
-        }
-        if (other.hasDictionarySize()) {
-          setDictionarySize(other.getDictionarySize());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        if (!hasKind()) {
-          
-          return false;
-        }
-        return true;
-      }
-
-      public Builder mergeFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
+      
       private int bitField0_;
-
+      
       // required .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding.Kind kind = 1;
       private org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Kind kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Kind.DIRECT;
-      /**
-       * <code>required .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding.Kind kind = 1;</code>
-       */
       public boolean hasKind() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>required .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding.Kind kind = 1;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Kind getKind() {
         return kind_;
       }
-      /**
-       * <code>required .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding.Kind kind = 1;</code>
-       */
       public Builder setKind(org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Kind value) {
         if (value == null) {
           throw new NullPointerException();
@@ -7765,297 +6100,138 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>required .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding.Kind kind = 1;</code>
-       */
       public Builder clearKind() {
         bitField0_ = (bitField0_ & ~0x00000001);
         kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Kind.DIRECT;
         onChanged();
         return this;
       }
-
+      
       // optional uint32 dictionarySize = 2;
       private int dictionarySize_ ;
-      /**
-       * <code>optional uint32 dictionarySize = 2;</code>
-       */
       public boolean hasDictionarySize() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional uint32 dictionarySize = 2;</code>
-       */
       public int getDictionarySize() {
         return dictionarySize_;
       }
-      /**
-       * <code>optional uint32 dictionarySize = 2;</code>
-       */
       public Builder setDictionarySize(int value) {
         bitField0_ |= 0x00000002;
         dictionarySize_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional uint32 dictionarySize = 2;</code>
-       */
       public Builder clearDictionarySize() {
         bitField0_ = (bitField0_ & ~0x00000002);
         dictionarySize_ = 0;
         onChanged();
         return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.ColumnEncoding)
     }
-
+    
     static {
       defaultInstance = new ColumnEncoding(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.ColumnEncoding)
   }
-
+  
   public interface StripeFooterOrBuilder
       extends org.spark_project.protobuf.MessageOrBuilder {
-
+    
     // repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-     */
     java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream> 
         getStreamsList();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream getStreams(int index);
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-     */
     int getStreamsCount();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-     */
     java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.StreamOrBuilder> 
         getStreamsOrBuilderList();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.StreamOrBuilder getStreamsOrBuilder(
         int index);
-
+    
     // repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-     */
     java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding> 
         getColumnsList();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding getColumns(int index);
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-     */
     int getColumnsCount();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-     */
     java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncodingOrBuilder> 
         getColumnsOrBuilderList();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncodingOrBuilder getColumnsOrBuilder(
         int index);
   }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.StripeFooter}
-   */
   public static final class StripeFooter extends
       org.spark_project.protobuf.GeneratedMessage
       implements StripeFooterOrBuilder {
     // Use StripeFooter.newBuilder() to construct.
-    private StripeFooter(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
+    private StripeFooter(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private StripeFooter(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private StripeFooter(boolean noInit) {}
+    
     private static final StripeFooter defaultInstance;
     public static StripeFooter getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public StripeFooter getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private StripeFooter(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                streams_ = new java.util.ArrayList<org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              streams_.add(input.readMessage(org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.PARSER, extensionRegistry));
-              break;
-            }
-            case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                columns_ = new java.util.ArrayList<org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              columns_.add(input.readMessage(org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.PARSER, extensionRegistry));
-              break;
-            }
-          }
-        }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          streams_ = java.util.Collections.unmodifiableList(streams_);
-        }
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          columns_ = java.util.Collections.unmodifiableList(columns_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final org.spark_project.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StripeFooter_descriptor;
     }
-
+    
     protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StripeFooter_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter.Builder.class);
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StripeFooter_fieldAccessorTable;
     }
-
-    public static org.spark_project.protobuf.Parser<StripeFooter> PARSER =
-        new org.spark_project.protobuf.AbstractParser<StripeFooter>() {
-      public StripeFooter parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new StripeFooter(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<StripeFooter> getParserForType() {
-      return PARSER;
-    }
-
+    
     // repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;
     public static final int STREAMS_FIELD_NUMBER = 1;
     private java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream> streams_;
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-     */
     public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream> getStreamsList() {
       return streams_;
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-     */
     public java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.StreamOrBuilder> 
         getStreamsOrBuilderList() {
       return streams_;
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-     */
     public int getStreamsCount() {
       return streams_.size();
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream getStreams(int index) {
       return streams_.get(index);
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.StreamOrBuilder getStreamsOrBuilder(
         int index) {
       return streams_.get(index);
     }
-
+    
     // repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;
     public static final int COLUMNS_FIELD_NUMBER = 2;
     private java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding> columns_;
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-     */
     public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding> getColumnsList() {
       return columns_;
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-     */
     public java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncodingOrBuilder> 
         getColumnsOrBuilderList() {
       return columns_;
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-     */
     public int getColumnsCount() {
       return columns_.size();
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding getColumns(int index) {
       return columns_.get(index);
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncodingOrBuilder getColumnsOrBuilder(
         int index) {
       return columns_.get(index);
     }
-
+    
     private void initFields() {
       streams_ = java.util.Collections.emptyList();
       columns_ = java.util.Collections.emptyList();
@@ -8064,7 +6240,7 @@ public final class OrcProto {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       for (int i = 0; i < getStreamsCount(); i++) {
         if (!getStreams(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -8080,7 +6256,7 @@ public final class OrcProto {
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -8092,12 +6268,12 @@ public final class OrcProto {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       for (int i = 0; i < streams_.size(); i++) {
         size += org.spark_project.protobuf.CodedOutputStream
@@ -8111,83 +6287,94 @@ public final class OrcProto {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter parseFrom(
         org.spark_project.protobuf.ByteString data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter parseFrom(
         org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter parseFrom(byte[] data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter parseFrom(
         byte[] data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter parseFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter parseDelimitedFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter parseFrom(
         org.spark_project.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter parseFrom(
         org.spark_project.protobuf.CodedInputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.StripeFooter}
-     */
     public static final class Builder extends
         org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
        implements org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooterOrBuilder {
@@ -8195,21 +6382,18 @@ public final class OrcProto {
           getDescriptor() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StripeFooter_descriptor;
       }
-
+      
       protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StripeFooter_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter.Builder.class);
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StripeFooter_fieldAccessorTable;
       }
-
+      
       // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -8222,7 +6406,7 @@ public final class OrcProto {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         if (streamsBuilder_ == null) {
@@ -8239,20 +6423,20 @@ public final class OrcProto {
         }
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public org.spark_project.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StripeFooter_descriptor;
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter.getDescriptor();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter getDefaultInstanceForType() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter.getDefaultInstance();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter build() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter result = buildPartial();
         if (!result.isInitialized()) {
@@ -8260,7 +6444,17 @@ public final class OrcProto {
         }
         return result;
       }
-
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter buildPartial() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter(this);
         int from_bitField0_ = bitField0_;
@@ -8285,7 +6479,7 @@ public final class OrcProto {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(org.spark_project.protobuf.Message other) {
         if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter) {
           return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter)other);
@@ -8294,7 +6488,7 @@ public final class OrcProto {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter other) {
         if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter.getDefaultInstance()) return this;
         if (streamsBuilder_ == null) {
@@ -8352,7 +6546,7 @@ public final class OrcProto {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         for (int i = 0; i < getStreamsCount(); i++) {
           if (!getStreams(i).isInitialized()) {
@@ -8368,26 +6562,48 @@ public final class OrcProto {
         }
         return true;
       }
-
+      
       public Builder mergeFrom(
           org.spark_project.protobuf.CodedInputStream input,
           org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Builder subBuilder = org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addStreams(subBuilder.buildPartial());
+              break;
+            }
+            case 18: {
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Builder subBuilder = org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addColumns(subBuilder.buildPartial());
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;
       private java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream> streams_ =
         java.util.Collections.emptyList();
@@ -8397,13 +6613,10 @@ public final class OrcProto {
           bitField0_ |= 0x00000001;
          }
       }
-
+      
       private org.spark_project.protobuf.RepeatedFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream, org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.StreamOrBuilder> streamsBuilder_;
-
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
+      
       public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream> getStreamsList() {
         if (streamsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(streams_);
@@ -8411,9 +6624,6 @@ public final class OrcProto {
           return streamsBuilder_.getMessageList();
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public int getStreamsCount() {
         if (streamsBuilder_ == null) {
           return streams_.size();
@@ -8421,9 +6631,6 @@ public final class OrcProto {
           return streamsBuilder_.getCount();
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream getStreams(int index) {
         if (streamsBuilder_ == null) {
           return streams_.get(index);
@@ -8431,9 +6638,6 @@ public final class OrcProto {
           return streamsBuilder_.getMessage(index);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public Builder setStreams(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream value) {
         if (streamsBuilder_ == null) {
@@ -8448,9 +6652,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public Builder setStreams(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Builder builderForValue) {
         if (streamsBuilder_ == null) {
@@ -8462,9 +6663,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public Builder addStreams(org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream value) {
         if (streamsBuilder_ == null) {
           if (value == null) {
@@ -8478,9 +6676,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public Builder addStreams(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream value) {
         if (streamsBuilder_ == null) {
@@ -8495,9 +6690,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public Builder addStreams(
           org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Builder builderForValue) {
         if (streamsBuilder_ == null) {
@@ -8509,9 +6701,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public Builder addStreams(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Builder builderForValue) {
         if (streamsBuilder_ == null) {
@@ -8523,9 +6712,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public Builder addAllStreams(
           java.lang.Iterable<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream> values) {
         if (streamsBuilder_ == null) {
@@ -8537,9 +6723,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public Builder clearStreams() {
         if (streamsBuilder_ == null) {
           streams_ = java.util.Collections.emptyList();
@@ -8550,9 +6733,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public Builder removeStreams(int index) {
         if (streamsBuilder_ == null) {
           ensureStreamsIsMutable();
@@ -8563,16 +6743,10 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Builder getStreamsBuilder(
           int index) {
         return getStreamsFieldBuilder().getBuilder(index);
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.StreamOrBuilder getStreamsOrBuilder(
           int index) {
         if (streamsBuilder_ == null) {
@@ -8580,9 +6754,6 @@ public final class OrcProto {
           return streamsBuilder_.getMessageOrBuilder(index);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.StreamOrBuilder> 
            getStreamsOrBuilderList() {
         if (streamsBuilder_ != null) {
@@ -8591,24 +6762,15 @@ public final class OrcProto {
           return java.util.Collections.unmodifiableList(streams_);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Builder addStreamsBuilder() {
         return getStreamsFieldBuilder().addBuilder(
             org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.getDefaultInstance());
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Builder addStreamsBuilder(
           int index) {
         return getStreamsFieldBuilder().addBuilder(
             index, org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.getDefaultInstance());
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Stream streams = 1;</code>
-       */
       public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Builder> 
            getStreamsBuilderList() {
         return getStreamsFieldBuilder().getBuilderList();
@@ -8627,7 +6789,7 @@ public final class OrcProto {
         }
         return streamsBuilder_;
       }
-
+      
       // repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;
       private java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding> columns_ =
         java.util.Collections.emptyList();
@@ -8637,13 +6799,10 @@ public final class OrcProto {
           bitField0_ |= 0x00000002;
          }
       }
-
+      
       private org.spark_project.protobuf.RepeatedFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncodingOrBuilder> columnsBuilder_;
-
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
+      
       public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding> getColumnsList() {
         if (columnsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(columns_);
@@ -8651,9 +6810,6 @@ public final class OrcProto {
           return columnsBuilder_.getMessageList();
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public int getColumnsCount() {
         if (columnsBuilder_ == null) {
           return columns_.size();
@@ -8661,9 +6817,6 @@ public final class OrcProto {
           return columnsBuilder_.getCount();
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding getColumns(int index) {
         if (columnsBuilder_ == null) {
           return columns_.get(index);
@@ -8671,9 +6824,6 @@ public final class OrcProto {
           return columnsBuilder_.getMessage(index);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public Builder setColumns(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding value) {
         if (columnsBuilder_ == null) {
@@ -8688,9 +6838,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public Builder setColumns(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Builder builderForValue) {
         if (columnsBuilder_ == null) {
@@ -8702,9 +6849,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public Builder addColumns(org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding value) {
         if (columnsBuilder_ == null) {
           if (value == null) {
@@ -8718,9 +6862,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public Builder addColumns(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding value) {
         if (columnsBuilder_ == null) {
@@ -8735,9 +6876,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public Builder addColumns(
           org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Builder builderForValue) {
         if (columnsBuilder_ == null) {
@@ -8749,9 +6887,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public Builder addColumns(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Builder builderForValue) {
         if (columnsBuilder_ == null) {
@@ -8763,9 +6898,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public Builder addAllColumns(
           java.lang.Iterable<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding> values) {
         if (columnsBuilder_ == null) {
@@ -8777,9 +6909,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public Builder clearColumns() {
         if (columnsBuilder_ == null) {
           columns_ = java.util.Collections.emptyList();
@@ -8790,9 +6919,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public Builder removeColumns(int index) {
         if (columnsBuilder_ == null) {
           ensureColumnsIsMutable();
@@ -8803,16 +6929,10 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Builder getColumnsBuilder(
           int index) {
         return getColumnsFieldBuilder().getBuilder(index);
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncodingOrBuilder getColumnsOrBuilder(
           int index) {
         if (columnsBuilder_ == null) {
@@ -8820,9 +6940,6 @@ public final class OrcProto {
           return columnsBuilder_.getMessageOrBuilder(index);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncodingOrBuilder> 
            getColumnsOrBuilderList() {
         if (columnsBuilder_ != null) {
@@ -8831,24 +6948,15 @@ public final class OrcProto {
           return java.util.Collections.unmodifiableList(columns_);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Builder addColumnsBuilder() {
         return getColumnsFieldBuilder().addBuilder(
             org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.getDefaultInstance());
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Builder addColumnsBuilder(
           int index) {
         return getColumnsFieldBuilder().addBuilder(
             index, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.getDefaultInstance());
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnEncoding columns = 2;</code>
-       */
       public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Builder> 
            getColumnsBuilderList() {
         return getColumnsFieldBuilder().getBuilderList();
@@ -8867,363 +6975,109 @@ public final class OrcProto {
         }
         return columnsBuilder_;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.StripeFooter)
     }
-
+    
     static {
       defaultInstance = new StripeFooter(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.StripeFooter)
   }
-
+  
   public interface TypeOrBuilder
       extends org.spark_project.protobuf.MessageOrBuilder {
-
+    
     // required .org.apache.hadoop.hive.ql.io.orc.Type.Kind kind = 1;
-    /**
-     * <code>required .org.apache.hadoop.hive.ql.io.orc.Type.Kind kind = 1;</code>
-     */
     boolean hasKind();
-    /**
-     * <code>required .org.apache.hadoop.hive.ql.io.orc.Type.Kind kind = 1;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Kind getKind();
-
+    
     // repeated uint32 subtypes = 2 [packed = true];
-    /**
-     * <code>repeated uint32 subtypes = 2 [packed = true];</code>
-     */
     java.util.List<java.lang.Integer> getSubtypesList();
-    /**
-     * <code>repeated uint32 subtypes = 2 [packed = true];</code>
-     */
     int getSubtypesCount();
-    /**
-     * <code>repeated uint32 subtypes = 2 [packed = true];</code>
-     */
     int getSubtypes(int index);
-
+    
     // repeated string fieldNames = 3;
-    /**
-     * <code>repeated string fieldNames = 3;</code>
-     */
-    java.util.List<java.lang.String>
-    getFieldNamesList();
-    /**
-     * <code>repeated string fieldNames = 3;</code>
-     */
+    java.util.List<String> getFieldNamesList();
     int getFieldNamesCount();
-    /**
-     * <code>repeated string fieldNames = 3;</code>
-     */
-    java.lang.String getFieldNames(int index);
-    /**
-     * <code>repeated string fieldNames = 3;</code>
-     */
-    org.spark_project.protobuf.ByteString
-        getFieldNamesBytes(int index);
-
+    String getFieldNames(int index);
+    
     // optional uint32 maximumLength = 4;
-    /**
-     * <code>optional uint32 maximumLength = 4;</code>
-     */
     boolean hasMaximumLength();
-    /**
-     * <code>optional uint32 maximumLength = 4;</code>
-     */
     int getMaximumLength();
   }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.Type}
-   */
   public static final class Type extends
       org.spark_project.protobuf.GeneratedMessage
       implements TypeOrBuilder {
     // Use Type.newBuilder() to construct.
-    private Type(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Type(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Type(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private Type(boolean noInit) {}
+    
     private static final Type defaultInstance;
     public static Type getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public Type getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private Type(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              int rawValue = input.readEnum();
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Kind value = org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Kind.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(1, rawValue);
-              } else {
-                bitField0_ |= 0x00000001;
-                kind_ = value;
-              }
-              break;
-            }
-            case 16: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                subtypes_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              subtypes_.add(input.readUInt32());
-              break;
-            }
-            case 18: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002) && input.getBytesUntilLimit() > 0) {
-                subtypes_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000002;
-              }
-              while (input.getBytesUntilLimit() > 0) {
-                subtypes_.add(input.readUInt32());
-              }
-              input.popLimit(limit);
-              break;
-            }
-            case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                fieldNames_ = new org.spark_project.protobuf.LazyStringArrayList();
-                mutable_bitField0_ |= 0x00000004;
-              }
-              fieldNames_.add(input.readBytes());
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000002;
-              maximumLength_ = input.readUInt32();
-              break;
-            }
-          }
-        }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-          subtypes_ = java.util.Collections.unmodifiableList(subtypes_);
-        }
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-          fieldNames_ = new org.spark_project.protobuf.UnmodifiableLazyStringList(fieldNames_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final org.spark_project.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Type_descriptor;
     }
-
+    
     protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Type_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Builder.class);
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Type_fieldAccessorTable;
     }
-
-    public static org.spark_project.protobuf.Parser<Type> PARSER =
-        new org.spark_project.protobuf.AbstractParser<Type>() {
-      public Type parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new Type(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<Type> getParserForType() {
-      return PARSER;
-    }
-
-    /**
-     * Protobuf enum {@code org.apache.hadoop.hive.ql.io.orc.Type.Kind}
-     */
+    
     public enum Kind
         implements org.spark_project.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>BOOLEAN = 0;</code>
-       */
       BOOLEAN(0, 0),
-      /**
-       * <code>BYTE = 1;</code>
-       */
       BYTE(1, 1),
-      /**
-       * <code>SHORT = 2;</code>
-       */
       SHORT(2, 2),
-      /**
-       * <code>INT = 3;</code>
-       */
       INT(3, 3),
-      /**
-       * <code>LONG = 4;</code>
-       */
       LONG(4, 4),
-      /**
-       * <code>FLOAT = 5;</code>
-       */
       FLOAT(5, 5),
-      /**
-       * <code>DOUBLE = 6;</code>
-       */
       DOUBLE(6, 6),
-      /**
-       * <code>STRING = 7;</code>
-       */
       STRING(7, 7),
-      /**
-       * <code>BINARY = 8;</code>
-       */
       BINARY(8, 8),
-      /**
-       * <code>TIMESTAMP = 9;</code>
-       */
       TIMESTAMP(9, 9),
-      /**
-       * <code>LIST = 10;</code>
-       */
       LIST(10, 10),
-      /**
-       * <code>MAP = 11;</code>
-       */
       MAP(11, 11),
-      /**
-       * <code>STRUCT = 12;</code>
-       */
       STRUCT(12, 12),
-      /**
-       * <code>UNION = 13;</code>
-       */
       UNION(13, 13),
-      /**
-       * <code>DECIMAL = 14;</code>
-       */
       DECIMAL(14, 14),
-      /**
-       * <code>DATE = 15;</code>
-       */
       DATE(15, 15),
-      /**
-       * <code>VARCHAR = 16;</code>
-       */
       VARCHAR(16, 16),
       ;
-
-      /**
-       * <code>BOOLEAN = 0;</code>
-       */
+      
       public static final int BOOLEAN_VALUE = 0;
-      /**
-       * <code>BYTE = 1;</code>
-       */
       public static final int BYTE_VALUE = 1;
-      /**
-       * <code>SHORT = 2;</code>
-       */
       public static final int SHORT_VALUE = 2;
-      /**
-       * <code>INT = 3;</code>
-       */
       public static final int INT_VALUE = 3;
-      /**
-       * <code>LONG = 4;</code>
-       */
       public static final int LONG_VALUE = 4;
-      /**
-       * <code>FLOAT = 5;</code>
-       */
       public static final int FLOAT_VALUE = 5;
-      /**
-       * <code>DOUBLE = 6;</code>
-       */
       public static final int DOUBLE_VALUE = 6;
-      /**
-       * <code>STRING = 7;</code>
-       */
       public static final int STRING_VALUE = 7;
-      /**
-       * <code>BINARY = 8;</code>
-       */
       public static final int BINARY_VALUE = 8;
-      /**
-       * <code>TIMESTAMP = 9;</code>
-       */
       public static final int TIMESTAMP_VALUE = 9;
-      /**
-       * <code>LIST = 10;</code>
-       */
       public static final int LIST_VALUE = 10;
-      /**
-       * <code>MAP = 11;</code>
-       */
       public static final int MAP_VALUE = 11;
-      /**
-       * <code>STRUCT = 12;</code>
-       */
       public static final int STRUCT_VALUE = 12;
-      /**
-       * <code>UNION = 13;</code>
-       */
       public static final int UNION_VALUE = 13;
-      /**
-       * <code>DECIMAL = 14;</code>
-       */
       public static final int DECIMAL_VALUE = 14;
-      /**
-       * <code>DATE = 15;</code>
-       */
       public static final int DATE_VALUE = 15;
-      /**
-       * <code>VARCHAR = 16;</code>
-       */
       public static final int VARCHAR_VALUE = 16;
-
-
+      
+      
       public final int getNumber() { return value; }
-
+      
       public static Kind valueOf(int value) {
         switch (value) {
           case 0: return BOOLEAN;
@@ -9246,7 +7100,7 @@ public final class OrcProto {
           default: return null;
         }
       }
-
+      
       public static org.spark_project.protobuf.Internal.EnumLiteMap<Kind>
           internalGetValueMap() {
         return internalValueMap;
@@ -9258,7 +7112,7 @@ public final class OrcProto {
                 return Kind.valueOf(number);
               }
             };
-
+      
       public final org.spark_project.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
         return getDescriptor().getValues().get(index);
@@ -9271,9 +7125,11 @@ public final class OrcProto {
           getDescriptor() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.getDescriptor().getEnumTypes().get(0);
       }
-
-      private static final Kind[] VALUES = values();
-
+      
+      private static final Kind[] VALUES = {
+        BOOLEAN, BYTE, SHORT, INT, LONG, FLOAT, DOUBLE, STRING, BINARY, TIMESTAMP, LIST, MAP, STRUCT, UNION, DECIMAL, DATE, VARCHAR, 
+      };
+      
       public static Kind valueOf(
           org.spark_project.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
@@ -9282,108 +7138,71 @@ public final class OrcProto {
         }
         return VALUES[desc.getIndex()];
       }
-
+      
       private final int index;
       private final int value;
-
+      
       private Kind(int index, int value) {
         this.index = index;
         this.value = value;
       }
-
+      
       // @@protoc_insertion_point(enum_scope:org.apache.hadoop.hive.ql.io.orc.Type.Kind)
     }
-
+    
     private int bitField0_;
     // required .org.apache.hadoop.hive.ql.io.orc.Type.Kind kind = 1;
     public static final int KIND_FIELD_NUMBER = 1;
     private org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Kind kind_;
-    /**
-     * <code>required .org.apache.hadoop.hive.ql.io.orc.Type.Kind kind = 1;</code>
-     */
     public boolean hasKind() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>required .org.apache.hadoop.hive.ql.io.orc.Type.Kind kind = 1;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Kind getKind() {
       return kind_;
     }
-
+    
     // repeated uint32 subtypes = 2 [packed = true];
     public static final int SUBTYPES_FIELD_NUMBER = 2;
     private java.util.List<java.lang.Integer> subtypes_;
-    /**
-     * <code>repeated uint32 subtypes = 2 [packed = true];</code>
-     */
     public java.util.List<java.lang.Integer>
         getSubtypesList() {
       return subtypes_;
     }
-    /**
-     * <code>repeated uint32 subtypes = 2 [packed = true];</code>
-     */
     public int getSubtypesCount() {
       return subtypes_.size();
     }
-    /**
-     * <code>repeated uint32 subtypes = 2 [packed = true];</code>
-     */
     public int getSubtypes(int index) {
       return subtypes_.get(index);
     }
     private int subtypesMemoizedSerializedSize = -1;
-
+    
     // repeated string fieldNames = 3;
     public static final int FIELDNAMES_FIELD_NUMBER = 3;
     private org.spark_project.protobuf.LazyStringList fieldNames_;
-    /**
-     * <code>repeated string fieldNames = 3;</code>
-     */
-    public java.util.List<java.lang.String>
+    public java.util.List<String>
         getFieldNamesList() {
       return fieldNames_;
     }
-    /**
-     * <code>repeated string fieldNames = 3;</code>
-     */
     public int getFieldNamesCount() {
       return fieldNames_.size();
     }
-    /**
-     * <code>repeated string fieldNames = 3;</code>
-     */
-    public java.lang.String getFieldNames(int index) {
+    public String getFieldNames(int index) {
       return fieldNames_.get(index);
     }
-    /**
-     * <code>repeated string fieldNames = 3;</code>
-     */
-    public org.spark_project.protobuf.ByteString
-        getFieldNamesBytes(int index) {
-      return fieldNames_.getByteString(index);
-    }
-
+    
     // optional uint32 maximumLength = 4;
     public static final int MAXIMUMLENGTH_FIELD_NUMBER = 4;
     private int maximumLength_;
-    /**
-     * <code>optional uint32 maximumLength = 4;</code>
-     */
     public boolean hasMaximumLength() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional uint32 maximumLength = 4;</code>
-     */
     public int getMaximumLength() {
       return maximumLength_;
     }
-
+    
     private void initFields() {
       kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Kind.BOOLEAN;
-      subtypes_ = java.util.Collections.emptyList();
+      subtypes_ = java.util.Collections.emptyList();;
       fieldNames_ = org.spark_project.protobuf.LazyStringArrayList.EMPTY;
       maximumLength_ = 0;
     }
@@ -9391,7 +7210,7 @@ public final class OrcProto {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       if (!hasKind()) {
         memoizedIsInitialized = 0;
         return false;
@@ -9399,7 +7218,7 @@ public final class OrcProto {
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -9421,12 +7240,12 @@ public final class OrcProto {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += org.spark_project.protobuf.CodedOutputStream
@@ -9463,83 +7282,94 @@ public final class OrcProto {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Type parseFrom(
         org.spark_project.protobuf.ByteString data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Type parseFrom(
         org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Type parseFrom(byte[] data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Type parseFrom(
         byte[] data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Type parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Type parseFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Type parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Type parseDelimitedFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Type parseFrom(
         org.spark_project.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Type parseFrom(
         org.spark_project.protobuf.CodedInputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.Type prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.Type}
-     */
     public static final class Builder extends
         org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
        implements org.apache.hadoop.hive.ql.io.orc.OrcProto.TypeOrBuilder {
@@ -9547,21 +7377,18 @@ public final class OrcProto {
           getDescriptor() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Type_descriptor;
       }
-
+      
       protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Type_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Builder.class);
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Type_fieldAccessorTable;
       }
-
+      
       // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -9572,12 +7399,12 @@ public final class OrcProto {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Kind.BOOLEAN;
         bitField0_ = (bitField0_ & ~0x00000001);
-        subtypes_ = java.util.Collections.emptyList();
+        subtypes_ = java.util.Collections.emptyList();;
         bitField0_ = (bitField0_ & ~0x00000002);
         fieldNames_ = org.spark_project.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -9585,20 +7412,20 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public org.spark_project.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Type_descriptor;
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.getDescriptor();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.Type getDefaultInstanceForType() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.getDefaultInstance();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.Type build() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.Type result = buildPartial();
         if (!result.isInitialized()) {
@@ -9606,7 +7433,17 @@ public final class OrcProto {
         }
         return result;
       }
-
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.Type buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.Type result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.Type buildPartial() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.Type result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.Type(this);
         int from_bitField0_ = bitField0_;
@@ -9634,7 +7471,7 @@ public final class OrcProto {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(org.spark_project.protobuf.Message other) {
         if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.Type) {
           return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.Type)other);
@@ -9643,7 +7480,7 @@ public final class OrcProto {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.Type other) {
         if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.getDefaultInstance()) return this;
         if (other.hasKind()) {
@@ -9675,7 +7512,7 @@ public final class OrcProto {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         if (!hasKind()) {
           
@@ -9683,43 +7520,79 @@ public final class OrcProto {
         }
         return true;
       }
-
+      
       public Builder mergeFrom(
           org.spark_project.protobuf.CodedInputStream input,
           org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.Type parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.Type) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              int rawValue = input.readEnum();
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Kind value = org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Kind.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                kind_ = value;
+              }
+              break;
+            }
+            case 16: {
+              ensureSubtypesIsMutable();
+              subtypes_.add(input.readUInt32());
+              break;
+            }
+            case 18: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              while (input.getBytesUntilLimit() > 0) {
+                addSubtypes(input.readUInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 26: {
+              ensureFieldNamesIsMutable();
+              fieldNames_.add(input.readBytes());
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              maximumLength_ = input.readUInt32();
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // required .org.apache.hadoop.hive.ql.io.orc.Type.Kind kind = 1;
       private org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Kind kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Kind.BOOLEAN;
-      /**
-       * <code>required .org.apache.hadoop.hive.ql.io.orc.Type.Kind kind = 1;</code>
-       */
       public boolean hasKind() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>required .org.apache.hadoop.hive.ql.io.orc.Type.Kind kind = 1;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Kind getKind() {
         return kind_;
       }
-      /**
-       * <code>required .org.apache.hadoop.hive.ql.io.orc.Type.Kind kind = 1;</code>
-       */
       public Builder setKind(org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Kind value) {
         if (value == null) {
           throw new NullPointerException();
@@ -9729,46 +7602,31 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>required .org.apache.hadoop.hive.ql.io.orc.Type.Kind kind = 1;</code>
-       */
       public Builder clearKind() {
         bitField0_ = (bitField0_ & ~0x00000001);
         kind_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Kind.BOOLEAN;
         onChanged();
         return this;
       }
-
+      
       // repeated uint32 subtypes = 2 [packed = true];
-      private java.util.List<java.lang.Integer> subtypes_ = java.util.Collections.emptyList();
+      private java.util.List<java.lang.Integer> subtypes_ = java.util.Collections.emptyList();;
       private void ensureSubtypesIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
           subtypes_ = new java.util.ArrayList<java.lang.Integer>(subtypes_);
           bitField0_ |= 0x00000002;
          }
       }
-      /**
-       * <code>repeated uint32 subtypes = 2 [packed = true];</code>
-       */
       public java.util.List<java.lang.Integer>
           getSubtypesList() {
         return java.util.Collections.unmodifiableList(subtypes_);
       }
-      /**
-       * <code>repeated uint32 subtypes = 2 [packed = true];</code>
-       */
       public int getSubtypesCount() {
         return subtypes_.size();
       }
-      /**
-       * <code>repeated uint32 subtypes = 2 [packed = true];</code>
-       */
       public int getSubtypes(int index) {
         return subtypes_.get(index);
       }
-      /**
-       * <code>repeated uint32 subtypes = 2 [packed = true];</code>
-       */
       public Builder setSubtypes(
           int index, int value) {
         ensureSubtypesIsMutable();
@@ -9776,18 +7634,12 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>repeated uint32 subtypes = 2 [packed = true];</code>
-       */
       public Builder addSubtypes(int value) {
         ensureSubtypesIsMutable();
         subtypes_.add(value);
         onChanged();
         return this;
       }
-      /**
-       * <code>repeated uint32 subtypes = 2 [packed = true];</code>
-       */
       public Builder addAllSubtypes(
           java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureSubtypesIsMutable();
@@ -9795,16 +7647,13 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>repeated uint32 subtypes = 2 [packed = true];</code>
-       */
       public Builder clearSubtypes() {
-        subtypes_ = java.util.Collections.emptyList();
+        subtypes_ = java.util.Collections.emptyList();;
         bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
         return this;
       }
-
+      
       // repeated string fieldNames = 3;
       private org.spark_project.protobuf.LazyStringList fieldNames_ = org.spark_project.protobuf.LazyStringArrayList.EMPTY;
       private void ensureFieldNamesIsMutable() {
@@ -9813,37 +7662,18 @@ public final class OrcProto {
           bitField0_ |= 0x00000004;
          }
       }
-      /**
-       * <code>repeated string fieldNames = 3;</code>
-       */
-      public java.util.List<java.lang.String>
+      public java.util.List<String>
           getFieldNamesList() {
         return java.util.Collections.unmodifiableList(fieldNames_);
       }
-      /**
-       * <code>repeated string fieldNames = 3;</code>
-       */
       public int getFieldNamesCount() {
         return fieldNames_.size();
       }
-      /**
-       * <code>repeated string fieldNames = 3;</code>
-       */
-      public java.lang.String getFieldNames(int index) {
+      public String getFieldNames(int index) {
         return fieldNames_.get(index);
       }
-      /**
-       * <code>repeated string fieldNames = 3;</code>
-       */
-      public org.spark_project.protobuf.ByteString
-          getFieldNamesBytes(int index) {
-        return fieldNames_.getByteString(index);
-      }
-      /**
-       * <code>repeated string fieldNames = 3;</code>
-       */
       public Builder setFieldNames(
-          int index, java.lang.String value) {
+          int index, String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -9852,11 +7682,7 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>repeated string fieldNames = 3;</code>
-       */
-      public Builder addFieldNames(
-          java.lang.String value) {
+      public Builder addFieldNames(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -9865,184 +7691,473 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>repeated string fieldNames = 3;</code>
-       */
       public Builder addAllFieldNames(
-          java.lang.Iterable<java.lang.String> values) {
+          java.lang.Iterable<String> values) {
         ensureFieldNamesIsMutable();
         super.addAll(values, fieldNames_);
         onChanged();
         return this;
       }
-      /**
-       * <code>repeated string fieldNames = 3;</code>
-       */
       public Builder clearFieldNames() {
         fieldNames_ = org.spark_project.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
-      /**
-       * <code>repeated string fieldNames = 3;</code>
-       */
-      public Builder addFieldNamesBytes(
-          org.spark_project.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureFieldNamesIsMutable();
+      void addFieldNames(org.spark_project.protobuf.ByteString value) {
+        ensureFieldNamesIsMutable();
         fieldNames_.add(value);
         onChanged();
-        return this;
       }
-
+      
       // optional uint32 maximumLength = 4;
       private int maximumLength_ ;
-      /**
-       * <code>optional uint32 maximumLength = 4;</code>
-       */
       public boolean hasMaximumLength() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      /**
-       * <code>optional uint32 maximumLength = 4;</code>
-       */
       public int getMaximumLength() {
         return maximumLength_;
       }
-      /**
-       * <code>optional uint32 maximumLength = 4;</code>
-       */
       public Builder setMaximumLength(int value) {
         bitField0_ |= 0x00000008;
         maximumLength_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional uint32 maximumLength = 4;</code>
-       */
       public Builder clearMaximumLength() {
         bitField0_ = (bitField0_ & ~0x00000008);
         maximumLength_ = 0;
         onChanged();
         return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.Type)
     }
-
+    
     static {
       defaultInstance = new Type(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.Type)
   }
-
+  
   public interface StripeInformationOrBuilder
       extends org.spark_project.protobuf.MessageOrBuilder {
-
+    
     // optional uint64 offset = 1;
-    /**
-     * <code>optional uint64 offset = 1;</code>
-     */
     boolean hasOffset();
-    /**
-     * <code>optional uint64 offset = 1;</code>
-     */
     long getOffset();
-
+    
     // optional uint64 indexLength = 2;
-    /**
-     * <code>optional uint64 indexLength = 2;</code>
-     */
     boolean hasIndexLength();
-    /**
-     * <code>optional uint64 indexLength = 2;</code>
-     */
     long getIndexLength();
-
+    
     // optional uint64 dataLength = 3;
-    /**
-     * <code>optional uint64 dataLength = 3;</code>
-     */
     boolean hasDataLength();
-    /**
-     * <code>optional uint64 dataLength = 3;</code>
-     */
     long getDataLength();
-
+    
     // optional uint64 footerLength = 4;
-    /**
-     * <code>optional uint64 footerLength = 4;</code>
-     */
     boolean hasFooterLength();
-    /**
-     * <code>optional uint64 footerLength = 4;</code>
-     */
     long getFooterLength();
-
+    
     // optional uint64 numberOfRows = 5;
-    /**
-     * <code>optional uint64 numberOfRows = 5;</code>
-     */
     boolean hasNumberOfRows();
-    /**
-     * <code>optional uint64 numberOfRows = 5;</code>
-     */
     long getNumberOfRows();
   }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.StripeInformation}
-   */
   public static final class StripeInformation extends
       org.spark_project.protobuf.GeneratedMessage
       implements StripeInformationOrBuilder {
     // Use StripeInformation.newBuilder() to construct.
-    private StripeInformation(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
+    private StripeInformation(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private StripeInformation(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private StripeInformation(boolean noInit) {}
+    
     private static final StripeInformation defaultInstance;
     public static StripeInformation getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public StripeInformation getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
+    
+    public static final org.spark_project.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StripeInformation_descriptor;
     }
-    private StripeInformation(
-        org.spark_project.protobuf.CodedInputStream input,
+    
+    protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StripeInformation_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // optional uint64 offset = 1;
+    public static final int OFFSET_FIELD_NUMBER = 1;
+    private long offset_;
+    public boolean hasOffset() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public long getOffset() {
+      return offset_;
+    }
+    
+    // optional uint64 indexLength = 2;
+    public static final int INDEXLENGTH_FIELD_NUMBER = 2;
+    private long indexLength_;
+    public boolean hasIndexLength() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public long getIndexLength() {
+      return indexLength_;
+    }
+    
+    // optional uint64 dataLength = 3;
+    public static final int DATALENGTH_FIELD_NUMBER = 3;
+    private long dataLength_;
+    public boolean hasDataLength() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public long getDataLength() {
+      return dataLength_;
+    }
+    
+    // optional uint64 footerLength = 4;
+    public static final int FOOTERLENGTH_FIELD_NUMBER = 4;
+    private long footerLength_;
+    public boolean hasFooterLength() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    public long getFooterLength() {
+      return footerLength_;
+    }
+    
+    // optional uint64 numberOfRows = 5;
+    public static final int NUMBEROFROWS_FIELD_NUMBER = 5;
+    private long numberOfRows_;
+    public boolean hasNumberOfRows() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    public long getNumberOfRows() {
+      return numberOfRows_;
+    }
+    
+    private void initFields() {
+      offset_ = 0L;
+      indexLength_ = 0L;
+      dataLength_ = 0L;
+      footerLength_ = 0L;
+      numberOfRows_ = 0L;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt64(1, offset_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt64(2, indexLength_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeUInt64(3, dataLength_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeUInt64(4, footerLength_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeUInt64(5, numberOfRows_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += org.spark_project.protobuf.CodedOutputStream
+          .computeUInt64Size(1, offset_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += org.spark_project.protobuf.CodedOutputStream
+          .computeUInt64Size(2, indexLength_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += org.spark_project.protobuf.CodedOutputStream
+          .computeUInt64Size(3, dataLength_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += org.spark_project.protobuf.CodedOutputStream
+          .computeUInt64Size(4, footerLength_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += org.spark_project.protobuf.CodedOutputStream
+          .computeUInt64Size(5, numberOfRows_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseFrom(
+        org.spark_project.protobuf.ByteString data)
+        throws org.spark_project.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseFrom(
+        org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseFrom(byte[] data)
+        throws org.spark_project.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseFrom(
+        byte[] data,
+        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws org.spark_project.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseFrom(
+        java.io.InputStream input,
+        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseDelimitedFrom(
+        java.io.InputStream input,
+        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseFrom(
+        org.spark_project.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseFrom(
+        org.spark_project.protobuf.CodedInputStream input,
+        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
+       implements org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformationOrBuilder {
+      public static final org.spark_project.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StripeInformation_descriptor;
+      }
+      
+      protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StripeInformation_fieldAccessorTable;
+      }
+      
+      // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (org.spark_project.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        offset_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        indexLength_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        dataLength_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        footerLength_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        numberOfRows_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public org.spark_project.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.getDescriptor();
+      }
+      
+      public org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation getDefaultInstanceForType() {
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.getDefaultInstance();
+      }
+      
+      public org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation build() {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation buildPartial() {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.offset_ = offset_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.indexLength_ = indexLength_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.dataLength_ = dataLength_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.footerLength_ = footerLength_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.numberOfRows_ = numberOfRows_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(org.spark_project.protobuf.Message other) {
+        if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation) {
+          return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation other) {
+        if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.getDefaultInstance()) return this;
+        if (other.hasOffset()) {
+          setOffset(other.getOffset());
+        }
+        if (other.hasIndexLength()) {
+          setIndexLength(other.getIndexLength());
+        }
+        if (other.hasDataLength()) {
+          setDataLength(other.getDataLength());
+        }
+        if (other.hasFooterLength()) {
+          setFooterLength(other.getFooterLength());
+        }
+        if (other.hasNumberOfRows()) {
+          setNumberOfRows(other.getNumberOfRows());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          org.spark_project.protobuf.CodedInputStream input,
+          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
           int tag = input.readTag();
           switch (tag) {
             case 0:
-              done = true;
-              break;
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
             default: {
               if (!parseUnknownField(input, unknownFields,
                                      extensionRegistry, tag)) {
-                done = true;
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
               }
               break;
             }
@@ -10073,783 +8188,208 @@ public final class OrcProto {
             }
           }
         }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
       }
-    }
-    public static final org.spark_project.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StripeInformation_descriptor;
-    }
-
-    protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StripeInformation_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.Builder.class);
-    }
-
-    public static org.spark_project.protobuf.Parser<StripeInformation> PARSER =
-        new org.spark_project.protobuf.AbstractParser<StripeInformation>() {
-      public StripeInformation parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new StripeInformation(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<StripeInformation> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // optional uint64 offset = 1;
-    public static final int OFFSET_FIELD_NUMBER = 1;
-    private long offset_;
-    /**
-     * <code>optional uint64 offset = 1;</code>
-     */
-    public boolean hasOffset() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>optional uint64 offset = 1;</code>
-     */
-    public long getOffset() {
-      return offset_;
-    }
-
-    // optional uint64 indexLength = 2;
-    public static final int INDEXLENGTH_FIELD_NUMBER = 2;
-    private long indexLength_;
-    /**
-     * <code>optional uint64 indexLength = 2;</code>
-     */
-    public boolean hasIndexLength() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>optional uint64 indexLength = 2;</code>
-     */
-    public long getIndexLength() {
-      return indexLength_;
-    }
-
-    // optional uint64 dataLength = 3;
-    public static final int DATALENGTH_FIELD_NUMBER = 3;
-    private long dataLength_;
-    /**
-     * <code>optional uint64 dataLength = 3;</code>
-     */
-    public boolean hasDataLength() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional uint64 dataLength = 3;</code>
-     */
-    public long getDataLength() {
-      return dataLength_;
-    }
-
-    // optional uint64 footerLength = 4;
-    public static final int FOOTERLENGTH_FIELD_NUMBER = 4;
-    private long footerLength_;
-    /**
-     * <code>optional uint64 footerLength = 4;</code>
-     */
-    public boolean hasFooterLength() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional uint64 footerLength = 4;</code>
-     */
-    public long getFooterLength() {
-      return footerLength_;
-    }
-
-    // optional uint64 numberOfRows = 5;
-    public static final int NUMBEROFROWS_FIELD_NUMBER = 5;
-    private long numberOfRows_;
-    /**
-     * <code>optional uint64 numberOfRows = 5;</code>
-     */
-    public boolean hasNumberOfRows() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional uint64 numberOfRows = 5;</code>
-     */
-    public long getNumberOfRows() {
-      return numberOfRows_;
-    }
-
-    private void initFields() {
-      offset_ = 0L;
-      indexLength_ = 0L;
-      dataLength_ = 0L;
-      footerLength_ = 0L;
-      numberOfRows_ = 0L;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt64(1, offset_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt64(2, indexLength_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt64(3, dataLength_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeUInt64(4, footerLength_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeUInt64(5, numberOfRows_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += org.spark_project.protobuf.CodedOutputStream
-          .computeUInt64Size(1, offset_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += org.spark_project.protobuf.CodedOutputStream
-          .computeUInt64Size(2, indexLength_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += org.spark_project.protobuf.CodedOutputStream
-          .computeUInt64Size(3, dataLength_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += org.spark_project.protobuf.CodedOutputStream
-          .computeUInt64Size(4, footerLength_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += org.spark_project.protobuf.CodedOutputStream
-          .computeUInt64Size(5, numberOfRows_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseFrom(
-        org.spark_project.protobuf.ByteString data)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseFrom(
-        org.spark_project.protobuf.ByteString data,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseFrom(byte[] data)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseFrom(
-        byte[] data,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseFrom(
-        java.io.InputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseDelimitedFrom(
-        java.io.InputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseFrom(
-        org.spark_project.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parseFrom(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.StripeInformation}
-     */
-    public static final class Builder extends
-        org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
-       implements org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformationOrBuilder {
-      public static final org.spark_project.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StripeInformation_descriptor;
-      }
-
-      protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StripeInformation_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.Builder.class);
-      }
-
-      // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (org.spark_project.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-
-      public Builder clear() {
-        super.clear();
-        offset_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        indexLength_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        dataLength_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        footerLength_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        numberOfRows_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public org.spark_project.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_StripeInformation_descriptor;
-      }
-
-      public org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation getDefaultInstanceForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.getDefaultInstance();
-      }
-
-      public org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation build() {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation buildPartial() {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.offset_ = offset_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.indexLength_ = indexLength_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.dataLength_ = dataLength_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.footerLength_ = footerLength_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.numberOfRows_ = numberOfRows_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder mergeFrom(org.spark_project.protobuf.Message other) {
-        if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation) {
-          return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation other) {
-        if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.getDefaultInstance()) return this;
-        if (other.hasOffset()) {
-          setOffset(other.getOffset());
-        }
-        if (other.hasIndexLength()) {
-          setIndexLength(other.getIndexLength());
-        }
-        if (other.hasDataLength()) {
-          setDataLength(other.getDataLength());
-        }
-        if (other.hasFooterLength()) {
-          setFooterLength(other.getFooterLength());
-        }
-        if (other.hasNumberOfRows()) {
-          setNumberOfRows(other.getNumberOfRows());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
+      
       private int bitField0_;
-
+      
       // optional uint64 offset = 1;
       private long offset_ ;
-      /**
-       * <code>optional uint64 offset = 1;</code>
-       */
       public boolean hasOffset() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional uint64 offset = 1;</code>
-       */
       public long getOffset() {
         return offset_;
       }
-      /**
-       * <code>optional uint64 offset = 1;</code>
-       */
       public Builder setOffset(long value) {
         bitField0_ |= 0x00000001;
         offset_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional uint64 offset = 1;</code>
-       */
       public Builder clearOffset() {
         bitField0_ = (bitField0_ & ~0x00000001);
         offset_ = 0L;
         onChanged();
         return this;
       }
-
+      
       // optional uint64 indexLength = 2;
       private long indexLength_ ;
-      /**
-       * <code>optional uint64 indexLength = 2;</code>
-       */
       public boolean hasIndexLength() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional uint64 indexLength = 2;</code>
-       */
       public long getIndexLength() {
         return indexLength_;
       }
-      /**
-       * <code>optional uint64 indexLength = 2;</code>
-       */
       public Builder setIndexLength(long value) {
         bitField0_ |= 0x00000002;
         indexLength_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional uint64 indexLength = 2;</code>
-       */
       public Builder clearIndexLength() {
         bitField0_ = (bitField0_ & ~0x00000002);
         indexLength_ = 0L;
         onChanged();
         return this;
       }
-
+      
       // optional uint64 dataLength = 3;
       private long dataLength_ ;
-      /**
-       * <code>optional uint64 dataLength = 3;</code>
-       */
       public boolean hasDataLength() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional uint64 dataLength = 3;</code>
-       */
       public long getDataLength() {
         return dataLength_;
       }
-      /**
-       * <code>optional uint64 dataLength = 3;</code>
-       */
       public Builder setDataLength(long value) {
         bitField0_ |= 0x00000004;
         dataLength_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional uint64 dataLength = 3;</code>
-       */
       public Builder clearDataLength() {
         bitField0_ = (bitField0_ & ~0x00000004);
         dataLength_ = 0L;
         onChanged();
         return this;
       }
-
+      
       // optional uint64 footerLength = 4;
       private long footerLength_ ;
-      /**
-       * <code>optional uint64 footerLength = 4;</code>
-       */
       public boolean hasFooterLength() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
-      /**
-       * <code>optional uint64 footerLength = 4;</code>
-       */
       public long getFooterLength() {
         return footerLength_;
       }
-      /**
-       * <code>optional uint64 footerLength = 4;</code>
-       */
       public Builder setFooterLength(long value) {
         bitField0_ |= 0x00000008;
         footerLength_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional uint64 footerLength = 4;</code>
-       */
       public Builder clearFooterLength() {
         bitField0_ = (bitField0_ & ~0x00000008);
         footerLength_ = 0L;
         onChanged();
         return this;
       }
-
+      
       // optional uint64 numberOfRows = 5;
       private long numberOfRows_ ;
-      /**
-       * <code>optional uint64 numberOfRows = 5;</code>
-       */
       public boolean hasNumberOfRows() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
-      /**
-       * <code>optional uint64 numberOfRows = 5;</code>
-       */
       public long getNumberOfRows() {
         return numberOfRows_;
       }
-      /**
-       * <code>optional uint64 numberOfRows = 5;</code>
-       */
       public Builder setNumberOfRows(long value) {
         bitField0_ |= 0x00000010;
         numberOfRows_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional uint64 numberOfRows = 5;</code>
-       */
       public Builder clearNumberOfRows() {
         bitField0_ = (bitField0_ & ~0x00000010);
         numberOfRows_ = 0L;
         onChanged();
         return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.StripeInformation)
     }
-
+    
     static {
       defaultInstance = new StripeInformation(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.StripeInformation)
   }
-
+  
   public interface UserMetadataItemOrBuilder
       extends org.spark_project.protobuf.MessageOrBuilder {
-
+    
     // required string name = 1;
-    /**
-     * <code>required string name = 1;</code>
-     */
     boolean hasName();
-    /**
-     * <code>required string name = 1;</code>
-     */
-    java.lang.String getName();
-    /**
-     * <code>required string name = 1;</code>
-     */
-    org.spark_project.protobuf.ByteString
-        getNameBytes();
-
+    String getName();
+    
     // required bytes value = 2;
-    /**
-     * <code>required bytes value = 2;</code>
-     */
     boolean hasValue();
-    /**
-     * <code>required bytes value = 2;</code>
-     */
     org.spark_project.protobuf.ByteString getValue();
   }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.UserMetadataItem}
-   */
   public static final class UserMetadataItem extends
       org.spark_project.protobuf.GeneratedMessage
       implements UserMetadataItemOrBuilder {
     // Use UserMetadataItem.newBuilder() to construct.
-    private UserMetadataItem(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
+    private UserMetadataItem(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private UserMetadataItem(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private UserMetadataItem(boolean noInit) {}
+    
     private static final UserMetadataItem defaultInstance;
     public static UserMetadataItem getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public UserMetadataItem getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private UserMetadataItem(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              bitField0_ |= 0x00000001;
-              name_ = input.readBytes();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              value_ = input.readBytes();
-              break;
-            }
-          }
-        }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final org.spark_project.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_UserMetadataItem_descriptor;
     }
-
+    
     protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_UserMetadataItem_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.Builder.class);
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_UserMetadataItem_fieldAccessorTable;
     }
-
-    public static org.spark_project.protobuf.Parser<UserMetadataItem> PARSER =
-        new org.spark_project.protobuf.AbstractParser<UserMetadataItem>() {
-      public UserMetadataItem parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new UserMetadataItem(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<UserMetadataItem> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // required string name = 1;
     public static final int NAME_FIELD_NUMBER = 1;
     private java.lang.Object name_;
-    /**
-     * <code>required string name = 1;</code>
-     */
     public boolean hasName() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>required string name = 1;</code>
-     */
-    public java.lang.String getName() {
+    public String getName() {
       java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         org.spark_project.protobuf.ByteString bs = 
             (org.spark_project.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
+        String s = bs.toStringUtf8();
+        if (org.spark_project.protobuf.Internal.isValidUtf8(bs)) {
           name_ = s;
         }
         return s;
       }
     }
-    /**
-     * <code>required string name = 1;</code>
-     */
-    public org.spark_project.protobuf.ByteString
-        getNameBytes() {
+    private org.spark_project.protobuf.ByteString getNameBytes() {
       java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
+      if (ref instanceof String) {
         org.spark_project.protobuf.ByteString b = 
-            org.spark_project.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+            org.spark_project.protobuf.ByteString.copyFromUtf8((String) ref);
         name_ = b;
         return b;
       } else {
         return (org.spark_project.protobuf.ByteString) ref;
       }
     }
-
+    
     // required bytes value = 2;
     public static final int VALUE_FIELD_NUMBER = 2;
     private org.spark_project.protobuf.ByteString value_;
-    /**
-     * <code>required bytes value = 2;</code>
-     */
     public boolean hasValue() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>required bytes value = 2;</code>
-     */
     public org.spark_project.protobuf.ByteString getValue() {
       return value_;
     }
-
+    
     private void initFields() {
       name_ = "";
       value_ = org.spark_project.protobuf.ByteString.EMPTY;
@@ -10858,7 +8398,7 @@ public final class OrcProto {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       if (!hasName()) {
         memoizedIsInitialized = 0;
         return false;
@@ -10870,7 +8410,7 @@ public final class OrcProto {
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -10882,12 +8422,12 @@ public final class OrcProto {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += org.spark_project.protobuf.CodedOutputStream
@@ -10901,83 +8441,94 @@ public final class OrcProto {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem parseFrom(
         org.spark_project.protobuf.ByteString data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem parseFrom(
         org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem parseFrom(byte[] data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem parseFrom(
         byte[] data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem parseFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem parseDelimitedFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem parseFrom(
         org.spark_project.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem parseFrom(
         org.spark_project.protobuf.CodedInputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.UserMetadataItem}
-     */
     public static final class Builder extends
         org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
        implements org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItemOrBuilder {
@@ -10985,21 +8536,18 @@ public final class OrcProto {
           getDescriptor() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_UserMetadataItem_descriptor;
       }
-
+      
       protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_UserMetadataItem_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.Builder.class);
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_UserMetadataItem_fieldAccessorTable;
       }
-
+      
       // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -11010,7 +8558,7 @@ public final class OrcProto {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         name_ = "";
@@ -11019,20 +8567,20 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public org.spark_project.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_UserMetadataItem_descriptor;
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.getDescriptor();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem getDefaultInstanceForType() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.getDefaultInstance();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem build() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem result = buildPartial();
         if (!result.isInitialized()) {
@@ -11040,7 +8588,17 @@ public final class OrcProto {
         }
         return result;
       }
-
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem buildPartial() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem(this);
         int from_bitField0_ = bitField0_;
@@ -11057,7 +8615,7 @@ public final class OrcProto {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(org.spark_project.protobuf.Message other) {
         if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem) {
           return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem)other);
@@ -11066,13 +8624,11 @@ public final class OrcProto {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem other) {
         if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.getDefaultInstance()) return this;
         if (other.hasName()) {
-          bitField0_ |= 0x00000001;
-          name_ = other.name_;
-          onChanged();
+          setName(other.getName());
         }
         if (other.hasValue()) {
           setValue(other.getValue());
@@ -11080,7 +8636,7 @@ public final class OrcProto {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         if (!hasName()) {
           
@@ -11092,69 +8648,62 @@ public final class OrcProto {
         }
         return true;
       }
-
+      
       public Builder mergeFrom(
           org.spark_project.protobuf.CodedInputStream input,
           org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              name_ = input.readBytes();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              value_ = input.readBytes();
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // required string name = 1;
       private java.lang.Object name_ = "";
-      /**
-       * <code>required string name = 1;</code>
-       */
       public boolean hasName() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>required string name = 1;</code>
-       */
-      public java.lang.String getName() {
+      public String getName() {
         java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((org.spark_project.protobuf.ByteString) ref)
-              .toStringUtf8();
+        if (!(ref instanceof String)) {
+          String s = ((org.spark_project.protobuf.ByteString) ref).toStringUtf8();
           name_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
-      /**
-       * <code>required string name = 1;</code>
-       */
-      public org.spark_project.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          org.spark_project.protobuf.ByteString b = 
-              org.spark_project.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (org.spark_project.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>required string name = 1;</code>
-       */
-      public Builder setName(
-          java.lang.String value) {
+      public Builder setName(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -11163,46 +8712,26 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>required string name = 1;</code>
-       */
       public Builder clearName() {
         bitField0_ = (bitField0_ & ~0x00000001);
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
       }
-      /**
-       * <code>required string name = 1;</code>
-       */
-      public Builder setNameBytes(
-          org.spark_project.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000001;
+      void setName(org.spark_project.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
         name_ = value;
         onChanged();
-        return this;
       }
-
+      
       // required bytes value = 2;
       private org.spark_project.protobuf.ByteString value_ = org.spark_project.protobuf.ByteString.EMPTY;
-      /**
-       * <code>required bytes value = 2;</code>
-       */
       public boolean hasValue() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>required bytes value = 2;</code>
-       */
       public org.spark_project.protobuf.ByteString getValue() {
         return value_;
       }
-      /**
-       * <code>required bytes value = 2;</code>
-       */
       public Builder setValue(org.spark_project.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
@@ -11212,533 +8741,236 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>required bytes value = 2;</code>
-       */
       public Builder clearValue() {
         bitField0_ = (bitField0_ & ~0x00000002);
         value_ = getDefaultInstance().getValue();
         onChanged();
         return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.UserMetadataItem)
     }
-
+    
     static {
       defaultInstance = new UserMetadataItem(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.UserMetadataItem)
   }
-
+  
   public interface FooterOrBuilder
       extends org.spark_project.protobuf.MessageOrBuilder {
-
+    
     // optional uint64 headerLength = 1;
-    /**
-     * <code>optional uint64 headerLength = 1;</code>
-     */
     boolean hasHeaderLength();
-    /**
-     * <code>optional uint64 headerLength = 1;</code>
-     */
     long getHeaderLength();
-
+    
     // optional uint64 contentLength = 2;
-    /**
-     * <code>optional uint64 contentLength = 2;</code>
-     */
     boolean hasContentLength();
-    /**
-     * <code>optional uint64 contentLength = 2;</code>
-     */
     long getContentLength();
-
+    
     // repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-     */
     java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation> 
         getStripesList();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation getStripes(int index);
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-     */
     int getStripesCount();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-     */
     java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformationOrBuilder> 
         getStripesOrBuilderList();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformationOrBuilder getStripesOrBuilder(
         int index);
-
+    
     // repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-     */
     java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.Type> 
         getTypesList();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.Type getTypes(int index);
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-     */
     int getTypesCount();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-     */
     java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.TypeOrBuilder> 
         getTypesOrBuilderList();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.TypeOrBuilder getTypesOrBuilder(
         int index);
-
+    
     // repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-     */
     java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem> 
         getMetadataList();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem getMetadata(int index);
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-     */
     int getMetadataCount();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-     */
     java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItemOrBuilder> 
         getMetadataOrBuilderList();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItemOrBuilder getMetadataOrBuilder(
         int index);
-
+    
     // optional uint64 numberOfRows = 6;
-    /**
-     * <code>optional uint64 numberOfRows = 6;</code>
-     */
     boolean hasNumberOfRows();
-    /**
-     * <code>optional uint64 numberOfRows = 6;</code>
-     */
     long getNumberOfRows();
-
+    
     // repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-     */
     java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics> 
         getStatisticsList();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics getStatistics(int index);
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-     */
     int getStatisticsCount();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-     */
     java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatisticsOrBuilder> 
         getStatisticsOrBuilderList();
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatisticsOrBuilder getStatisticsOrBuilder(
         int index);
-
+    
     // optional uint32 rowIndexStride = 8;
-    /**
-     * <code>optional uint32 rowIndexStride = 8;</code>
-     */
     boolean hasRowIndexStride();
-    /**
-     * <code>optional uint32 rowIndexStride = 8;</code>
-     */
     int getRowIndexStride();
   }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.Footer}
-   */
   public static final class Footer extends
       org.spark_project.protobuf.GeneratedMessage
       implements FooterOrBuilder {
     // Use Footer.newBuilder() to construct.
-    private Footer(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Footer(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Footer(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private Footer(boolean noInit) {}
+    
     private static final Footer defaultInstance;
     public static Footer getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public Footer getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private Footer(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              headerLength_ = input.readUInt64();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              contentLength_ = input.readUInt64();
-              break;
-            }
-            case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                stripes_ = new java.util.ArrayList<org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation>();
-                mutable_bitField0_ |= 0x00000004;
-              }
-              stripes_.add(input.readMessage(org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.PARSER, extensionRegistry));
-              break;
-            }
-            case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                types_ = new java.util.ArrayList<org.apache.hadoop.hive.ql.io.orc.OrcProto.Type>();
-                mutable_bitField0_ |= 0x00000008;
-              }
-              types_.add(input.readMessage(org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.PARSER, extensionRegistry));
-              break;
-            }
-            case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-                metadata_ = new java.util.ArrayList<org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem>();
-                mutable_bitField0_ |= 0x00000010;
-              }
-              metadata_.add(input.readMessage(org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.PARSER, extensionRegistry));
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000004;
-              numberOfRows_ = input.readUInt64();
-              break;
-            }
-            case 58: {
-              if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
-                statistics_ = new java.util.ArrayList<org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics>();
-                mutable_bitField0_ |= 0x00000040;
-              }
-              statistics_.add(input.readMessage(org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.PARSER, extensionRegistry));
-              break;
-            }
-            case 64: {
-              bitField0_ |= 0x00000008;
-              rowIndexStride_ = input.readUInt32();
-              break;
-            }
-          }
-        }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-          stripes_ = java.util.Collections.unmodifiableList(stripes_);
-        }
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-          types_ = java.util.Collections.unmodifiableList(types_);
-        }
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-          metadata_ = java.util.Collections.unmodifiableList(metadata_);
-        }
-        if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
-          statistics_ = java.util.Collections.unmodifiableList(statistics_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final org.spark_project.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Footer_descriptor;
     }
-
+    
     protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Footer_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer.Builder.class);
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Footer_fieldAccessorTable;
     }
-
-    public static org.spark_project.protobuf.Parser<Footer> PARSER =
-        new org.spark_project.protobuf.AbstractParser<Footer>() {
-      public Footer parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new Footer(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<Footer> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional uint64 headerLength = 1;
     public static final int HEADERLENGTH_FIELD_NUMBER = 1;
     private long headerLength_;
-    /**
-     * <code>optional uint64 headerLength = 1;</code>
-     */
     public boolean hasHeaderLength() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional uint64 headerLength = 1;</code>
-     */
     public long getHeaderLength() {
       return headerLength_;
     }
-
+    
     // optional uint64 contentLength = 2;
     public static final int CONTENTLENGTH_FIELD_NUMBER = 2;
     private long contentLength_;
-    /**
-     * <code>optional uint64 contentLength = 2;</code>
-     */
     public boolean hasContentLength() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional uint64 contentLength = 2;</code>
-     */
     public long getContentLength() {
       return contentLength_;
     }
-
+    
     // repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;
     public static final int STRIPES_FIELD_NUMBER = 3;
     private java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation> stripes_;
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-     */
     public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation> getStripesList() {
       return stripes_;
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-     */
     public java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformationOrBuilder> 
         getStripesOrBuilderList() {
       return stripes_;
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-     */
     public int getStripesCount() {
       return stripes_.size();
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation getStripes(int index) {
       return stripes_.get(index);
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformationOrBuilder getStripesOrBuilder(
         int index) {
       return stripes_.get(index);
     }
-
+    
     // repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;
     public static final int TYPES_FIELD_NUMBER = 4;
     private java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.Type> types_;
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-     */
     public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.Type> getTypesList() {
       return types_;
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-     */
     public java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.TypeOrBuilder> 
         getTypesOrBuilderList() {
       return types_;
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-     */
     public int getTypesCount() {
       return types_.size();
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.Type getTypes(int index) {
       return types_.get(index);
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.TypeOrBuilder getTypesOrBuilder(
         int index) {
       return types_.get(index);
     }
-
+    
     // repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;
     public static final int METADATA_FIELD_NUMBER = 5;
     private java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem> metadata_;
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-     */
     public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem> getMetadataList() {
       return metadata_;
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-     */
     public java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItemOrBuilder> 
         getMetadataOrBuilderList() {
       return metadata_;
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-     */
     public int getMetadataCount() {
       return metadata_.size();
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem getMetadata(int index) {
       return metadata_.get(index);
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItemOrBuilder getMetadataOrBuilder(
         int index) {
       return metadata_.get(index);
     }
-
+    
     // optional uint64 numberOfRows = 6;
     public static final int NUMBEROFROWS_FIELD_NUMBER = 6;
     private long numberOfRows_;
-    /**
-     * <code>optional uint64 numberOfRows = 6;</code>
-     */
     public boolean hasNumberOfRows() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional uint64 numberOfRows = 6;</code>
-     */
     public long getNumberOfRows() {
       return numberOfRows_;
     }
-
+    
     // repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;
     public static final int STATISTICS_FIELD_NUMBER = 7;
     private java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics> statistics_;
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-     */
     public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics> getStatisticsList() {
       return statistics_;
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-     */
     public java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatisticsOrBuilder> 
         getStatisticsOrBuilderList() {
       return statistics_;
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-     */
     public int getStatisticsCount() {
       return statistics_.size();
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics getStatistics(int index) {
       return statistics_.get(index);
     }
-    /**
-     * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatisticsOrBuilder getStatisticsOrBuilder(
         int index) {
       return statistics_.get(index);
     }
-
+    
     // optional uint32 rowIndexStride = 8;
     public static final int ROWINDEXSTRIDE_FIELD_NUMBER = 8;
     private int rowIndexStride_;
-    /**
-     * <code>optional uint32 rowIndexStride = 8;</code>
-     */
     public boolean hasRowIndexStride() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
-    /**
-     * <code>optional uint32 rowIndexStride = 8;</code>
-     */
     public int getRowIndexStride() {
       return rowIndexStride_;
     }
-
+    
     private void initFields() {
       headerLength_ = 0L;
       contentLength_ = 0L;
@@ -11753,7 +8985,7 @@ public final class OrcProto {
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       for (int i = 0; i < getTypesCount(); i++) {
         if (!getTypes(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -11769,7 +9001,7 @@ public final class OrcProto {
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -11799,12 +9031,12 @@ public final class OrcProto {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += org.spark_project.protobuf.CodedOutputStream
@@ -11842,83 +9074,94 @@ public final class OrcProto {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer parseFrom(
         org.spark_project.protobuf.ByteString data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer parseFrom(
         org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer parseFrom(byte[] data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer parseFrom(
         byte[] data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer parseFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer parseDelimitedFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer parseFrom(
         org.spark_project.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer parseFrom(
         org.spark_project.protobuf.CodedInputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.Footer}
-     */
     public static final class Builder extends
         org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
        implements org.apache.hadoop.hive.ql.io.orc.OrcProto.FooterOrBuilder {
@@ -11926,21 +9169,18 @@ public final class OrcProto {
           getDescriptor() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Footer_descriptor;
       }
-
+      
       protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Footer_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer.Builder.class);
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Footer_fieldAccessorTable;
       }
-
+      
       // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -11955,7 +9195,7 @@ public final class OrcProto {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         headerLength_ = 0L;
@@ -11992,20 +9232,20 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public org.spark_project.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_Footer_descriptor;
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer.getDescriptor();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer getDefaultInstanceForType() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer.getDefaultInstance();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer build() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer result = buildPartial();
         if (!result.isInitialized()) {
@@ -12013,7 +9253,17 @@ public final class OrcProto {
         }
         return result;
       }
-
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer buildPartial() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer(this);
         int from_bitField0_ = bitField0_;
@@ -12074,7 +9324,7 @@ public final class OrcProto {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(org.spark_project.protobuf.Message other) {
         if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer) {
           return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer)other);
@@ -12083,7 +9333,7 @@ public final class OrcProto {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer other) {
         if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer.getDefaultInstance()) return this;
         if (other.hasHeaderLength()) {
@@ -12205,7 +9455,7 @@ public final class OrcProto {
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         for (int i = 0; i < getTypesCount(); i++) {
           if (!getTypes(i).isInitialized()) {
@@ -12221,92 +9471,122 @@ public final class OrcProto {
         }
         return true;
       }
-
+      
       public Builder mergeFrom(
           org.spark_project.protobuf.CodedInputStream input,
           org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              headerLength_ = input.readUInt64();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              contentLength_ = input.readUInt64();
+              break;
+            }
+            case 26: {
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.Builder subBuilder = org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addStripes(subBuilder.buildPartial());
+              break;
+            }
+            case 34: {
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Builder subBuilder = org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addTypes(subBuilder.buildPartial());
+              break;
+            }
+            case 42: {
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.Builder subBuilder = org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addMetadata(subBuilder.buildPartial());
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              numberOfRows_ = input.readUInt64();
+              break;
+            }
+            case 58: {
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder subBuilder = org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addStatistics(subBuilder.buildPartial());
+              break;
+            }
+            case 64: {
+              bitField0_ |= 0x00000080;
+              rowIndexStride_ = input.readUInt32();
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional uint64 headerLength = 1;
       private long headerLength_ ;
-      /**
-       * <code>optional uint64 headerLength = 1;</code>
-       */
       public boolean hasHeaderLength() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional uint64 headerLength = 1;</code>
-       */
       public long getHeaderLength() {
         return headerLength_;
       }
-      /**
-       * <code>optional uint64 headerLength = 1;</code>
-       */
       public Builder setHeaderLength(long value) {
         bitField0_ |= 0x00000001;
         headerLength_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional uint64 headerLength = 1;</code>
-       */
       public Builder clearHeaderLength() {
         bitField0_ = (bitField0_ & ~0x00000001);
         headerLength_ = 0L;
         onChanged();
         return this;
       }
-
+      
       // optional uint64 contentLength = 2;
       private long contentLength_ ;
-      /**
-       * <code>optional uint64 contentLength = 2;</code>
-       */
       public boolean hasContentLength() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional uint64 contentLength = 2;</code>
-       */
       public long getContentLength() {
         return contentLength_;
       }
-      /**
-       * <code>optional uint64 contentLength = 2;</code>
-       */
       public Builder setContentLength(long value) {
         bitField0_ |= 0x00000002;
         contentLength_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional uint64 contentLength = 2;</code>
-       */
       public Builder clearContentLength() {
         bitField0_ = (bitField0_ & ~0x00000002);
         contentLength_ = 0L;
         onChanged();
         return this;
       }
-
+      
       // repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;
       private java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation> stripes_ =
         java.util.Collections.emptyList();
@@ -12316,13 +9596,10 @@ public final class OrcProto {
           bitField0_ |= 0x00000004;
          }
       }
-
+      
       private org.spark_project.protobuf.RepeatedFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation, org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformationOrBuilder> stripesBuilder_;
-
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
+      
       public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation> getStripesList() {
         if (stripesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(stripes_);
@@ -12330,9 +9607,6 @@ public final class OrcProto {
           return stripesBuilder_.getMessageList();
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public int getStripesCount() {
         if (stripesBuilder_ == null) {
           return stripes_.size();
@@ -12340,9 +9614,6 @@ public final class OrcProto {
           return stripesBuilder_.getCount();
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation getStripes(int index) {
         if (stripesBuilder_ == null) {
           return stripes_.get(index);
@@ -12350,9 +9621,6 @@ public final class OrcProto {
           return stripesBuilder_.getMessage(index);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public Builder setStripes(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation value) {
         if (stripesBuilder_ == null) {
@@ -12367,9 +9635,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public Builder setStripes(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.Builder builderForValue) {
         if (stripesBuilder_ == null) {
@@ -12381,9 +9646,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public Builder addStripes(org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation value) {
         if (stripesBuilder_ == null) {
           if (value == null) {
@@ -12397,9 +9659,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public Builder addStripes(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation value) {
         if (stripesBuilder_ == null) {
@@ -12414,9 +9673,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public Builder addStripes(
           org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.Builder builderForValue) {
         if (stripesBuilder_ == null) {
@@ -12428,9 +9684,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public Builder addStripes(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.Builder builderForValue) {
         if (stripesBuilder_ == null) {
@@ -12442,9 +9695,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public Builder addAllStripes(
           java.lang.Iterable<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation> values) {
         if (stripesBuilder_ == null) {
@@ -12456,9 +9706,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public Builder clearStripes() {
         if (stripesBuilder_ == null) {
           stripes_ = java.util.Collections.emptyList();
@@ -12469,9 +9716,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public Builder removeStripes(int index) {
         if (stripesBuilder_ == null) {
           ensureStripesIsMutable();
@@ -12482,16 +9726,10 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.Builder getStripesBuilder(
           int index) {
         return getStripesFieldBuilder().getBuilder(index);
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformationOrBuilder getStripesOrBuilder(
           int index) {
         if (stripesBuilder_ == null) {
@@ -12499,9 +9737,6 @@ public final class OrcProto {
           return stripesBuilder_.getMessageOrBuilder(index);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformationOrBuilder> 
            getStripesOrBuilderList() {
         if (stripesBuilder_ != null) {
@@ -12510,24 +9745,15 @@ public final class OrcProto {
           return java.util.Collections.unmodifiableList(stripes_);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.Builder addStripesBuilder() {
         return getStripesFieldBuilder().addBuilder(
             org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.getDefaultInstance());
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.Builder addStripesBuilder(
           int index) {
         return getStripesFieldBuilder().addBuilder(
             index, org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.getDefaultInstance());
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.StripeInformation stripes = 3;</code>
-       */
       public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.Builder> 
            getStripesBuilderList() {
         return getStripesFieldBuilder().getBuilderList();
@@ -12546,7 +9772,7 @@ public final class OrcProto {
         }
         return stripesBuilder_;
       }
-
+      
       // repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;
       private java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.Type> types_ =
         java.util.Collections.emptyList();
@@ -12556,13 +9782,10 @@ public final class OrcProto {
           bitField0_ |= 0x00000008;
          }
       }
-
+      
       private org.spark_project.protobuf.RepeatedFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.Type, org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.TypeOrBuilder> typesBuilder_;
-
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
+      
       public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.Type> getTypesList() {
         if (typesBuilder_ == null) {
           return java.util.Collections.unmodifiableList(types_);
@@ -12570,9 +9793,6 @@ public final class OrcProto {
           return typesBuilder_.getMessageList();
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public int getTypesCount() {
         if (typesBuilder_ == null) {
           return types_.size();
@@ -12580,9 +9800,6 @@ public final class OrcProto {
           return typesBuilder_.getCount();
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.Type getTypes(int index) {
         if (typesBuilder_ == null) {
           return types_.get(index);
@@ -12590,9 +9807,6 @@ public final class OrcProto {
           return typesBuilder_.getMessage(index);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public Builder setTypes(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.Type value) {
         if (typesBuilder_ == null) {
@@ -12607,9 +9821,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public Builder setTypes(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Builder builderForValue) {
         if (typesBuilder_ == null) {
@@ -12621,9 +9832,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public Builder addTypes(org.apache.hadoop.hive.ql.io.orc.OrcProto.Type value) {
         if (typesBuilder_ == null) {
           if (value == null) {
@@ -12637,9 +9845,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public Builder addTypes(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.Type value) {
         if (typesBuilder_ == null) {
@@ -12654,9 +9859,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public Builder addTypes(
           org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Builder builderForValue) {
         if (typesBuilder_ == null) {
@@ -12668,9 +9870,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public Builder addTypes(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Builder builderForValue) {
         if (typesBuilder_ == null) {
@@ -12682,9 +9881,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public Builder addAllTypes(
           java.lang.Iterable<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.Type> values) {
         if (typesBuilder_ == null) {
@@ -12696,9 +9892,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public Builder clearTypes() {
         if (typesBuilder_ == null) {
           types_ = java.util.Collections.emptyList();
@@ -12709,9 +9902,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public Builder removeTypes(int index) {
         if (typesBuilder_ == null) {
           ensureTypesIsMutable();
@@ -12722,16 +9912,10 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Builder getTypesBuilder(
           int index) {
         return getTypesFieldBuilder().getBuilder(index);
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.TypeOrBuilder getTypesOrBuilder(
           int index) {
         if (typesBuilder_ == null) {
@@ -12739,9 +9923,6 @@ public final class OrcProto {
           return typesBuilder_.getMessageOrBuilder(index);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.TypeOrBuilder> 
            getTypesOrBuilderList() {
         if (typesBuilder_ != null) {
@@ -12750,24 +9931,15 @@ public final class OrcProto {
           return java.util.Collections.unmodifiableList(types_);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Builder addTypesBuilder() {
         return getTypesFieldBuilder().addBuilder(
             org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.getDefaultInstance());
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Builder addTypesBuilder(
           int index) {
         return getTypesFieldBuilder().addBuilder(
             index, org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.getDefaultInstance());
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.Type types = 4;</code>
-       */
       public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Builder> 
            getTypesBuilderList() {
         return getTypesFieldBuilder().getBuilderList();
@@ -12786,7 +9958,7 @@ public final class OrcProto {
         }
         return typesBuilder_;
       }
-
+      
       // repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;
       private java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem> metadata_ =
         java.util.Collections.emptyList();
@@ -12796,13 +9968,10 @@ public final class OrcProto {
           bitField0_ |= 0x00000010;
          }
       }
-
+      
       private org.spark_project.protobuf.RepeatedFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem, org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItemOrBuilder> metadataBuilder_;
-
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
+      
       public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem> getMetadataList() {
         if (metadataBuilder_ == null) {
           return java.util.Collections.unmodifiableList(metadata_);
@@ -12810,9 +9979,6 @@ public final class OrcProto {
           return metadataBuilder_.getMessageList();
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public int getMetadataCount() {
         if (metadataBuilder_ == null) {
           return metadata_.size();
@@ -12820,9 +9986,6 @@ public final class OrcProto {
           return metadataBuilder_.getCount();
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem getMetadata(int index) {
         if (metadataBuilder_ == null) {
           return metadata_.get(index);
@@ -12830,9 +9993,6 @@ public final class OrcProto {
           return metadataBuilder_.getMessage(index);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public Builder setMetadata(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem value) {
         if (metadataBuilder_ == null) {
@@ -12847,9 +10007,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public Builder setMetadata(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.Builder builderForValue) {
         if (metadataBuilder_ == null) {
@@ -12861,9 +10018,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public Builder addMetadata(org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem value) {
         if (metadataBuilder_ == null) {
           if (value == null) {
@@ -12877,9 +10031,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public Builder addMetadata(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem value) {
         if (metadataBuilder_ == null) {
@@ -12894,9 +10045,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public Builder addMetadata(
           org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.Builder builderForValue) {
         if (metadataBuilder_ == null) {
@@ -12908,9 +10056,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public Builder addMetadata(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.Builder builderForValue) {
         if (metadataBuilder_ == null) {
@@ -12922,9 +10067,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public Builder addAllMetadata(
           java.lang.Iterable<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem> values) {
         if (metadataBuilder_ == null) {
@@ -12936,9 +10078,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public Builder clearMetadata() {
         if (metadataBuilder_ == null) {
           metadata_ = java.util.Collections.emptyList();
@@ -12949,9 +10088,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public Builder removeMetadata(int index) {
         if (metadataBuilder_ == null) {
           ensureMetadataIsMutable();
@@ -12962,16 +10098,10 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.Builder getMetadataBuilder(
           int index) {
         return getMetadataFieldBuilder().getBuilder(index);
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItemOrBuilder getMetadataOrBuilder(
           int index) {
         if (metadataBuilder_ == null) {
@@ -12979,9 +10109,6 @@ public final class OrcProto {
           return metadataBuilder_.getMessageOrBuilder(index);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItemOrBuilder> 
            getMetadataOrBuilderList() {
         if (metadataBuilder_ != null) {
@@ -12990,24 +10117,15 @@ public final class OrcProto {
           return java.util.Collections.unmodifiableList(metadata_);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.Builder addMetadataBuilder() {
         return getMetadataFieldBuilder().addBuilder(
             org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.getDefaultInstance());
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.Builder addMetadataBuilder(
           int index) {
         return getMetadataFieldBuilder().addBuilder(
             index, org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.getDefaultInstance());
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.UserMetadataItem metadata = 5;</code>
-       */
       public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.Builder> 
            getMetadataBuilderList() {
         return getMetadataFieldBuilder().getBuilderList();
@@ -13026,40 +10144,28 @@ public final class OrcProto {
         }
         return metadataBuilder_;
       }
-
+      
       // optional uint64 numberOfRows = 6;
       private long numberOfRows_ ;
-      /**
-       * <code>optional uint64 numberOfRows = 6;</code>
-       */
       public boolean hasNumberOfRows() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
-      /**
-       * <code>optional uint64 numberOfRows = 6;</code>
-       */
       public long getNumberOfRows() {
         return numberOfRows_;
       }
-      /**
-       * <code>optional uint64 numberOfRows = 6;</code>
-       */
       public Builder setNumberOfRows(long value) {
         bitField0_ |= 0x00000020;
         numberOfRows_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional uint64 numberOfRows = 6;</code>
-       */
       public Builder clearNumberOfRows() {
         bitField0_ = (bitField0_ & ~0x00000020);
         numberOfRows_ = 0L;
         onChanged();
         return this;
       }
-
+      
       // repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;
       private java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics> statistics_ =
         java.util.Collections.emptyList();
@@ -13069,13 +10175,10 @@ public final class OrcProto {
           bitField0_ |= 0x00000040;
          }
       }
-
+      
       private org.spark_project.protobuf.RepeatedFieldBuilder<
           org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatisticsOrBuilder> statisticsBuilder_;
-
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
+      
       public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics> getStatisticsList() {
         if (statisticsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(statistics_);
@@ -13083,9 +10186,6 @@ public final class OrcProto {
           return statisticsBuilder_.getMessageList();
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public int getStatisticsCount() {
         if (statisticsBuilder_ == null) {
           return statistics_.size();
@@ -13093,9 +10193,6 @@ public final class OrcProto {
           return statisticsBuilder_.getCount();
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics getStatistics(int index) {
         if (statisticsBuilder_ == null) {
           return statistics_.get(index);
@@ -13103,9 +10200,6 @@ public final class OrcProto {
           return statisticsBuilder_.getMessage(index);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public Builder setStatistics(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics value) {
         if (statisticsBuilder_ == null) {
@@ -13120,9 +10214,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public Builder setStatistics(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder builderForValue) {
         if (statisticsBuilder_ == null) {
@@ -13134,9 +10225,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public Builder addStatistics(org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics value) {
         if (statisticsBuilder_ == null) {
           if (value == null) {
@@ -13150,9 +10238,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public Builder addStatistics(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics value) {
         if (statisticsBuilder_ == null) {
@@ -13167,9 +10252,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public Builder addStatistics(
           org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder builderForValue) {
         if (statisticsBuilder_ == null) {
@@ -13181,9 +10263,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public Builder addStatistics(
           int index, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder builderForValue) {
         if (statisticsBuilder_ == null) {
@@ -13195,9 +10274,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public Builder addAllStatistics(
           java.lang.Iterable<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics> values) {
         if (statisticsBuilder_ == null) {
@@ -13209,9 +10285,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public Builder clearStatistics() {
         if (statisticsBuilder_ == null) {
           statistics_ = java.util.Collections.emptyList();
@@ -13222,9 +10295,6 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public Builder removeStatistics(int index) {
         if (statisticsBuilder_ == null) {
           ensureStatisticsIsMutable();
@@ -13235,16 +10305,10 @@ public final class OrcProto {
         }
         return this;
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder getStatisticsBuilder(
           int index) {
         return getStatisticsFieldBuilder().getBuilder(index);
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatisticsOrBuilder getStatisticsOrBuilder(
           int index) {
         if (statisticsBuilder_ == null) {
@@ -13252,9 +10316,6 @@ public final class OrcProto {
           return statisticsBuilder_.getMessageOrBuilder(index);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public java.util.List<? extends org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatisticsOrBuilder> 
            getStatisticsOrBuilderList() {
         if (statisticsBuilder_ != null) {
@@ -13263,24 +10324,15 @@ public final class OrcProto {
           return java.util.Collections.unmodifiableList(statistics_);
         }
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder addStatisticsBuilder() {
         return getStatisticsFieldBuilder().addBuilder(
             org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.getDefaultInstance());
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder addStatisticsBuilder(
           int index) {
         return getStatisticsFieldBuilder().addBuilder(
             index, org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.getDefaultInstance());
       }
-      /**
-       * <code>repeated .org.apache.hadoop.hive.ql.io.orc.ColumnStatistics statistics = 7;</code>
-       */
       public java.util.List<org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder> 
            getStatisticsBuilderList() {
         return getStatisticsFieldBuilder().getBuilderList();
@@ -13299,413 +10351,185 @@ public final class OrcProto {
         }
         return statisticsBuilder_;
       }
-
+      
       // optional uint32 rowIndexStride = 8;
       private int rowIndexStride_ ;
-      /**
-       * <code>optional uint32 rowIndexStride = 8;</code>
-       */
       public boolean hasRowIndexStride() {
         return ((bitField0_ & 0x00000080) == 0x00000080);
       }
-      /**
-       * <code>optional uint32 rowIndexStride = 8;</code>
-       */
       public int getRowIndexStride() {
         return rowIndexStride_;
       }
-      /**
-       * <code>optional uint32 rowIndexStride = 8;</code>
-       */
       public Builder setRowIndexStride(int value) {
         bitField0_ |= 0x00000080;
         rowIndexStride_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional uint32 rowIndexStride = 8;</code>
-       */
       public Builder clearRowIndexStride() {
         bitField0_ = (bitField0_ & ~0x00000080);
         rowIndexStride_ = 0;
         onChanged();
         return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.Footer)
     }
-
+    
     static {
       defaultInstance = new Footer(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.Footer)
   }
-
+  
   public interface PostScriptOrBuilder
       extends org.spark_project.protobuf.MessageOrBuilder {
-
+    
     // optional uint64 footerLength = 1;
-    /**
-     * <code>optional uint64 footerLength = 1;</code>
-     */
     boolean hasFooterLength();
-    /**
-     * <code>optional uint64 footerLength = 1;</code>
-     */
     long getFooterLength();
-
+    
     // optional .org.apache.hadoop.hive.ql.io.orc.CompressionKind compression = 2;
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.CompressionKind compression = 2;</code>
-     */
     boolean hasCompression();
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.CompressionKind compression = 2;</code>
-     */
     org.apache.hadoop.hive.ql.io.orc.OrcProto.CompressionKind getCompression();
-
+    
     // optional uint64 compressionBlockSize = 3;
-    /**
-     * <code>optional uint64 compressionBlockSize = 3;</code>
-     */
     boolean hasCompressionBlockSize();
-    /**
-     * <code>optional uint64 compressionBlockSize = 3;</code>
-     */
     long getCompressionBlockSize();
-
+    
     // repeated uint32 version = 4 [packed = true];
-    /**
-     * <code>repeated uint32 version = 4 [packed = true];</code>
-     */
     java.util.List<java.lang.Integer> getVersionList();
-    /**
-     * <code>repeated uint32 version = 4 [packed = true];</code>
-     */
     int getVersionCount();
-    /**
-     * <code>repeated uint32 version = 4 [packed = true];</code>
-     */
     int getVersion(int index);
-
+    
     // optional string magic = 8000;
-    /**
-     * <code>optional string magic = 8000;</code>
-     *
-     * <pre>
-     * Leave this last in the record
-     * </pre>
-     */
     boolean hasMagic();
-    /**
-     * <code>optional string magic = 8000;</code>
-     *
-     * <pre>
-     * Leave this last in the record
-     * </pre>
-     */
-    java.lang.String getMagic();
-    /**
-     * <code>optional string magic = 8000;</code>
-     *
-     * <pre>
-     * Leave this last in the record
-     * </pre>
-     */
-    org.spark_project.protobuf.ByteString
-        getMagicBytes();
+    String getMagic();
   }
-  /**
-   * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.PostScript}
-   *
-   * <pre>
-   * Serialized length must be less that 255 bytes
-   * </pre>
-   */
   public static final class PostScript extends
       org.spark_project.protobuf.GeneratedMessage
       implements PostScriptOrBuilder {
     // Use PostScript.newBuilder() to construct.
-    private PostScript(org.spark_project.protobuf.GeneratedMessage.Builder<?> builder) {
+    private PostScript(Builder builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private PostScript(boolean noInit) { this.unknownFields = org.spark_project.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
+    private PostScript(boolean noInit) {}
+    
     private static final PostScript defaultInstance;
     public static PostScript getDefaultInstance() {
       return defaultInstance;
     }
-
+    
     public PostScript getDefaultInstanceForType() {
       return defaultInstance;
     }
-
-    private final org.spark_project.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final org.spark_project.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private PostScript(
-        org.spark_project.protobuf.CodedInputStream input,
-        org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
-          org.spark_project.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              footerLength_ = input.readUInt64();
-              break;
-            }
-            case 16: {
-              int rawValue = input.readEnum();
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.CompressionKind value = org.apache.hadoop.hive.ql.io.orc.OrcProto.CompressionKind.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(2, rawValue);
-              } else {
-                bitField0_ |= 0x00000002;
-                compression_ = value;
-              }
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              compressionBlockSize_ = input.readUInt64();
-              break;
-            }
-            case 32: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-                version_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000008;
-              }
-              version_.add(input.readUInt32());
-              break;
-            }
-            case 34: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008) && input.getBytesUntilLimit() > 0) {
-                version_ = new java.util.ArrayList<java.lang.Integer>();
-                mutable_bitField0_ |= 0x00000008;
-              }
-              while (input.getBytesUntilLimit() > 0) {
-                version_.add(input.readUInt32());
-              }
-              input.popLimit(limit);
-              break;
-            }
-            case 64002: {
-              bitField0_ |= 0x00000008;
-              magic_ = input.readBytes();
-              break;
-            }
-          }
-        }
-      } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new org.spark_project.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
-          version_ = java.util.Collections.unmodifiableList(version_);
-        }
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
+    
     public static final org.spark_project.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_PostScript_descriptor;
     }
-
+    
     protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_PostScript_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript.Builder.class);
+      return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_PostScript_fieldAccessorTable;
     }
-
-    public static org.spark_project.protobuf.Parser<PostScript> PARSER =
-        new org.spark_project.protobuf.AbstractParser<PostScript>() {
-      public PostScript parsePartialFrom(
-          org.spark_project.protobuf.CodedInputStream input,
-          org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws org.spark_project.protobuf.InvalidProtocolBufferException {
-        return new PostScript(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public org.spark_project.protobuf.Parser<PostScript> getParserForType() {
-      return PARSER;
-    }
-
+    
     private int bitField0_;
     // optional uint64 footerLength = 1;
     public static final int FOOTERLENGTH_FIELD_NUMBER = 1;
     private long footerLength_;
-    /**
-     * <code>optional uint64 footerLength = 1;</code>
-     */
     public boolean hasFooterLength() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    /**
-     * <code>optional uint64 footerLength = 1;</code>
-     */
     public long getFooterLength() {
       return footerLength_;
     }
-
+    
     // optional .org.apache.hadoop.hive.ql.io.orc.CompressionKind compression = 2;
     public static final int COMPRESSION_FIELD_NUMBER = 2;
     private org.apache.hadoop.hive.ql.io.orc.OrcProto.CompressionKind compression_;
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.CompressionKind compression = 2;</code>
-     */
     public boolean hasCompression() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
-    /**
-     * <code>optional .org.apache.hadoop.hive.ql.io.orc.CompressionKind compression = 2;</code>
-     */
     public org.apache.hadoop.hive.ql.io.orc.OrcProto.CompressionKind getCompression() {
       return compression_;
     }
-
+    
     // optional uint64 compressionBlockSize = 3;
     public static final int COMPRESSIONBLOCKSIZE_FIELD_NUMBER = 3;
     private long compressionBlockSize_;
-    /**
-     * <code>optional uint64 compressionBlockSize = 3;</code>
-     */
     public boolean hasCompressionBlockSize() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    /**
-     * <code>optional uint64 compressionBlockSize = 3;</code>
-     */
     public long getCompressionBlockSize() {
       return compressionBlockSize_;
     }
-
+    
     // repeated uint32 version = 4 [packed = true];
     public static final int VERSION_FIELD_NUMBER = 4;
     private java.util.List<java.lang.Integer> version_;
-    /**
-     * <code>repeated uint32 version = 4 [packed = true];</code>
-     */
     public java.util.List<java.lang.Integer>
         getVersionList() {
       return version_;
     }
-    /**
-     * <code>repeated uint32 version = 4 [packed = true];</code>
-     */
     public int getVersionCount() {
       return version_.size();
     }
-    /**
-     * <code>repeated uint32 version = 4 [packed = true];</code>
-     */
     public int getVersion(int index) {
       return version_.get(index);
     }
     private int versionMemoizedSerializedSize = -1;
-
+    
     // optional string magic = 8000;
     public static final int MAGIC_FIELD_NUMBER = 8000;
     private java.lang.Object magic_;
-    /**
-     * <code>optional string magic = 8000;</code>
-     *
-     * <pre>
-     * Leave this last in the record
-     * </pre>
-     */
     public boolean hasMagic() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
-    /**
-     * <code>optional string magic = 8000;</code>
-     *
-     * <pre>
-     * Leave this last in the record
-     * </pre>
-     */
-    public java.lang.String getMagic() {
+    public String getMagic() {
       java.lang.Object ref = magic_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
+      if (ref instanceof String) {
+        return (String) ref;
       } else {
         org.spark_project.protobuf.ByteString bs = 
             (org.spark_project.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
+        String s = bs.toStringUtf8();
+        if (org.spark_project.protobuf.Internal.isValidUtf8(bs)) {
           magic_ = s;
         }
         return s;
       }
     }
-    /**
-     * <code>optional string magic = 8000;</code>
-     *
-     * <pre>
-     * Leave this last in the record
-     * </pre>
-     */
-    public org.spark_project.protobuf.ByteString
-        getMagicBytes() {
+    private org.spark_project.protobuf.ByteString getMagicBytes() {
       java.lang.Object ref = magic_;
-      if (ref instanceof java.lang.String) {
+      if (ref instanceof String) {
         org.spark_project.protobuf.ByteString b = 
-            org.spark_project.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
+            org.spark_project.protobuf.ByteString.copyFromUtf8((String) ref);
         magic_ = b;
         return b;
       } else {
         return (org.spark_project.protobuf.ByteString) ref;
       }
     }
-
+    
     private void initFields() {
       footerLength_ = 0L;
       compression_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.CompressionKind.NONE;
       compressionBlockSize_ = 0L;
-      version_ = java.util.Collections.emptyList();
+      version_ = java.util.Collections.emptyList();;
       magic_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
-
+      
       memoizedIsInitialized = 1;
       return true;
     }
-
+    
     public void writeTo(org.spark_project.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
@@ -13730,12 +10554,12 @@ public final class OrcProto {
       }
       getUnknownFields().writeTo(output);
     }
-
+    
     private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
       int size = memoizedSerializedSize;
       if (size != -1) return size;
-
+    
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += org.spark_project.protobuf.CodedOutputStream
@@ -13771,87 +10595,94 @@ public final class OrcProto {
       memoizedSerializedSize = size;
       return size;
     }
-
+    
     private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
-
+    
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript parseFrom(
         org.spark_project.protobuf.ByteString data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript parseFrom(
         org.spark_project.protobuf.ByteString data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript parseFrom(byte[] data)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
+      return newBuilder().mergeFrom(data).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript parseFrom(
         byte[] data,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws org.spark_project.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript parseFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript parseDelimitedFrom(
         java.io.InputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript parseFrom(
         org.spark_project.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return newBuilder().mergeFrom(input).buildParsed();
     }
     public static org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript parseFrom(
         org.spark_project.protobuf.CodedInputStream input,
         org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
     }
-
+    
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
     public static Builder newBuilder(org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
-
+    
     @java.lang.Override
     protected Builder newBuilderForType(
         org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
-    /**
-     * Protobuf type {@code org.apache.hadoop.hive.ql.io.orc.PostScript}
-     *
-     * <pre>
-     * Serialized length must be less that 255 bytes
-     * </pre>
-     */
     public static final class Builder extends
         org.spark_project.protobuf.GeneratedMessage.Builder<Builder>
        implements org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScriptOrBuilder {
@@ -13859,21 +10690,18 @@ public final class OrcProto {
           getDescriptor() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_PostScript_descriptor;
       }
-
+      
       protected org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_PostScript_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript.class, org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript.Builder.class);
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_PostScript_fieldAccessorTable;
       }
-
+      
       // Construct using org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
-
-      private Builder(
-          org.spark_project.protobuf.GeneratedMessage.BuilderParent parent) {
+      
+      private Builder(BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -13884,7 +10712,7 @@ public final class OrcProto {
       private static Builder create() {
         return new Builder();
       }
-
+      
       public Builder clear() {
         super.clear();
         footerLength_ = 0L;
@@ -13893,26 +10721,26 @@ public final class OrcProto {
         bitField0_ = (bitField0_ & ~0x00000002);
         compressionBlockSize_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
-        version_ = java.util.Collections.emptyList();
+        version_ = java.util.Collections.emptyList();;
         bitField0_ = (bitField0_ & ~0x00000008);
         magic_ = "";
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
-
+      
       public Builder clone() {
         return create().mergeFrom(buildPartial());
       }
-
+      
       public org.spark_project.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.apache.hadoop.hive.ql.io.orc.OrcProto.internal_static_org_apache_hadoop_hive_ql_io_orc_PostScript_descriptor;
+        return org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript.getDescriptor();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript getDefaultInstanceForType() {
         return org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript.getDefaultInstance();
       }
-
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript build() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript result = buildPartial();
         if (!result.isInitialized()) {
@@ -13920,7 +10748,17 @@ public final class OrcProto {
         }
         return result;
       }
-
+      
+      private org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript buildParsed()
+          throws org.spark_project.protobuf.InvalidProtocolBufferException {
+        org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript buildPartial() {
         org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript result = new org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript(this);
         int from_bitField0_ = bitField0_;
@@ -13950,7 +10788,7 @@ public final class OrcProto {
         onBuilt();
         return result;
       }
-
+      
       public Builder mergeFrom(org.spark_project.protobuf.Message other) {
         if (other instanceof org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript) {
           return mergeFrom((org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript)other);
@@ -13959,7 +10797,7 @@ public final class OrcProto {
           return this;
         }
       }
-
+      
       public Builder mergeFrom(org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript other) {
         if (other == org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript.getDefaultInstance()) return this;
         if (other.hasFooterLength()) {
@@ -13982,87 +10820,114 @@ public final class OrcProto {
           onChanged();
         }
         if (other.hasMagic()) {
-          bitField0_ |= 0x00000010;
-          magic_ = other.magic_;
-          onChanged();
+          setMagic(other.getMagic());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
-
+      
       public final boolean isInitialized() {
         return true;
       }
-
+      
       public Builder mergeFrom(
           org.spark_project.protobuf.CodedInputStream input,
           org.spark_project.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (org.spark_project.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
+        org.spark_project.protobuf.UnknownFieldSet.Builder unknownFields =
+          org.spark_project.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              footerLength_ = input.readUInt64();
+              break;
+            }
+            case 16: {
+              int rawValue = input.readEnum();
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.CompressionKind value = org.apache.hadoop.hive.ql.io.orc.OrcProto.CompressionKind.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                compression_ = value;
+              }
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              compressionBlockSize_ = input.readUInt64();
+              break;
+            }
+            case 32: {
+              ensureVersionIsMutable();
+              version_.add(input.readUInt32());
+              break;
+            }
+            case 34: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              while (input.getBytesUntilLimit() > 0) {
+                addVersion(input.readUInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            case 64002: {
+              bitField0_ |= 0x00000010;
+              magic_ = input.readBytes();
+              break;
+            }
           }
         }
-        return this;
       }
+      
       private int bitField0_;
-
+      
       // optional uint64 footerLength = 1;
       private long footerLength_ ;
-      /**
-       * <code>optional uint64 footerLength = 1;</code>
-       */
       public boolean hasFooterLength() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      /**
-       * <code>optional uint64 footerLength = 1;</code>
-       */
       public long getFooterLength() {
         return footerLength_;
       }
-      /**
-       * <code>optional uint64 footerLength = 1;</code>
-       */
       public Builder setFooterLength(long value) {
         bitField0_ |= 0x00000001;
         footerLength_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional uint64 footerLength = 1;</code>
-       */
       public Builder clearFooterLength() {
         bitField0_ = (bitField0_ & ~0x00000001);
         footerLength_ = 0L;
         onChanged();
         return this;
       }
-
+      
       // optional .org.apache.hadoop.hive.ql.io.orc.CompressionKind compression = 2;
       private org.apache.hadoop.hive.ql.io.orc.OrcProto.CompressionKind compression_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.CompressionKind.NONE;
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.CompressionKind compression = 2;</code>
-       */
       public boolean hasCompression() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.CompressionKind compression = 2;</code>
-       */
       public org.apache.hadoop.hive.ql.io.orc.OrcProto.CompressionKind getCompression() {
         return compression_;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.CompressionKind compression = 2;</code>
-       */
       public Builder setCompression(org.apache.hadoop.hive.ql.io.orc.OrcProto.CompressionKind value) {
         if (value == null) {
           throw new NullPointerException();
@@ -14072,79 +10937,52 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional .org.apache.hadoop.hive.ql.io.orc.CompressionKind compression = 2;</code>
-       */
       public Builder clearCompression() {
         bitField0_ = (bitField0_ & ~0x00000002);
         compression_ = org.apache.hadoop.hive.ql.io.orc.OrcProto.CompressionKind.NONE;
         onChanged();
         return this;
       }
-
+      
       // optional uint64 compressionBlockSize = 3;
       private long compressionBlockSize_ ;
-      /**
-       * <code>optional uint64 compressionBlockSize = 3;</code>
-       */
       public boolean hasCompressionBlockSize() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      /**
-       * <code>optional uint64 compressionBlockSize = 3;</code>
-       */
       public long getCompressionBlockSize() {
         return compressionBlockSize_;
       }
-      /**
-       * <code>optional uint64 compressionBlockSize = 3;</code>
-       */
       public Builder setCompressionBlockSize(long value) {
         bitField0_ |= 0x00000004;
         compressionBlockSize_ = value;
         onChanged();
         return this;
       }
-      /**
-       * <code>optional uint64 compressionBlockSize = 3;</code>
-       */
       public Builder clearCompressionBlockSize() {
         bitField0_ = (bitField0_ & ~0x00000004);
         compressionBlockSize_ = 0L;
         onChanged();
         return this;
       }
-
+      
       // repeated uint32 version = 4 [packed = true];
-      private java.util.List<java.lang.Integer> version_ = java.util.Collections.emptyList();
+      private java.util.List<java.lang.Integer> version_ = java.util.Collections.emptyList();;
       private void ensureVersionIsMutable() {
         if (!((bitField0_ & 0x00000008) == 0x00000008)) {
           version_ = new java.util.ArrayList<java.lang.Integer>(version_);
           bitField0_ |= 0x00000008;
          }
       }
-      /**
-       * <code>repeated uint32 version = 4 [packed = true];</code>
-       */
       public java.util.List<java.lang.Integer>
           getVersionList() {
         return java.util.Collections.unmodifiableList(version_);
       }
-      /**
-       * <code>repeated uint32 version = 4 [packed = true];</code>
-       */
       public int getVersionCount() {
         return version_.size();
       }
-      /**
-       * <code>repeated uint32 version = 4 [packed = true];</code>
-       */
       public int getVersion(int index) {
         return version_.get(index);
       }
-      /**
-       * <code>repeated uint32 version = 4 [packed = true];</code>
-       */
       public Builder setVersion(
           int index, int value) {
         ensureVersionIsMutable();
@@ -14152,18 +10990,12 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>repeated uint32 version = 4 [packed = true];</code>
-       */
       public Builder addVersion(int value) {
         ensureVersionIsMutable();
         version_.add(value);
         onChanged();
         return this;
       }
-      /**
-       * <code>repeated uint32 version = 4 [packed = true];</code>
-       */
       public Builder addAllVersion(
           java.lang.Iterable<? extends java.lang.Integer> values) {
         ensureVersionIsMutable();
@@ -14171,75 +11003,29 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>repeated uint32 version = 4 [packed = true];</code>
-       */
       public Builder clearVersion() {
-        version_ = java.util.Collections.emptyList();
+        version_ = java.util.Collections.emptyList();;
         bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
         return this;
       }
-
+      
       // optional string magic = 8000;
       private java.lang.Object magic_ = "";
-      /**
-       * <code>optional string magic = 8000;</code>
-       *
-       * <pre>
-       * Leave this last in the record
-       * </pre>
-       */
       public boolean hasMagic() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
-      /**
-       * <code>optional string magic = 8000;</code>
-       *
-       * <pre>
-       * Leave this last in the record
-       * </pre>
-       */
-      public java.lang.String getMagic() {
+      public String getMagic() {
         java.lang.Object ref = magic_;
-        if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((org.spark_project.protobuf.ByteString) ref)
-              .toStringUtf8();
+        if (!(ref instanceof String)) {
+          String s = ((org.spark_project.protobuf.ByteString) ref).toStringUtf8();
           magic_ = s;
           return s;
         } else {
-          return (java.lang.String) ref;
+          return (String) ref;
         }
       }
-      /**
-       * <code>optional string magic = 8000;</code>
-       *
-       * <pre>
-       * Leave this last in the record
-       * </pre>
-       */
-      public org.spark_project.protobuf.ByteString
-          getMagicBytes() {
-        java.lang.Object ref = magic_;
-        if (ref instanceof String) {
-          org.spark_project.protobuf.ByteString b = 
-              org.spark_project.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          magic_ = b;
-          return b;
-        } else {
-          return (org.spark_project.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string magic = 8000;</code>
-       *
-       * <pre>
-       * Leave this last in the record
-       * </pre>
-       */
-      public Builder setMagic(
-          java.lang.String value) {
+      public Builder setMagic(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -14248,48 +11034,29 @@ public final class OrcProto {
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string magic = 8000;</code>
-       *
-       * <pre>
-       * Leave this last in the record
-       * </pre>
-       */
       public Builder clearMagic() {
         bitField0_ = (bitField0_ & ~0x00000010);
         magic_ = getDefaultInstance().getMagic();
         onChanged();
         return this;
       }
-      /**
-       * <code>optional string magic = 8000;</code>
-       *
-       * <pre>
-       * Leave this last in the record
-       * </pre>
-       */
-      public Builder setMagicBytes(
-          org.spark_project.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000010;
+      void setMagic(org.spark_project.protobuf.ByteString value) {
+        bitField0_ |= 0x00000010;
         magic_ = value;
         onChanged();
-        return this;
       }
-
+      
       // @@protoc_insertion_point(builder_scope:org.apache.hadoop.hive.ql.io.orc.PostScript)
     }
-
+    
     static {
       defaultInstance = new PostScript(true);
       defaultInstance.initFields();
     }
-
+    
     // @@protoc_insertion_point(class_scope:org.apache.hadoop.hive.ql.io.orc.PostScript)
   }
-
+  
   private static org.spark_project.protobuf.Descriptors.Descriptor
     internal_static_org_apache_hadoop_hive_ql_io_orc_IntegerStatistics_descriptor;
   private static
@@ -14375,7 +11142,7 @@ public final class OrcProto {
   private static
     org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_org_apache_hadoop_hive_ql_io_orc_PostScript_fieldAccessorTable;
-
+  
   public static org.spark_project.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
@@ -14464,103 +11231,137 @@ public final class OrcProto {
           internal_static_org_apache_hadoop_hive_ql_io_orc_IntegerStatistics_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_IntegerStatistics_descriptor,
-              new java.lang.String[] { "Minimum", "Maximum", "Sum", });
+              new java.lang.String[] { "Minimum", "Maximum", "Sum", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.IntegerStatistics.Builder.class);
           internal_static_org_apache_hadoop_hive_ql_io_orc_DoubleStatistics_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_org_apache_hadoop_hive_ql_io_orc_DoubleStatistics_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_DoubleStatistics_descriptor,
-              new java.lang.String[] { "Minimum", "Maximum", "Sum", });
+              new java.lang.String[] { "Minimum", "Maximum", "Sum", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.DoubleStatistics.Builder.class);
           internal_static_org_apache_hadoop_hive_ql_io_orc_StringStatistics_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_org_apache_hadoop_hive_ql_io_orc_StringStatistics_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_StringStatistics_descriptor,
-              new java.lang.String[] { "Minimum", "Maximum", });
+              new java.lang.String[] { "Minimum", "Maximum", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.StringStatistics.Builder.class);
           internal_static_org_apache_hadoop_hive_ql_io_orc_BucketStatistics_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_org_apache_hadoop_hive_ql_io_orc_BucketStatistics_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_BucketStatistics_descriptor,
-              new java.lang.String[] { "Count", });
+              new java.lang.String[] { "Count", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.BucketStatistics.Builder.class);
           internal_static_org_apache_hadoop_hive_ql_io_orc_DecimalStatistics_descriptor =
             getDescriptor().getMessageTypes().get(4);
           internal_static_org_apache_hadoop_hive_ql_io_orc_DecimalStatistics_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_DecimalStatistics_descriptor,
-              new java.lang.String[] { "Minimum", "Maximum", "Sum", });
+              new java.lang.String[] { "Minimum", "Maximum", "Sum", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.DecimalStatistics.Builder.class);
           internal_static_org_apache_hadoop_hive_ql_io_orc_DateStatistics_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_org_apache_hadoop_hive_ql_io_orc_DateStatistics_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_DateStatistics_descriptor,
-              new java.lang.String[] { "Minimum", "Maximum", });
+              new java.lang.String[] { "Minimum", "Maximum", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.DateStatistics.Builder.class);
           internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnStatistics_descriptor =
             getDescriptor().getMessageTypes().get(6);
           internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnStatistics_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnStatistics_descriptor,
-              new java.lang.String[] { "NumberOfValues", "IntStatistics", "DoubleStatistics", "StringStatistics", "BucketStatistics", "DecimalStatistics", "DateStatistics", });
+              new java.lang.String[] { "NumberOfValues", "IntStatistics", "DoubleStatistics", "StringStatistics", "BucketStatistics", "DecimalStatistics", "DateStatistics", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnStatistics.Builder.class);
           internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndexEntry_descriptor =
             getDescriptor().getMessageTypes().get(7);
           internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndexEntry_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndexEntry_descriptor,
-              new java.lang.String[] { "Positions", "Statistics", });
+              new java.lang.String[] { "Positions", "Statistics", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndexEntry.Builder.class);
           internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndex_descriptor =
             getDescriptor().getMessageTypes().get(8);
           internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndex_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_RowIndex_descriptor,
-              new java.lang.String[] { "Entry", });
+              new java.lang.String[] { "Entry", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.RowIndex.Builder.class);
           internal_static_org_apache_hadoop_hive_ql_io_orc_Stream_descriptor =
             getDescriptor().getMessageTypes().get(9);
           internal_static_org_apache_hadoop_hive_ql_io_orc_Stream_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_Stream_descriptor,
-              new java.lang.String[] { "Kind", "Column", "Length", });
+              new java.lang.String[] { "Kind", "Column", "Length", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.Stream.Builder.class);
           internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnEncoding_descriptor =
             getDescriptor().getMessageTypes().get(10);
           internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnEncoding_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_ColumnEncoding_descriptor,
-              new java.lang.String[] { "Kind", "DictionarySize", });
+              new java.lang.String[] { "Kind", "DictionarySize", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.ColumnEncoding.Builder.class);
           internal_static_org_apache_hadoop_hive_ql_io_orc_StripeFooter_descriptor =
             getDescriptor().getMessageTypes().get(11);
           internal_static_org_apache_hadoop_hive_ql_io_orc_StripeFooter_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_StripeFooter_descriptor,
-              new java.lang.String[] { "Streams", "Columns", });
+              new java.lang.String[] { "Streams", "Columns", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeFooter.Builder.class);
           internal_static_org_apache_hadoop_hive_ql_io_orc_Type_descriptor =
             getDescriptor().getMessageTypes().get(12);
           internal_static_org_apache_hadoop_hive_ql_io_orc_Type_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_Type_descriptor,
-              new java.lang.String[] { "Kind", "Subtypes", "FieldNames", "MaximumLength", });
+              new java.lang.String[] { "Kind", "Subtypes", "FieldNames", "MaximumLength", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.Type.Builder.class);
           internal_static_org_apache_hadoop_hive_ql_io_orc_StripeInformation_descriptor =
             getDescriptor().getMessageTypes().get(13);
           internal_static_org_apache_hadoop_hive_ql_io_orc_StripeInformation_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_StripeInformation_descriptor,
-              new java.lang.String[] { "Offset", "IndexLength", "DataLength", "FooterLength", "NumberOfRows", });
+              new java.lang.String[] { "Offset", "IndexLength", "DataLength", "FooterLength", "NumberOfRows", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.StripeInformation.Builder.class);
           internal_static_org_apache_hadoop_hive_ql_io_orc_UserMetadataItem_descriptor =
             getDescriptor().getMessageTypes().get(14);
           internal_static_org_apache_hadoop_hive_ql_io_orc_UserMetadataItem_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_UserMetadataItem_descriptor,
-              new java.lang.String[] { "Name", "Value", });
+              new java.lang.String[] { "Name", "Value", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.UserMetadataItem.Builder.class);
           internal_static_org_apache_hadoop_hive_ql_io_orc_Footer_descriptor =
             getDescriptor().getMessageTypes().get(15);
           internal_static_org_apache_hadoop_hive_ql_io_orc_Footer_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_Footer_descriptor,
-              new java.lang.String[] { "HeaderLength", "ContentLength", "Stripes", "Types", "Metadata", "NumberOfRows", "Statistics", "RowIndexStride", });
+              new java.lang.String[] { "HeaderLength", "ContentLength", "Stripes", "Types", "Metadata", "NumberOfRows", "Statistics", "RowIndexStride", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.Footer.Builder.class);
           internal_static_org_apache_hadoop_hive_ql_io_orc_PostScript_descriptor =
             getDescriptor().getMessageTypes().get(16);
           internal_static_org_apache_hadoop_hive_ql_io_orc_PostScript_fieldAccessorTable = new
             org.spark_project.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_org_apache_hadoop_hive_ql_io_orc_PostScript_descriptor,
-              new java.lang.String[] { "FooterLength", "Compression", "CompressionBlockSize", "Version", "Magic", });
+              new java.lang.String[] { "FooterLength", "Compression", "CompressionBlockSize", "Version", "Magic", },
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript.class,
+              org.apache.hadoop.hive.ql.io.orc.OrcProto.PostScript.Builder.class);
           return null;
         }
       };
@@ -14569,6 +11370,6 @@ public final class OrcProto {
         new org.spark_project.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
   }
-
+  
   // @@protoc_insertion_point(outer_class_scope)
 }
