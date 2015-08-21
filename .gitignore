@@ -25,3 +25,4 @@ hcatalog/core/target
 hcatalog/webhcat/java-client/target
 hcatalog/storage-handlers/hbase/target
 hcatalog/webhcat/svr/target
+dependency-reduced-pom.xml
