@@ -377,6 +377,8 @@ public final class FunctionRegistry {
 
     registerGenericUDAF("compute_stats" , new GenericUDAFComputeStats());
 
+    registerGenericUDAF("exact_lag", new GenericUDAFExactLag());
+
     registerUDAF("percentile", UDAFPercentile.class);
 
 
