@@ -383,6 +383,8 @@ public final class FunctionRegistry {
 
     system.registerUDAF("percentile", UDAFPercentile.class);
 
+    system.registerGenericUDAF("exact_lag", new GenericUDAFExactLag());
+
 
     // Generic UDFs
     system.registerGenericUDF("reflect", GenericUDFReflect.class);

@@ -37,7 +37,7 @@ import org.apache.hadoop.hive.serde2.typeinfo.TypeInfo;
 
 @WindowFunctionDescription(
   description = @Description(
-    name = "ExactLag",
+    name = "exact_lag",
     value = "_FUNC_(value, order_by_value, lag_amount)"
   ),
   supportsWindow = true,
