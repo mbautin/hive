@@ -641,8 +641,7 @@ public final class FunctionRegistry {
       // First try without qualifiers - would resolve builtin/temp functions.
       // Otherwise try qualifying with current db name.
       functionInfo =  mFunctions.get(functionName);
-      if (functionInfo == null &&
-          SessionState.get() != null && SessionState.get().getCurrentDatabase() != null) {
+      if (functionInfo == null && SessionState.get() != null) {
         String qualifiedName = FunctionUtils.qualifyFunctionName(functionName,
             SessionState.get().getCurrentDatabase().toLowerCase());
         functionInfo = getQualifiedFunctionInfo(mFunctions, qualifiedName);
