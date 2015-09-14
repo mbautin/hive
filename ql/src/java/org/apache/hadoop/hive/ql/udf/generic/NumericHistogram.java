@@ -261,26 +261,47 @@ public class NumericHistogram {
    * @return The quantile value.
    */
   public double quantile(double q) {
+    // The algorithm here is similar to that in UDAFPercentile.getPercentile.
     assert(bins != null && nusedbins > 0 && nbins > 0);
-    double sum = 0, csum = 0;
-    int b;
-    for(b = 0; b < nusedbins; b++)  {
+    double sum = 0;
+
+    for (int b = 0; b < nusedbins; b++)  {
       sum += bins.get(b).y;
     }
-    for(b = 0; b < nusedbins; b++) {
-      csum += bins.get(b).y;
-      if(csum / sum >= q) {
-        if(b == 0) {
-          return bins.get(b).x;
-        }
+    long n = Math.round(sum) - 1;
+    double position = q * n;
 
-        csum -= bins.get(b).y;
-        double r = bins.get(b-1).x +
-          (q*sum - csum) * (bins.get(b).x - bins.get(b-1).x)/(bins.get(b).y);
-        return r;
-      }
+    long lower = (long)Math.floor(position);
+    long higher = (long)Math.ceil(position);
+
+    // Linear search since this won't take much time from the total execution anyway
+    // lower has the range of [0 .. total-1]
+    // The first entry with accumulated count (lower+1) corresponds to the lower position.
+    int i = 0;
+    long csum = 0;
+    while (i < nusedbins && (csum += Math.round(bins.get(i).y)) < lower + 1) {
+      i++;
     }
-    return -1; // for Xlint, code will never reach here
+
+    double lowerKey = bins.get(i).x;
+    if (higher == lower) {
+      // no interpolation needed because position does not have a fraction
+      return lowerKey;
+    }
+
+    if (i < nusedbins && csum < higher + 1) {
+      i++;
+    }
+
+    double higherKey = bins.get(i).x;
+
+    if (higherKey == lowerKey) {
+      // no interpolation needed because lower position and higher position has the same key
+      return lowerKey;
+    }
+
+    // Linear interpolation to get the exact percentile
+    return (higher - position) * lowerKey + (position - lower) * higherKey;
   }
 
   /**
