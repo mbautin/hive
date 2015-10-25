@@ -171,7 +171,9 @@ public class GenericUDAFExactLag extends AbstractGenericUDAFResolver
     public Object terminate(AggregationBuffer agg) throws HiveException
     {
       ExactLagBuffer b = (ExactLagBuffer) agg;
-      if (b.lastOrderByVal - b.orderByVal == b.lagAmount) {
+      if (b.lastOrderByVal != null &&
+          b.orderByVal != null &&
+          b.lastOrderByVal - b.orderByVal == b.lagAmount) {
         return b.val;
       } else {
         return null;
