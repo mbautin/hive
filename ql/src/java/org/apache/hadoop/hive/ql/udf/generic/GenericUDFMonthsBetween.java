@@ -17,7 +17,7 @@
  */
 package org.apache.hadoop.hive.ql.udf.generic;
 
-import static java.math.BigDecimal.ROUND_HALF_UP;
+import static java.math.BigDecimal.ROUND_HALF_EVEN;
 import static java.util.Calendar.DATE;
 import static java.util.Calendar.HOUR_OF_DAY;
 import static java.util.Calendar.MINUTE;
@@ -130,7 +130,7 @@ public class GenericUDFMonthsBetween extends GenericUDF {
     // there should be no adjustments for leap seconds
     double monBtwDbl = monDiffInt + (sec1 - sec2) / 2678400D;
     // Round a double to 8 decimal places.
-    double result = BigDecimal.valueOf(monBtwDbl).setScale(8, ROUND_HALF_UP).doubleValue();
+    double result = BigDecimal.valueOf(monBtwDbl).setScale(8, ROUND_HALF_EVEN).doubleValue();
     output.set(result);
     return output;
   }

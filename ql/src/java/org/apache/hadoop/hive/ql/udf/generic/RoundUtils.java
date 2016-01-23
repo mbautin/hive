@@ -46,15 +46,15 @@ public class RoundUtils {
     if (Double.isNaN(input) || Double.isInfinite(input)) {
       return input;
     }
-    return BigDecimal.valueOf(input).setScale(scale, RoundingMode.HALF_UP).doubleValue();
+    return BigDecimal.valueOf(input).setScale(scale, RoundingMode.HALF_EVEN).doubleValue();
   }
 
   public static long round(long input, int scale) {
-    return BigDecimal.valueOf(input).setScale(scale, RoundingMode.HALF_UP).longValue();
+    return BigDecimal.valueOf(input).setScale(scale, RoundingMode.HALF_EVEN).longValue();
   }
 
   public static HiveDecimal round(HiveDecimal input, int scale) {
-    return input.setScale(scale, HiveDecimal.ROUND_HALF_UP);
+    return input.setScale(scale, HiveDecimal.ROUND_HALF_EVEN);
   }
 
 }

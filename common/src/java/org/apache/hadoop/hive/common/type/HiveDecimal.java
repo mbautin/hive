@@ -50,7 +50,7 @@ public class HiveDecimal implements Comparable<HiveDecimal> {
 
   public static final int ROUND_FLOOR = BigDecimal.ROUND_FLOOR;
   public static final int ROUND_CEILING = BigDecimal.ROUND_CEILING;
-  public static final int ROUND_HALF_UP = BigDecimal.ROUND_HALF_UP;
+  public static final int ROUND_HALF_EVEN = BigDecimal.ROUND_HALF_EVEN;
 
   private BigDecimal bd = BigDecimal.ZERO;
 
@@ -103,7 +103,7 @@ public class HiveDecimal implements Comparable<HiveDecimal> {
   }
 
   public HiveDecimal setScale(int i) {
-    return new HiveDecimal(bd.setScale(i, RoundingMode.HALF_UP));
+    return new HiveDecimal(bd.setScale(i, RoundingMode.HALF_EVEN));
   }
 
   @Override
@@ -219,7 +219,7 @@ public class HiveDecimal implements Comparable<HiveDecimal> {
   }
 
   public HiveDecimal divide(HiveDecimal dec) {
-    return create(bd.divide(dec.bd, MAX_SCALE, RoundingMode.HALF_UP), true);
+    return create(bd.divide(dec.bd, MAX_SCALE, RoundingMode.HALF_EVEN), true);
   }
 
   /**
@@ -260,7 +260,7 @@ public class HiveDecimal implements Comparable<HiveDecimal> {
     int maxScale = Math.min(MAX_SCALE, Math.min(MAX_PRECISION - intDigits, bd.scale()));
     if (bd.scale() > maxScale ) {
       if (allowRounding) {
-        bd = bd.setScale(maxScale, RoundingMode.HALF_UP);
+        bd = bd.setScale(maxScale, RoundingMode.HALF_EVEN);
         // Trimming is again necessary, because rounding may introduce new trailing 0's.
         bd = trim(bd);
       } else {
@@ -279,7 +279,7 @@ public class HiveDecimal implements Comparable<HiveDecimal> {
     bd = trim(bd);
 
     if (bd.scale() > maxScale) {
-      bd = bd.setScale(maxScale, RoundingMode.HALF_UP);
+      bd = bd.setScale(maxScale, RoundingMode.HALF_EVEN);
     }
 
     int maxIntDigits = maxPrecision - maxScale;

@@ -596,7 +596,7 @@ public class TestDecimal128 {
     // Now do the operation with Java BigDecimal
     BigDecimal bdA = new BigDecimal(sA);
     BigDecimal bdB = new BigDecimal(sB);
-    BigDecimal bdR = bdA.divide(bdB, 0, RoundingMode.HALF_UP);
+    BigDecimal bdR = bdA.divide(bdB, 0, RoundingMode.HALF_EVEN);
 
     String res2 = bdR.toPlainString();
 
